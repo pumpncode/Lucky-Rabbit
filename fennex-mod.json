@@ -1,0 +1,14 @@
+{
+	"id": "Fennex Mod",
+	"name": "Fennex Mod",
+	"display_name": "Fennex Mod",
+	"author": ["Fennex", "Trif/Trifdotnet"],
+	"description": "Vanilla+ content mod that adds new jokers, boss blinds, a new consumable type, and more to expand upon the base game. It's time to get silly!",
+	"prefix": "fmod",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "FEE227",
+	"badge_text_colour": "000000",
+	"version": "1.0.0",
+	"dependencies": []
+}
