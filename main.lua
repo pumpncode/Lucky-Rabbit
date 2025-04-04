@@ -91,7 +91,7 @@ local files = {
     },
     blinds = {
         list = {
-
+            "hoard",
         },
         directory = "blinds/"
     },
@@ -140,8 +140,10 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = "Blinds",
     path = "Blinds.png",
-    px = 71,
-    py = 95
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21,
+    px = 34,
+    py = 34
 }
 
 SMODS.Atlas {

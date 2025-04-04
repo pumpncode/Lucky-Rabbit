@@ -29,6 +29,15 @@ return {
                     "{C:inactive}(Will give {C:money}$#2#{C:inactive})"
                 }
             }
+        },
+        Blind = {
+            bl_fmod_hoard = {
+                name = "The Hoard",
+                text = {
+                    "All number cards",
+                    "are drawn face down"
+                }
+            }
         }
     },
     misc = {
