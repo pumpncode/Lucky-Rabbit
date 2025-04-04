@@ -10,6 +10,14 @@ return {
                         "{C:red}Self destructs{} if no consumables",
                         "can be destroyed"
                 },
+            },
+            j_fmod_fennex = {
+                name = "Fennex",
+                text = {
+                    "Every {C:attention}#1#{} rerolls, add",
+                    "a {C:attention}Voucher{} to the next shop",
+                    "{C:inactive,s:0.8}(#2# remaining)"
+                }
             }
         }
     },

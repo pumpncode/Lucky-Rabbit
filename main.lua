@@ -72,6 +72,7 @@ end
 local files = {
     jokers = {
         list = {
+            "fennex",
             "generator",
         },
         directory = "jokers/"
@@ -122,7 +123,14 @@ SMODS.Atlas {
     py = 95,
 }
 
---[[SMODS.Atlas {
+SMODS.Atlas({
+	key = "modicon",
+	path = "Fennex_Mod_Icon.png",
+	px = 32,
+	py = 32
+})
+
+SMODS.Atlas {
     key = "Vouchers",
     path = "Vouchers.png",
     px = 71,
@@ -130,6 +138,20 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas {
+    key = "Blinds",
+    path = "Blinds.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "Tags",
+    path = "Tags.png",
+    px = 71,
+    py = 95
+}
+
+--[[SMODS.Atlas {
     key = "Decks",
     path = "Decks.png",
     px = 71,
