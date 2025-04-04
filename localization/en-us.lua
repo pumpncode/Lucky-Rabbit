@@ -15,8 +15,18 @@ return {
                 name = "Fennex",
                 text = {
                     "Every {C:attention}#1#{} rerolls, add",
-                    "a {C:attention}Voucher{} to the next shop",
+                    "a {C:attention}Voucher{} to the shop",
                     "{C:inactive,s:0.8}(#2# remaining)"
+                }
+            }
+        },
+        Tag = {
+            tag_fmod_appraisal = {
+                name = "Appraisal Tag",
+                text = {
+                    "Gives {C:money}$#1#{} for each {C:attention}Enhanced",
+                    "{C:attention}Card{} in your full deck",
+                    "{C:inactive}(Will give {C:money}$#2#{C:inactive})"
                 }
             }
         }

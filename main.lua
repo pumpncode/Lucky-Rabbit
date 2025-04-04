@@ -103,7 +103,7 @@ local files = {
     },
     tags = {
         list = {
-
+            "appraisal"
         },
         directory = "tags/"
     }
@@ -147,8 +147,8 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = "Tags",
     path = "Tags.png",
-    px = 71,
-    py = 95
+    px = 34,
+    py = 34
 }
 
 --[[SMODS.Atlas {
