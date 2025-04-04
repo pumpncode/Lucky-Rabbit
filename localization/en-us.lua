@@ -38,6 +38,18 @@ return {
                     "are drawn face down"
                 }
             }
+        },
+        Silly = {
+            c_fmod_pie = {
+                name = "Pie",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the {C:attention}rank",
+                    "of the {C:attention}left{} card onto the {C:attention}right{}",
+                    "card"
+                }
+            }
+        },
+        Other = {
         }
     },
     misc = {

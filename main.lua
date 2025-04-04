@@ -3,71 +3,7 @@ FMOD = {}
 FM = SMODS.current_mod
 fmod_config = SMODS.current_mod.config
 
-SMODS.current_mod.config_tab = function()
-    return {
-        n = G.UIT.ROOT,
-        config = {
-            align = "tm",
-            padding = 0.2,
-            minw = 8,
-            minh = 2,
-            colour = G.C.BLACK,
-            r = 0.1,
-            hover = true,
-            shadow = true,
-            emboss = 0.05
-        },
-        nodes = {
-            {
-                n = G.UIT.R,
-                config = {padding = 0, align = "cm", minh = 0.1},
-                nodes = {
-                    {
-                        n = G.UIT.C,
-                        config = {align = "c", padding = 0, minh = 0.1},
-                        nodes = {
-                            {
-                                n = G.UIT.R,
-                                config = {padding = 0, align = "cm", minh = 0},
-                                nodes = {
-                                    {
-                                        n = G.UIT.T,
-                                        config = {text = "Enable mod Jokers", scale = 0.45, colour = G.C.UI.TEXT_LIGHT}
-                                    }
-                                }
-                            },
-                            {
-                                n = G.UIT.R,
-                                config = {padding = 0, align = "cm", minh = 0},
-                                nodes = {
-                                    {
-                                        n = G.UIT.T,
-                                        config = {text = "Requires restart", scale = 0.35, colour = G.C.JOKER_GREY}
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    {
-                        n = G.UIT.C,
-                        config = {align = "cl", padding = 0.05},
-                        nodes = {
-                            create_toggle {
-                                col = true,
-                                label = "",
-                                scale = 1,
-                                w = 0,
-                                shadow = true,
-                                ref_table = fmod_config,
-                                ref_value = "enableJokers"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-end
+-- file loading
 
 local files = {
     jokers = {
@@ -83,9 +19,9 @@ local files = {
         },
         directory = "vouchers/"
     },
-    silly = {
+    consumables = {
         list = {
-
+            "pie",
         },
         directory = 'consumables/'
     },
@@ -109,6 +45,8 @@ local files = {
     }
 }
 
+-- atlases
+
 SMODS.Atlas {
     key = "Jokers",
     path = "Jokers.png",
@@ -123,12 +61,12 @@ SMODS.Atlas {
     py = 95,
 }
 
-SMODS.Atlas({
+SMODS.Atlas {
 	key = "modicon",
 	path = "Fennex_Mod_Icon.png",
 	px = 32,
 	py = 32
-})
+}
 
 SMODS.Atlas {
     key = "Vouchers",
@@ -159,6 +97,34 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }]]--
+
+-- silly packs
+
+SMODS.ConsumableType {
+    key = 'Silly',
+    primary_colour = HEX('f4d494'),
+    secondary_colour = HEX('84b4cc'),
+    collection_rows = { 5, 6 },
+    default = 'c_fmod_pie',
+    cards = {
+        ["c_fmod_pie"] = true,
+    },
+    loc_txt = {
+        name = "Silly",
+        collection = "Silly Cards",
+        undiscovered = {
+            name = "Not Discovered",
+            text = {
+                "Purchase or use",
+                "this card in an",
+                "unseeded run to",
+                "learn what it does"
+            }
+        }
+    },
+}
+
+-- load everything
 
 local function load_files(set)
     for i = 1, #files[set].list do
