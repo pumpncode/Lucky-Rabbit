@@ -18,6 +18,13 @@ return {
                     "a {C:attention}Voucher{} to the shop",
                     "{C:inactive,s:0.8}(#2# remaining)"
                 }
+            },
+            j_fmod_terminal_velocity = {
+                name = "Terminal Velocity",
+                text = {
+                    "Played {C:attention}Wild Cards{} permanently",
+                    "gain {X:mult,C:white}X#1#{} Mult"
+                }
             }
         },
         Tag = {
