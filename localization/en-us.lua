@@ -78,6 +78,13 @@ return {
                     "card"
                 }
             },
+            c_fmod_whoopie_cushion = {
+                name = "Whoopie Cushion",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the {C:attention}Enhancement",
+                    "of the {C:attention}left{} card onto the {C:attention}right{} card"
+                }
+            },
         },
         Other = {
             p_fmod_silly_small = {
