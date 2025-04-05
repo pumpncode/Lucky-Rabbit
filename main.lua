@@ -23,8 +23,9 @@ local files = {
     consumables = {
         list = {
             "clown_car",
-            "bang_gun",
+            "squirt_flower",
             "pie",
+            "bang_gun",
         },
         directory = 'consumables/'
     },

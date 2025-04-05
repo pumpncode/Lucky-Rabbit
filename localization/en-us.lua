@@ -70,6 +70,14 @@ return {
                     "card"
                 }
             },
+            c_fmod_squirt_flower = {
+                name = "Squirt Flower",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the {C:attention}seal",
+                    "of the {C:attention}left{} card onto the {C:attention}right{}",
+                    "card"
+                }
+            },
         },
         Other = {
             p_fmod_silly_small = {
