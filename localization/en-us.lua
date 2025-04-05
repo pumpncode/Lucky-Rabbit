@@ -61,7 +61,15 @@ return {
                     "Create a random {C:dark_edition}Negative{}",
                     "{C:attention}Joker card"
                 }
-            }
+            },
+            c_fmod_bang_gun = {
+                name = "Bang Gun",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the {C:attention}suit",
+                    "of the {C:attention}left{} card onto the {C:attention}right{}",
+                    "card"
+                }
+            },
         },
         Other = {
             p_fmod_silly_small = {

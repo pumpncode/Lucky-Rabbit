@@ -22,8 +22,9 @@ local files = {
     },
     consumables = {
         list = {
-            "pie",
             "clown_car",
+            "bang_gun",
+            "pie",
         },
         directory = 'consumables/'
     },
@@ -124,6 +125,7 @@ SMODS.ConsumableType {
     cards = {
         ["c_fmod_pie"] = true,
         ["c_fmod_clown_car"] = true,
+        ["c_fmod_bang_gun"] = true,
     },
     loc_txt = {
         name = "Silly",
