@@ -54,6 +54,13 @@ return {
                     "of the {C:attention}left{} card onto the {C:attention}right{}",
                     "card"
                 }
+            },
+            c_fmod_clown_car = {
+                name = "Clown Car",
+                text = {
+                    "Create a random {C:dark_edition}Negative{}",
+                    "{C:attention}Joker card"
+                }
             }
         },
         Other = {
