@@ -61,7 +61,7 @@ return {
                 name = "Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -69,7 +69,7 @@ return {
                 name = "Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -77,7 +77,7 @@ return {
                 name = "Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -85,7 +85,7 @@ return {
                 name = "Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -93,7 +93,7 @@ return {
                 name = "Jumbo Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -101,7 +101,7 @@ return {
                 name = "Jumbo Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -109,7 +109,7 @@ return {
                 name = "Mega Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },
@@ -117,7 +117,7 @@ return {
                 name = "Mega Silly Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Silly cards to",
+                    "{C:attention}#2# {V:1}Silly{} cards to",
                     "be used immediately"
                 }
             },

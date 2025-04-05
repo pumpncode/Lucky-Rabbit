@@ -2,7 +2,7 @@ SMODS.Booster {
     key = "silly_small",
     config = { extra = 3, choose = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 4,
@@ -23,7 +23,7 @@ SMODS.Booster {
     key = "silly_small_2",
     config = { extra = 3, choose = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 4,
@@ -44,7 +44,7 @@ SMODS.Booster {
     key = "silly_small_4",
     config = { extra = 3, choose = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 4,
@@ -65,7 +65,7 @@ SMODS.Booster {
     key = "silly_small_3",
     config = { extra = 3, choose = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 4,
@@ -86,7 +86,7 @@ SMODS.Booster {
     key = "silly_jumbo",
     config = { extra = 5, choose = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 6,
@@ -107,7 +107,7 @@ SMODS.Booster {
     key = "silly_jumbo_2",
     config = { extra = 5, choose = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 6,
@@ -128,7 +128,7 @@ SMODS.Booster {
     key = "silly_mega",
     config = { extra = 5, choose = 2 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 8,
@@ -150,7 +150,7 @@ SMODS.Booster {
     key = "silly_mega_2",
     config = { extra = 5, choose = 2 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.choose, card.ability.extra } }
+        return { vars = { card.ability.choose, card.ability.extra, colours = {HEX("ff98e2")} } }
     end,
     group_key = "k_fmod_sillypack",
     cost = 8,
