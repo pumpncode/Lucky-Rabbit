@@ -27,6 +27,7 @@ local files = {
             "pie",
             "bang_gun",
             "whoopie_cushion",
+            "joy_buzzer"
         },
         directory = 'consumables/'
     },
@@ -130,6 +131,7 @@ SMODS.ConsumableType {
         ["c_fmod_bang_gun"] = true,
         ["c_fmod_squirt_flower"] = true,
         ["c_fmod_whoopie_cushion"] = true,
+        ["c_fmod_joy_buzzer"] = true,
     },
     loc_txt = {
         name = "Silly",

@@ -85,6 +85,13 @@ return {
                     "of the {C:attention}left{} card onto the {C:attention}right{} card"
                 }
             },
+            c_fmod_joy_buzzer = {
+                name = "Joy Buzzer",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the {C:dark_edition}Edition",
+                    "of the {C:attention}left{} card onto the {C:attention}right{} card"
+                }
+            },
         },
         Other = {
             p_fmod_silly_small = {
