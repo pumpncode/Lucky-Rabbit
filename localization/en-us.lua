@@ -57,12 +57,77 @@ return {
             }
         },
         Other = {
+            p_fmod_silly_small = {
+                name = "Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_small_2 = {
+                name = "Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_small_3 = {
+                name = "Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_small_4 = {
+                name = "Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_jumbo = {
+                name = "Jumbo Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_jumbo_2 = {
+                name = "Jumbo Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_mega = {
+                name = "Mega Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
+            p_fmod_silly_mega_2 = {
+                name = "Mega Silly Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{} Silly cards to",
+                    "be used immediately"
+                }
+            },
         }
     },
     misc = {
         dictionary = {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
+            k_fmod_sillypack = "Silly Pack",
         }
     }
 }

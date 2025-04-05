@@ -43,6 +43,12 @@ local files = {
             "appraisal"
         },
         directory = "tags/"
+    },
+    boosters = {
+        list = {
+            "boosters" -- just using one file for ease of use
+        },
+        directory = "boosters/"
     }
 }
 
@@ -90,6 +96,13 @@ SMODS.Atlas {
     path = "Tags.png",
     px = 34,
     py = 34
+}
+
+SMODS.Atlas {
+    key = "Boosters",
+    path = "Booster.png",
+    px = 71,
+    py = 95
 }
 
 --[[SMODS.Atlas {
