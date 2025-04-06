@@ -18,6 +18,9 @@ local files = {
         list = {
             "circus",
             "showtime",
+            "reroll_superfluity",
+            "buffet",
+            "dumpster_ritual",
         },
         directory = "vouchers/"
     },

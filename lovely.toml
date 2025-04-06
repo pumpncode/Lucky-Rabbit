@@ -15,3 +15,20 @@ payload = '''if G.GAME.used_vouchers.v_fmod_showtime and pseudorandom("showtime"
 elseif G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then'''
 match_indent = true
 times = 1
+
+# -------- reroll superfluity --------
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
+    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end'''
+position = "at"
+payload = '''if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_scores.times_rerolled.amt % 2 == 0 then
+    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
+else
+    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
+    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end
+end'''
+match_indent = true
+times = 1

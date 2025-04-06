@@ -109,6 +109,30 @@ return {
                     "appear in any of",
                     "the {C:tarot}Arcana{} packs"
                 }
+            },
+            v_fmod_reroll_superfluity = {
+                name = "Reroll Superfluity",
+                text = {
+                    "Rerolls only increase",
+                    "in price {C:attention}every",
+                    "{C:attention}other{} reroll"
+                }
+            },
+            v_fmod_buffet = {
+                name = "Buffet",
+                text = {
+                    "Permanently gain yet",
+                    "another {C:blue}+#1#{}",
+                    "hands per round"
+                }
+            },
+            v_fmod_dumpster_ritual = {
+                name = "Dumpster Ritual",
+                text = {
+                    "Permanently gain",
+                    "yet another {C:red}+#1#{}",
+                    "discards each round"
+                }
             }
         },
         Other = {
