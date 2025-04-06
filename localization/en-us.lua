@@ -101,6 +101,14 @@ return {
                     "be purchased",
                     "in the {C:attention}shop{}"
                 }
+            },
+            v_fmod_showtime = {
+                name = "Showtime",
+                text = {
+                    "{V:1}Silly Cards{} may",
+                    "appear in any of",
+                    "the {C:tarot}Arcana{} packs"
+                }
             }
         },
         Other = {

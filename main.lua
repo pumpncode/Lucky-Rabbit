@@ -17,6 +17,7 @@ local files = {
     vouchers = {
         list = {
             "circus",
+            "showtime",
         },
         directory = "vouchers/"
     },
