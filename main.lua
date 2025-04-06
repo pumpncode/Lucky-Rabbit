@@ -21,6 +21,7 @@ local files = {
             "reroll_superfluity",
             "buffet",
             "dumpster_ritual",
+            "anti_higgs_boson",
         },
         directory = "vouchers/"
     },

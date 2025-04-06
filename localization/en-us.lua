@@ -133,6 +133,15 @@ return {
                     "yet another {C:red}+#1#{}",
                     "discards each round"
                 }
+            },
+            v_fmod_anti_higgs_boson = {
+                name = "Anti-Higgs Boson",
+                text = {
+                    "Additional {C:dark_edition}+1{} Joker Slot",
+                    "{C:inactive}Blank{} and {C:dark_edition}Antimatter{}",
+                    "vouchers are reintroduced",
+                    " into the voucher pool"
+                }
             }
         },
         Other = {
