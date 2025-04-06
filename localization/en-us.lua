@@ -93,6 +93,16 @@ return {
                 }
             },
         },
+        Voucher = {
+            v_fmod_circus = {
+                name = "Circus",
+                text = {
+                    "{V:1}Silly Cards{} can",
+                    "be purchased",
+                    "in the {C:attention}shop{}"
+                }
+            }
+        },
         Other = {
             p_fmod_silly_small = {
                 name = "Silly Pack",

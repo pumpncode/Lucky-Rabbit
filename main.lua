@@ -16,7 +16,7 @@ local files = {
     },
     vouchers = {
         list = {
-
+            "circus",
         },
         directory = "vouchers/"
     },
@@ -125,6 +125,7 @@ SMODS.ConsumableType {
     secondary_colour = HEX('84b4cc'),
     collection_rows = { 5, 6 },
     default = 'c_fmod_pie',
+    shop_rate = 0,
     cards = {
         ["c_fmod_pie"] = true,
         ["c_fmod_clown_car"] = true,

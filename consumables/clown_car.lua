@@ -11,7 +11,7 @@ SMODS.Consumable {
     end,
     atlas = "Consumables",
     pos = {x = 0, y = 0 },
-    cost = 3,
+    cost = 5,
     use = function(self, card, context, copier)
         local used_consumable = copier or card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
