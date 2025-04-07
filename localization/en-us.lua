@@ -157,6 +157,14 @@ return {
                     "{C:attention}-#1#{} Ante,",
                     "{C:attention}-#2#{} hand size"
                 }
+            },
+            v_fmod_color_swatches = {
+                name = "Color Swatches",
+                text = {
+                    "Permanently gain",
+                    "yet another",
+                    "{C:attention}+#1#{} hand size"
+                }
             }
         },
         Other = {
