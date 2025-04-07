@@ -92,6 +92,14 @@ return {
                     "of the {C:attention}left{} card onto the {C:attention}right{} card"
                 }
             },
+            c_fmod_midway_games = {
+                name = "Midway Games",
+                text = {
+                    "Gives a {C:attention}Standard Tag{},",
+                    "{C:tarot}Charm Tag{}, {C:planet}Meteor Tag{},",
+                    "and {C:inactive}Buffoon Tag{}"
+                }
+            }
         },
         Voucher = {
             v_fmod_circus = {
