@@ -21,6 +21,8 @@ SMODS.Consumable {
         add_tag(Tag("tag_charm"))
         add_tag(Tag("tag_meteor"))
         add_tag(Tag("tag_buffoon"))
+        play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+        play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
         used_consumable:juice_up(0.3, 0.5)
     end,
     can_use = function(self, card)
