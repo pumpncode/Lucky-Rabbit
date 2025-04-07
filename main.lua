@@ -22,6 +22,7 @@ local files = {
             "buffet",
             "dumpster_ritual",
             "anti_higgs_boson",
+            "big_bang",
         },
         directory = "vouchers/"
     },

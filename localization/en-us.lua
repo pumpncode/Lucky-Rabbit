@@ -97,7 +97,7 @@ return {
                 text = {
                     "Gives a {C:attention}Standard Tag{},",
                     "{C:tarot}Charm Tag{}, {C:planet}Meteor Tag{},",
-                    "and {C:inactive}Buffoon Tag{}"
+                    "or {C:inactive}Buffoon Tag{}"
                 }
             }
         },
@@ -149,6 +149,13 @@ return {
                     "{C:inactive}Blank{} and {C:dark_edition}Antimatter{}",
                     "vouchers are reintroduced",
                     " into the voucher pool"
+                }
+            },
+            v_fmod_big_bang = {
+                name = "Big Bang",
+                text = {
+                    "{C:attention}-#1#{} Ante,",
+                    "{C:attention}-#2#{} hand size"
                 }
             }
         },
