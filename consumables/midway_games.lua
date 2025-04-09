@@ -30,6 +30,7 @@ SMODS.Consumable {
             play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
             used_consumable:juice_up(0.3, 0.5)
         return true end}))
+        delay(0.5)
     end,
     can_use = function(self, card)
         return true
