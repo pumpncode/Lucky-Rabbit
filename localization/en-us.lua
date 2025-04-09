@@ -25,6 +25,14 @@ return {
                     "Played {C:attention}Wild Cards{} permanently",
                     "gain {X:mult,C:white}X#1#{} Mult"
                 }
+            },
+            j_fmod_low_hanging_fruit = {
+                name = "Low Hanging Fruit",
+                text = {
+                    "Each played {C:attention}6{} or {C:attention}9",
+			        "gives {C:mult}+#2#{} Mult Chips and",
+			        "{C:chips}+#1#{} Mult when scored"
+                }
             }
         },
         Tag = {

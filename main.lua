@@ -10,7 +10,8 @@ local files = {
         list = {
             "fennex",
             "generator",
-            "terminal_velocity"
+            "terminal_velocity",
+            "low_hanging_fruit"
         },
         directory = "jokers/"
     },
