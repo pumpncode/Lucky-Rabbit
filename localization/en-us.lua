@@ -188,6 +188,26 @@ return {
                     "{C:attention}+#2#{} pack slot",
                     "available in shop",
                 }
+            },
+            v_fmod_coupon = {
+                name = "Coupon",
+                text = {
+                    "{C:attention}+#1#{} consumable slot"
+                }
+            },
+            v_fmod_extreme_couponing = {
+                name = "Extreme Couponing",
+                text = {
+                    "{C:attention}+#1#{} additional consumable slot"
+                }
+            },
+            v_fmod_shopaholic = {
+                name = "Shopaholic",
+                text = {
+                    "Add a {C:attention}free{}",
+                    "extra {C:attention}booster",
+                    "{C:attention}pack{} to the shop"
+                }
             }
         },
         Other = {

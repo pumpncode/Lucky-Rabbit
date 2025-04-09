@@ -26,6 +26,9 @@ local files = {
             "big_bang",
             "color_swatches",
             "fire_sale",
+            "coupon",
+            "extreme_couponing",
+            "shopaholic"
         },
         directory = "vouchers/"
     },
