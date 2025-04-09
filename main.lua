@@ -54,7 +54,8 @@ local files = {
     },
     tags = {
         list = {
-            "appraisal"
+            "goofy",
+            "appraisal",
         },
         directory = "tags/"
     },

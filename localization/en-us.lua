@@ -43,6 +43,13 @@ return {
                     "{C:attention}Card{} in your full deck",
                     "{C:inactive}(Will give {C:money}$#2#{C:inactive})"
                 }
+            },
+            tag_fmod_goofy = {
+                name = "Goofy Tag",
+                text = {
+                    "Gives a free",
+                    "{V:1}Mega Silly Pack{}"
+                }
             }
         },
         Blind = {
