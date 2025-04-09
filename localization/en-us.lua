@@ -30,8 +30,8 @@ return {
                 name = "Low Hanging Fruit",
                 text = {
                     "Each played {C:attention}6{} or {C:attention}9",
-			        "gives {C:mult}+#2#{} Mult Chips and",
-			        "{C:chips}+#1#{} Mult when scored"
+			        "gives {C:mult}+#2#{} Mult and",
+			        "{C:chips}+#1#{} Chips when scored"
                 }
             }
         },

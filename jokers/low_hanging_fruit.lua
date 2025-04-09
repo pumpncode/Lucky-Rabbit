@@ -3,7 +3,7 @@ SMODS.Joker {
     config = {
         extra = {
             chips = 9,
-            mult = 6 
+            mult = 6
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -21,7 +21,7 @@ SMODS.Joker {
                 return {
                     chips = card.ability.extra.chips,
 					mult = card.ability.extra.mult,
-					card = context.other_card
+					card = card
                 }
             end
         end
