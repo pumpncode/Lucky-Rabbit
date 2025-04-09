@@ -180,6 +180,14 @@ return {
                     "yet another",
                     "{C:attention}+#1#{} hand size"
                 }
+            },
+            v_fmod_fire_sale = {
+                name = "Fire Sale",
+                text = {
+                    "{C:attention}+#1#{} card slot,",
+                    "{C:attention}+#2#{} pack slot",
+                    "available in shop",
+                }
             }
         },
         Other = {
