@@ -8,6 +8,7 @@ SMODS.Tag {
     },
     discovered = true,
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.p_fmod_silly_mega
         return { vars = { colours = {HEX("ff98e2")} } }
     end,
     apply = function(self, tag, context)
