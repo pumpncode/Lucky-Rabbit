@@ -114,6 +114,15 @@ return {
                     "{C:tarot}Charm Tag{}, {C:planet}Meteor Tag{},",
                     "or {C:inactive}Buffoon Tag{}"
                 }
+            },
+            c_fmod_juggler = {
+                name = "Juggler",
+                text = {
+                    "Gain {C:money}$#1#{}. Increases",
+                    "by +{C:money}$#2#{} each time",
+                    "a Juggler card is",
+                    "used in this run"
+                }
             }
         },
         Voucher = {

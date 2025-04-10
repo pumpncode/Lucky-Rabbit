@@ -41,6 +41,7 @@ local files = {
             "whoopie_cushion",
             "joy_buzzer",
             "midway_games",
+            "juggler"
         },
         directory = 'consumables/'
     },
@@ -148,6 +149,7 @@ SMODS.ConsumableType {
         ["c_fmod_whoopie_cushion"] = true,
         ["c_fmod_joy_buzzer"] = true,
         ["c_fmod_midway_games"] = true,
+        ["c_fmod_juggler"] = true
     },
     loc_txt = {
         name = "Silly",
