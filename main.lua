@@ -54,6 +54,7 @@ local files = {
     },
     decks = {
         list = {
+            "fennex",
             "recursive",
         },
         directory = "decks/"

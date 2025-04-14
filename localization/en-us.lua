@@ -76,6 +76,14 @@ return {
                     "and {C:spectral}Spectral{} cards may",
                     "appear multiple times",
                 }
+            },
+            b_fmod_fennex = {
+                name = "Fennex Deck",
+                text = {
+                    "Start run with the {C:attention}Fennex{} Joker,",
+                    "{C:legendary}Fennex Mod{C:attention} Jokers{} are {X:green,C:white}3X{}",
+                    "more likely to appear"
+                }
             }
         },
         Silly = {
