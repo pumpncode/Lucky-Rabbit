@@ -54,6 +54,7 @@ local files = {
     },
     decks = {
         list = {
+            "clown",
             "fennex",
             "recursive",
         },
