@@ -19,9 +19,9 @@ SMODS.Joker{
         if context.cardarea == G.play and context.repetition and not context.repetition_only then
             if context.other_card:get_id() == 3 then
                 return {
-                    message = localize('k_again_ex'), 
+                    message = localize('k_again_ex'),
                     repetitions = card.ability.extra.repetitions,
-                    message_card = context.other_card
+                    message_card = card
                 }
             end
         end
