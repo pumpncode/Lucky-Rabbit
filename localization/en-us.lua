@@ -33,6 +33,13 @@ return {
 			        "gives {C:mult}+#2#{} Mult and",
 			        "{C:chips}+#1#{} Chips when scored"
                 }
+            },
+            j_fmod_nerdcubed = {
+                name = "Nerdcubed",
+                text = {
+                    "Each played {C:attention}3{}",
+			        "is retriggered {C:attention}3{} times"
+                }
             }
         },
         Tag = {
