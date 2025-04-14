@@ -68,6 +68,16 @@ return {
                 }
             }
         },
+        Back = {
+            b_fmod_recursive = {
+                name = "Recursive Deck",
+                text = {
+                    "{C:attention}Joker{}, {C:tarot}Tarot{}, {C:planet}Planet{},",
+                    "and {C:spectral}Spectral{} cards may",
+                    "appear multiple times",
+                }
+            }
+        },
         Silly = {
             c_fmod_pie = {
                 name = "Pie",

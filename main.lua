@@ -54,7 +54,7 @@ local files = {
     },
     decks = {
         list = {
-
+            "recursive",
         },
         directory = "decks/"
     },
@@ -126,12 +126,12 @@ SMODS.Atlas {
     py = 95
 }
 
---[[SMODS.Atlas {
+SMODS.Atlas {
     key = "Decks",
     path = "Decks.png",
     px = 71,
     py = 95
-}]]--
+}
 
 -- silly packs
 
