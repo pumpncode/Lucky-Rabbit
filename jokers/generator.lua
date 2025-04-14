@@ -9,11 +9,12 @@ SMODS.Joker{
     atlas = "Jokers",
     unlocked = true,
     discovered = true,
+    blueprint_compat = true,
     pos = { x = 2, y = 0 },
     cost = 6,
     calculate = function(self, card, context)
         local destroyed = G.consumeables.cards[1]
-        if context.setting_blind and G and G.consumeables and G.consumeables.cards then
+        if context.setting_blind and G and G.consumeables and G.consumeables.cards and not context.blueprint then
             if destroyed then
                 G.E_MANAGER:add_event(Event({
                     func = function()

@@ -13,6 +13,7 @@ SMODS.Joker {
     atlas = "Jokers",
     unlocked = true,
     discovered = true,
+    blueprint_compat = true,
     pos = { x = 5, y = 1 },
     cost = 4,
     calculate = function(self, card, context)

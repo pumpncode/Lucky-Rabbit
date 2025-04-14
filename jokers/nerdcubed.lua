@@ -12,15 +12,16 @@ SMODS.Joker{
     atlas = "Jokers",
     unlocked = true,
     discovered = true,
+    blueprint_compat = true,
     pos = { x = 2, y = 2 },
     cost = 7,
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.repetition and not context.repetition_only then
             if context.other_card:get_id() == 3 then
                 return {
-                    message = "Again!", 
+                    message = localize('k_again_ex'), 
                     repetitions = card.ability.extra.repetitions,
-                    card = context.other_card
+                    message_card = context.other_card
                 }
             end
         end
