@@ -55,6 +55,8 @@ local files = {
     },
     decks = {
         list = {
+            "clown",
+            "fennex",
             "recursive",
         },
         directory = "decks/"
