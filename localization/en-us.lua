@@ -40,6 +40,14 @@ return {
                     "Each played {C:attention}3{}",
 			        "is retriggered {C:attention}3{} times"
                 }
+            },
+            j_fmod_penny_joker = {
+                name = "Penny Joker",
+                text = {
+                    "Gains {C:chips}+2 Chips{} for",
+			        "every card scored.",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+                }
             }
         },
         Tag = {
