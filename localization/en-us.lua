@@ -53,9 +53,9 @@ return {
                 name = "Countdown",
                 text = {
                     "The next {C:attention}#1#{} scored gives",
-			        "{C:mult}+15{} Mult, then rank decreases.",
-                    "When an Ace is scored, {X:mult,C:white}X3{} Mult",
-                    "and resets to {C:attention}King{}."
+			        "{C:mult}+#2#{} Mult, and decreases rank once.",
+                    "When an {C:attention}#3#{} is scored, gain {X:mult,C:white}X#4#{}",
+                    "Mult and reset to a {C:attention}King{}"
                 }
             }
         },

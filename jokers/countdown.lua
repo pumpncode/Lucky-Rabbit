@@ -8,7 +8,19 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.rank, card.ability.extra.mult, card.ability.extra.xmult } }
+        local rank = nil
+        if card.ability.extra.rank == 14 then
+            rank = localize("Ace", "ranks")
+        elseif card.ability.extra.rank == 13 then
+            rank = localize("King", "ranks")
+        elseif card.ability.extra.rank == 12 then
+            rank = localize("Queen", "ranks")
+        elseif card.ability.extra.rank == 11 then
+            rank = localize("Jack", "ranks")
+        else
+            rank = card.ability.extra.rank
+        end
+        return { vars = { rank, card.ability.extra.mult, localize("Ace", "ranks"), card.ability.extra.xmult } }
     end,
     rarity = 2,
     atlas = "Jokers",
@@ -20,16 +32,23 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             if context.other_card:get_id() == card.ability.extra.rank then
-                return {
-					mult = card.ability.extra.mult,
-                    -- if context.other_card:get_id() == 14 then
-                       -- xmult = card.ability.extra.xmult,
-					card = card
+                local ret = {}
+                if card.ability.extra.rank == 14 then
+                    if not context.blueprint then card.ability.extra.rank = card.ability.extra.rank - 1 end
+                    ret = {
+                        message = localize("k_reset"),
+                        xmult = card.ability.extra.xmult,
+                        message_card = context.blueprint_card or card
+                    }
+                    return ret
+                elseif card.ability.extra.rank == 2 and not context.blueprint then
+                    card.ability.extra.rank = 14
+                elseif not context.blueprint then card.ability.extra.rank = card.ability.extra.rank - 1 end
+                ret = {
+                    mult = card.ability.extra.mult,
+                    message_card = context.blueprint_card or card,
                 }
-            end
-            card.ability.extra.rank = card.ability.extra.rank - 1
-            if card.ability.extra.rank == 1 then
-                card.ability.extra.rank = 14
+                return ret
             end
         end
     end
