@@ -9,6 +9,7 @@ local files = {
     jokers = {
         list = {
             "fennex",
+            "despicable_bear",
             "generator",
             "countdown",
             "penny_joker",
@@ -182,3 +183,59 @@ end
 for k, v in pairs(files) do
     load_files(k)
 end
+
+-- functions
+
+local base_modify_hand = Blind.modify_hand
+function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
+    local mult, hand_chips, modded = base_modify_hand(self, cards, poker_hands, text, mult, hand_chips)
+
+    if G.GAME.new_poker_hand then
+
+        G.GAME.hands[G.GAME.old_poker_hand].played = G.GAME.hands[G.GAME.old_poker_hand].played - 1
+        G.GAME.hands[G.GAME.old_poker_hand].played_this_round = G.GAME.hands[G.GAME.old_poker_hand].played_this_round - 1
+
+        G.GAME.hands[G.GAME.new_poker_hand].played = G.GAME.hands[G.GAME.new_poker_hand].played + 1
+        G.GAME.hands[G.GAME.new_poker_hand].played_this_round = G.GAME.hands[G.GAME.new_poker_hand].played_this_round + 1
+
+        G.GAME.last_hand_played = G.GAME.new_poker_hand
+        set_hand_usage(G.GAME.new_poker_hand)
+        G.GAME.hands[G.GAME.new_poker_hand].visible = true
+
+        if self.name == 'The Eye' then
+
+            if self.hands[G.GAME.old_poker_hand] then
+                self.hands[G.GAME.old_poker_hand] = false
+            end
+            self.hands[G.GAME.new_poker_hand] = true
+
+        elseif self.name == 'The Mouth' then
+
+            self.only_hand = G.GAME.new_poker_hand
+
+        end
+
+        mult = G.GAME.hands[G.GAME.new_poker_hand].mult
+        hand_chips = G.GAME.hands[G.GAME.new_poker_hand].chips
+        modded = false
+
+        G.GAME.new_poker_hand = false
+
+    end
+
+    return mult, hand_chips, modded
+end
+
+--[[local og_evaluate_poker_hand = evaluate_poker_hand
+function evaluate_poker_hand(hand)
+	local hand = og_evaluate_poker_hand(hand)
+	if next(SMODS.find_card("j_fmod_despicable_bear")) then
+		for _, v in ipairs(G.handlist) do
+			if hand[v] == hand["Two Pair"] and #G.hand.highlighted == 4 then
+				hand["Four of a Kind"] = hand[v]
+                break
+			end
+		end
+	end
+	return hand
+end]]--
