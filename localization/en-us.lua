@@ -48,6 +48,15 @@ return {
 			        "every card scored.",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 }
+            },
+            j_fmod_countdown = {
+                name = "Countdown",
+                text = {
+                    "The next {C:attention}#1#{} scored gives",
+			        "{C:mult}+15{} Mult, then rank decreases.",
+                    "When an Ace is scored, {X:mult,C:white}X3{} Mult",
+                    "and resets to {C:attention}King{}."
+                }
             }
         },
         Tag = {

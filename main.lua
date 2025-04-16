@@ -10,6 +10,7 @@ local files = {
         list = {
             "fennex",
             "generator",
+            "countdown",
             "penny_joker",
             "low_hanging_fruit",
             "nerdcubed",
