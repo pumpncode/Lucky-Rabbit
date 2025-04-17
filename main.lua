@@ -44,8 +44,9 @@ local files = {
             "bang_gun",
             "whoopie_cushion",
             "joy_buzzer",
+            "juggler",
+            "balloons",
             "midway_games",
-            "juggler"
         },
         directory = 'consumables/'
     },
@@ -148,14 +149,15 @@ SMODS.ConsumableType {
     default = 'c_fmod_pie',
     shop_rate = 0,
     cards = {
-        ["c_fmod_pie"] = true,
         ["c_fmod_clown_car"] = true,
-        ["c_fmod_bang_gun"] = true,
         ["c_fmod_squirt_flower"] = true,
+        ["c_fmod_pie"] = true,
+        ["c_fmod_bang_gun"] = true,
         ["c_fmod_whoopie_cushion"] = true,
         ["c_fmod_joy_buzzer"] = true,
+        ["c_fmod_juggler"] = true,
+        ["c_fmod_balloons"] = true,
         ["c_fmod_midway_games"] = true,
-        ["c_fmod_juggler"] = true
     },
     loc_txt = {
         name = "Silly",
@@ -225,17 +227,3 @@ function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
 
     return mult, hand_chips, modded
 end
-
---[[local og_evaluate_poker_hand = evaluate_poker_hand
-function evaluate_poker_hand(hand)
-	local hand = og_evaluate_poker_hand(hand)
-	if next(SMODS.find_card("j_fmod_despicable_bear")) then
-		for _, v in ipairs(G.handlist) do
-			if hand[v] == hand["Two Pair"] and #G.hand.highlighted == 4 then
-				hand["Four of a Kind"] = hand[v]
-                break
-			end
-		end
-	end
-	return hand
-end]]--

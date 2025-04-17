@@ -180,6 +180,13 @@ return {
                     "a Juggler card is",
                     "used in this run"
                 }
+            },
+            c_fmod_balloons = {
+                name = "Balloons",
+                text = {
+                    "Doubles the total {C:chips}Chip value{}",
+                    "of every card held in hand"
+                }
             }
         },
         Voucher = {
