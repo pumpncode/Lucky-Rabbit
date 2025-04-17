@@ -46,6 +46,7 @@ local files = {
             "joy_buzzer",
             "juggler",
             "balloons",
+            "split_pants",
             "midway_games",
         },
         directory = 'consumables/'
@@ -157,6 +158,7 @@ SMODS.ConsumableType {
         ["c_fmod_joy_buzzer"] = true,
         ["c_fmod_juggler"] = true,
         ["c_fmod_balloons"] = true,
+        ["c_fmod_split_pants"] = true,
         ["c_fmod_midway_games"] = true,
     },
     loc_txt = {

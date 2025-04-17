@@ -187,6 +187,14 @@ return {
                     "Doubles the total {C:chips}Chip value{}",
                     "of every card held in hand"
                 }
+            },
+            c_fmod_split_pants = {
+                name = "Split Pants",
+                text = {
+                    "Decreases rank of",
+                    "up to {C:attention}#1#{} selected",
+                    "cards by {C:attention}1",
+                }
             }
         },
         Voucher = {
