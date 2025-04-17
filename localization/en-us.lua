@@ -57,7 +57,15 @@ return {
                     "When an {C:attention}#3#{} is scored, gain {X:mult,C:white}X#4#{}",
                     "Mult and reset to a {C:attention}King{}"
                 }
-            }
+            },
+            j_fmod_despicable_bear = {
+                name = "Despicable Bear",
+                text = {
+                    "Played {C:attention}Two Pair{} hands are",
+                    "considered {C:attention}Four of a Kind{}",
+                    "if played with exactly {C:attention}4{} cards",
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {
