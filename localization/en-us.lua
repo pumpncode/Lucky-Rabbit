@@ -74,7 +74,7 @@ return {
                 }
             },
             j_fmod_negativejoker = {
-                name = "Nero the Fool",
+                name = "Negative Joker",
                 text = {
                     "{C:chips}+#1#{} Chips, becomes",
                     "{C:attention}Negative{} after {C:attention}#2#{} rounds",
