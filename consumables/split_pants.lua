@@ -27,7 +27,7 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 local card = G.hand.highlighted[i]
                 local suit = card.base.suit
-                local rank = card.base.id == 14 and 2 or math.max(card.base.id-1, 1)
+                local rank = math.max(card.base.id-1, 1)
                 if rank == 1 then rank = 'Ace'
                 elseif rank <= 10 then rank = tostring(rank)
                 elseif rank == 11 then rank = 'Jack'
