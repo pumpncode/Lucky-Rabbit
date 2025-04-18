@@ -25,7 +25,8 @@ local files = {
             "nerdcubed",
             "terminal_velocity",
             "nero_the_fool",
-            "negative_joker"
+            "negative_joker",
+            "passport"
         },
         directory = "jokers/"
     },

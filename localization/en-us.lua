@@ -81,6 +81,14 @@ return {
                     "{C:inactive}(Rounds left: {C:attention}#3#{C:inactive})",
                 }
             },
+            j_fmod_passport = {
+                name = "Passport",
+                text = {
+                    "{C:mult}+#1#{} Mult per unique",
+                    "{C:attention}Poker Hand{} played",
+                    "{C:inactive}(Currently: {C:mult}+#2#{C:inactive} Mult)",
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
