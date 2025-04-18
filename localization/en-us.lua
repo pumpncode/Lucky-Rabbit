@@ -73,6 +73,14 @@ return {
                     "exactly {C:attention}2{} cards in a round, destroy them"
                 }
             },
+            j_fmod_negativejoker = {
+                name = "Nero the Fool",
+                text = {
+                    "{C:chips}+#1#{} Chips, becomes",
+                    "{C:attention}Negative{} after {C:attention}#2#{} rounds",
+                    "{C:inactive}(Rounds left: {C:attention}#3#{C:inactive})",
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {

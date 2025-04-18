@@ -24,7 +24,8 @@ local files = {
             "low_hanging_fruit",
             "nerdcubed",
             "terminal_velocity",
-            "nero_the_fool"
+            "nero_the_fool",
+            "negative_joker"
         },
         directory = "jokers/"
     },
