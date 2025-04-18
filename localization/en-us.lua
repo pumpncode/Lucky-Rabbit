@@ -219,6 +219,14 @@ return {
                     "up to {C:attention}#1#{} selected",
                     "cards by {C:attention}1",
                 }
+            },
+            c_fmod_balloon_animal = {
+                name = "Balloon Animal",
+                text = {
+                    "Gain {C:money}$#1#{} per unique",
+                    "{C:attention}rank{} in your hand",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})"
+                }
             }
         },
         Voucher = {
