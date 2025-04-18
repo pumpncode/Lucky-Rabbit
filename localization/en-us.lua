@@ -69,8 +69,9 @@ return {
             j_fmod_nerothefool = {
                 name = "Nero the Fool",
                 text = {
-                    "If {C:attention}first hand{} of round has",
-                    "exactly {C:attention}2{} cards in a round, destroy them"
+                    "If {C:attention}first hand{} of round",
+                    "has exactly {C:attention}2{} cards,",
+                    "destroy them"
                 }
             },
             j_fmod_negativejoker = {
