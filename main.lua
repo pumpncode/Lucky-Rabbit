@@ -3,6 +3,14 @@ FMOD = {}
 FM = SMODS.current_mod
 fmod_config = SMODS.current_mod.config
 
+--Optional features
+SMODS.optional_features = {
+    cardareas = {
+        unscored=true,
+    }
+}
+
+
 -- file loading
 
 local files = {
@@ -15,7 +23,8 @@ local files = {
             "penny_joker",
             "low_hanging_fruit",
             "nerdcubed",
-            "terminal_velocity"
+            "terminal_velocity",
+            "nero_the_fool"
         },
         directory = "jokers/"
     },
