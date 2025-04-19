@@ -19,11 +19,10 @@ SMODS.Consumable {
     pos = {x = 0, y = 2 },
     soul_pos = { x = 2, y = 2 },
     cost = 10,
-    hidden = {
-        soul_set = 'Silly',
-        soul_rate = 0.003,
-        can_repeat_soul = false
-    },
+    hidden = true,
+    soul_set = "Silly",
+    soul_rate = 0.003,
+    can_repeat_soul = false,
     use = function(self, card, context, copier)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             local key = pseudorandom_element(card.ability.extra.silly_legendaries, pseudoseed('soully'))

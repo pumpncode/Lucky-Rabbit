@@ -270,7 +270,7 @@ return {
             c_fmod_soully = {
                 name = "Soully",
                 text = {
-                    "Creates a {C:legendary}Legendary{} Joker",
+                    "Creates a {C:legendary,E:1}Legendary{} Joker",
                     "from the Fennex Mod",
                     "{C:inactive}(Must have room)"
                 }
