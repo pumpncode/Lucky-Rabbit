@@ -61,6 +61,7 @@ local files = {
             "split_pants",
             "balloon_animal",
             "midway_games",
+            "soully"
         },
         directory = 'consumables/'
     },
@@ -178,6 +179,7 @@ SMODS.ConsumableType {
         ["c_fmod_split_pants"] = true,
         ["c_fmod_midway_games"] = true,
         ["c_fmod_balloon_animal"] = true,
+        ["c_fmod_soully"] = true,
     },
     loc_txt = {
         name = "Silly",

@@ -18,5 +18,8 @@ SMODS.Joker {
             SMODS.add_card({set = 'Joker', key = key, edition = 'e_negative'})
             return true
         end
+    end,
+    in_pool = function (self, args)
+        return not args or not args.source or args.source ~= 'sou'
     end
 }
