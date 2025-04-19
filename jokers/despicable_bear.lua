@@ -28,7 +28,7 @@ SMODS.Joker{
             context.scoring_hand = G.GAME.hands[G.GAME.new_poker_hand][1]
             update_hand_text({delay = 0}, {chips = G.GAME.hands[G.GAME.new_poker_hand].chips, mult = G.GAME.hands[G.GAME.new_poker_hand].mult, handname = G.GAME.new_poker_hand})
             for k,v in pairs(G.jokers.cards) do
-                if v.ability.type == 'Four of a Kind' then
+                if v.ability.type == 'Four of a Kind' or v.ability.type == "Three of a Kind" then
                     v.force_trigger = true
                 end
             end
