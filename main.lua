@@ -82,6 +82,7 @@ local files = {
     tags = {
         list = {
             "goofy",
+            "lunchbreak",
             "appraisal",
         },
         directory = "tags/"
@@ -320,4 +321,30 @@ G.FUNCS.reroll_boss = function(e)
     G.FORCE_BOSS = nil
 
 	return reroll_val
+end
+
+function get_food_jokers()
+    local vanilla_food = {
+        j_gros_michel = true,
+        j_egg = true,
+        j_ice_cream = true,
+        j_cavendish = true,
+        j_turtle_bean = true,
+        j_diet_cola = true,
+        j_popcorn = true,
+        j_ramen = true,
+        j_selzer = true,
+    }
+    local list = {}
+    if G.jokers then
+        for k, v in pairs(G.jokers) do
+            local center = type(v) == "string" and G.P_CENTERS[v] or (v.config and v.config.center)
+            if center.pools and center.pools.Food then
+                list[#list+1] = center.key
+            end
+            if vanilla_food[center.key] then
+                list[#list+1] = center.key
+            end
+        end
+    end
 end

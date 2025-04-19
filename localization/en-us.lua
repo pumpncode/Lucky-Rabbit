@@ -100,6 +100,13 @@ return {
                     "{C:inactive}(Will give {C:money}$#2#{C:inactive})"
                 }
             },
+            tag_fmod_lunchbreak = {
+                name = "Lunch Break Tag",
+                text = {
+                    "Creates a random",
+                    "{C:dark_edition}Negative {C:attention}Food Joker{}"
+                }
+            },
             tag_fmod_goofy = {
                 name = "Goofy Tag",
                 text = {
