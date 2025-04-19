@@ -266,6 +266,14 @@ return {
                     "{C:attention}rank{} in your hand",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})"
                 }
+            },
+            c_fmod_soully = {
+                name = "Soully",
+                text = {
+                    "Creates a {C:legendary}Legendary{} Joker",
+                    "from the Fennex Mod",
+                    "{C:inactive}(Must have room)"
+                }
             }
         },
         Voucher = {

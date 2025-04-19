@@ -33,6 +33,10 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function(self, card)
-        return true
+        if #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers then
+            return true
+        else
+            return false
+        end
     end
 }
