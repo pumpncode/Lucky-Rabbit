@@ -107,6 +107,14 @@ return {
                     "{C:dark_edition}Negative {C:attention}Food Joker{}"
                 }
             },
+            tag_fmod_boost = {
+                name = "Boost Tag",
+                text = {
+                    "Adds two {C:attention}Free",
+                    "{C:attention}Booster Packs",
+                    "to the next shop"
+                }
+            },
             tag_fmod_goofy = {
                 name = "Goofy Tag",
                 text = {
