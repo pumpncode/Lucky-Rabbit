@@ -16,10 +16,10 @@ SMODS.Consumable {
     use = function(self, card, context, copier)
         local used_consumable = copier or card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            G.GAME.juggler_count = (G.GAME.juggler_count or 0) + 1
             play_sound('timpani')
             used_consumable:juice_up(0.3, 0.5)
             ease_dollars((card.ability.extra.dollars + (G.GAME.juggler_count * card.ability.extra.increase)), true)
+            G.GAME.juggler_count = (G.GAME.juggler_count or 0) + 1
             return true end }))
         delay(0.6)
     end,
