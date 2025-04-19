@@ -203,6 +203,36 @@ end
 
 -- functions
 
+local base_calculate_joker = Card.calculate_joker
+function Card.calculate_joker(self,context)
+    local ret = base_calculate_joker(self, context)
+    if context.joker_main then
+        if self.force_trigger then
+            self.force_trigger = false
+            if self.ability.t_chips > 0 then
+                return {
+                    message = localize{type='variable',key='a_chips',vars={self.ability.t_chips}},
+                    chip_mod = self.ability.t_chips
+                }
+            end
+            if self.ability.t_mult > 0 then
+                return {
+                    message = localize{type='variable',key='a_mult',vars={self.ability.t_mult}},
+                    mult_mod = self.ability.t_mult
+                }
+            end
+            if self.ability.Xmult > 0 then
+                return {
+                    message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
+                    colour = G.C.RED,
+                    Xmult_mod = self.ability.x_mult
+                }
+            end
+        end
+    end
+    return ret
+end
+
 local base_modify_hand = Blind.modify_hand
 function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
     local mult, hand_chips, modded = base_modify_hand(self, cards, poker_hands, text, mult, hand_chips)
