@@ -144,7 +144,7 @@ return {
             b_fmod_fennex = {
                 name = "Fennex Deck",
                 text = {
-                    "Start run with the {C:attention}Fennex{} Joker,",
+                    "Start run with the {C:attention,T:j_fmod_fennex}Fennex{} Joker,",
                     "{C:legendary}Fennex Mod{C:attention} Jokers{} are {X:green,C:white}3X{}",
                     "more likely to appear"
                 }
@@ -153,7 +153,7 @@ return {
                 name = "Clown Deck",
                 text = {
                     "Start run with the",
-                    "{V:1}#1#{} Voucher"
+                    "{V:1,T:v_fmod_circus}#1#{} Voucher"
                 }
             },
             b_fmod_reaper = {
