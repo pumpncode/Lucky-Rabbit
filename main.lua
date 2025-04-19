@@ -73,8 +73,9 @@ local files = {
         list = {
             "clown",
             "fennex",
-            "recursive",
+            "harmony",
             "reaper",
+            "recursive",
         },
         directory = "decks/"
     },

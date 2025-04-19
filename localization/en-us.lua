@@ -146,10 +146,16 @@ return {
                 text = {
                     "Every Boss Blind is a {C:attention}Finisher{}",
                     "{C:attention}Blind{} with {X:mult,C:white,s:1.2}X2{} {C:red}Base Size{}",
-                    "{C:chips}+1{} Hand",
-                    "{C:red}+1{} Discard",
-                    "{C:chips}+1{} Hand Size",
-                    "{C:attention}+1{} Joker Slot"
+                    "{C:chips}+1{} Hand, {C:red}+1{} Discard, {C:chips}+1{} Hand",
+                    "Size, {C:attention}+1{} Joker Slot"
+                }
+            },
+            b_fmod_harmony = {
+                name = "Harmony Deck",
+                text = {
+                    "All cards in deck are the",
+                    "same {C:attention}Rank{} and {C:attention}Suit{}",
+                    "{C:red}-2{} Discards"
                 }
             }
         },
