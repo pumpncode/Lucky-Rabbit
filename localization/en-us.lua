@@ -140,6 +140,17 @@ return {
                     "Start run with the",
                     "{V:1}#1#{} Voucher"
                 }
+            },
+            b_fmod_reaper = {
+                name = "Reaper Deck",
+                text = {
+                    "Every Boss Blind is a {C:attention}Finisher{}",
+                    "{C:attention}Blind{} with {X:mult,C:white,s:1.2}X2{} {C:red}Base Size{}",
+                    "{C:chips}+1{} Hand",
+                    "{C:red}+1{} Discard",
+                    "{C:chips}+1{} Hand Size",
+                    "{C:attention}+1{} Joker Slot"
+                }
             }
         },
         Silly = {

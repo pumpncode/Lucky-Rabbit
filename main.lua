@@ -74,6 +74,7 @@ local files = {
             "clown",
             "fennex",
             "recursive",
+            "reaper",
         },
         directory = "decks/"
     },
@@ -271,4 +272,51 @@ function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
     end
 
     return mult, hand_chips, modded
+end
+
+local gnb = get_new_boss
+function get_new_boss()
+    if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+		local boss = tostring(random_showdown_blind('reaper'))
+		if boss then G.FORCE_BOSS = boss end
+	else
+		G.FORCE_BOSS = nil
+	end
+    local gnb_val = gnb()
+
+    G.FORCE_BOSS = nil
+
+    return gnb_val
+end
+
+random_showdown_blind = function(seed)
+    local eligible_bosses = {}
+    for k, v in pairs(G.P_BLINDS) do
+        if not v.boss then
+        elseif v.boss.showdown then
+            eligible_bosses[k] = true
+        elseif not v.boss.showdown then
+            eligible_bosses[k] = nil
+        end
+    end
+    for k, v in pairs(G.GAME.banned_keys) do
+        if eligible_bosses[k] then eligible_bosses[k] = nil end
+    end
+    local _, boss = pseudorandom_element(eligible_bosses, pseudoseed(seed or 'seed'))
+    return boss
+end
+
+local reroll_ref = G.FUNCS.reroll_boss
+G.FUNCS.reroll_boss = function(e)
+	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+		local boss = tostring(random_showdown_blind('reaper'))
+		if boss then G.FORCE_BOSS = boss end
+	else
+		G.FORCE_BOSS = nil
+	end
+	local reroll_val = reroll_ref(e)
+
+    G.FORCE_BOSS = nil
+
+	return reroll_val
 end
