@@ -10,25 +10,7 @@ SMODS.Tag {
     end,
     apply = function(self, tag, context)
         tag:yep('+', G.C.GREEN, function()
-            local possible_jokers = {
-                'j_gros_michel',
-                'j_egg',
-                'j_ice_cream',
-                'j_cavendish',
-                'j_turtle_bean',
-                'j_diet_cola',
-                'j_popcorn',
-                'j_ramen',
-                'j_selzer',
-            }
-            if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-                if v.pools and v.pools.Food then
-                    possible_jokers[#possible_jokers+1] = v.key
-                end
-            end
-            end
-            print(possible_jokers)
-            local key = pseudorandom_element(possible_jokers, pseudoseed('lunchbreak')) or 'j_gros_michel'
+            local key = get_food_jokers('lunchbreak')
             SMODS.add_card({set = 'Joker', key = key, edition = 'e_negative'})
             return true
         end)

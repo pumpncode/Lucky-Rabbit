@@ -89,6 +89,13 @@ return {
                     "{C:attention}Poker Hand{} played",
                     "{C:inactive}(Currently: {C:mult}+#2#{C:inactive} Mult)",
                 }
+            },
+            j_fmod_steve = {
+                name = "Steve",
+                text = {
+                    "Creates a random {C:dark_edition}Negative {C:attention}Food",
+                    "{C:attention}Joker{} at the start of each round",
+                }
             }
         },
         Tag = {
