@@ -16,9 +16,7 @@ SMODS.Consumable {
         local used_consumable = copier or card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('timpani')
-            local joker = SMODS.create_card({set = 'Joker', area = G.jokers, edition = "e_negative"})
-            joker:add_to_deck()
-            G.jokers:emplace(joker)
+            SMODS.add_card({set = 'Joker', area = G.jokers, edition = "e_negative"})
             used_consumable:juice_up(0.3, 0.5)
             return true end }))
         delay(0.6)
