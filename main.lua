@@ -60,6 +60,7 @@ local files = {
             "balloons",
             "split_pants",
             "balloon_animal",
+            "tightrope",
             "midway_games",
             "soully"
         },
@@ -179,6 +180,7 @@ SMODS.ConsumableType {
         ["c_fmod_split_pants"] = true,
         ["c_fmod_midway_games"] = true,
         ["c_fmod_balloon_animal"] = true,
+        ["c_fmod_tightrope"] = true,
         ["c_fmod_soully"] = true,
     },
     loc_txt = {

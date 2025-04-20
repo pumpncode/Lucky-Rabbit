@@ -274,6 +274,18 @@ return {
                     "from the Fennex Mod",
                     "{C:inactive}(Must have room)"
                 }
+            },
+            c_fmod_tightrope = {
+                name = "Tightrope",
+                text = {
+                    "{C:green}1 in 2{} chance to create",
+                    "{C:attention}1{} copy of {C:attention}1{} selected card",
+                    "{C:green}1 in 4{} chance to create",
+                    "{C:attention}2{} copies",
+                    "{C:green}1 in 4{} chance to {C:red}destroy{}",
+                    "selected card",
+                    "{C:inactive}(Odds cannot be changed)"
+                }
             }
         },
         Voucher = {
