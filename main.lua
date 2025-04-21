@@ -29,7 +29,7 @@ local files = {
             "passport",
             "steve",
         },
-        directory = "jokers/"
+        directory = "content/jokers/"
     },
     vouchers = {
         list = {
@@ -46,7 +46,7 @@ local files = {
             "extreme_couponing",
             "shopaholic"
         },
-        directory = "vouchers/"
+        directory = "content/vouchers/"
     },
     consumables = {
         list = {
@@ -64,13 +64,13 @@ local files = {
             "midway_games",
             "soully"
         },
-        directory = 'consumables/'
+        directory = 'content/consumables/'
     },
     blinds = {
         list = {
             "hoard",
         },
-        directory = "blinds/"
+        directory = "content/blinds/"
     },
     decks = {
         list = {
@@ -80,7 +80,7 @@ local files = {
             "reaper",
             "recursive",
         },
-        directory = "decks/"
+        directory = "content/decks/"
     },
     tags = {
         list = {
@@ -89,13 +89,13 @@ local files = {
             "boost",
             "appraisal",
         },
-        directory = "tags/"
+        directory = "content/tags/"
     },
     boosters = {
         list = {
             "boosters" -- just using one file for ease of use
         },
-        directory = "boosters/"
+        directory = "content/boosters/"
     }
 }
 
