@@ -7,10 +7,10 @@ SMODS.Consumable {
         }
     },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_TAGS.tag_standard
-        info_queue[#info_queue+1] = G.P_TAGS.tag_charm
-        info_queue[#info_queue+1] = G.P_TAGS.tag_meteor
-        info_queue[#info_queue+1] = G.P_TAGS.tag_buffoon
+        info_queue[#info_queue+1] = {key = "tag_standard", set = "Tag"}
+        info_queue[#info_queue+1] = {key = "tag_charm", set = "Tag"}
+        info_queue[#info_queue+1] = {key = "tag_meteor", set = "Tag"}
+        info_queue[#info_queue+1] = {key = "tag_buffoon", set = "Tag"}
     end,
     atlas = "Consumables",
     pos = {x = 4, y = 1 },
