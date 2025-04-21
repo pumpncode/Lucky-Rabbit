@@ -286,6 +286,14 @@ return {
                     "selected card",
                     "{C:inactive}(Odds cannot be changed)"
                 }
+            },
+            c_fmod_fire_breath = {
+                name = "Fire Breath",
+                text = {
+                    "Destroy a selected {C:attention}Joker{} and",
+                    "copy its {C:dark_edition}Edition{} onto the",
+                    "{C:attention}Joker{} to its right"
+                }
             }
         },
         Voucher = {
