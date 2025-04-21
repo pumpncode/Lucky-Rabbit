@@ -193,7 +193,7 @@ return {
             c_fmod_clown_car = {
                 name = "Clown Car",
                 text = {
-                    "Create a random {C:dark_edition}Negative{}",
+                    "Creates a random {C:dark_edition}Negative{}",
                     "{C:attention}Joker card"
                 }
             },
@@ -292,8 +292,8 @@ return {
             c_fmod_fire_breath = {
                 name = "Fire Breath",
                 text = {
-                    "Destroy a selected {C:attention}Joker{} and",
-                    "copy its {C:dark_edition}Edition{} onto the",
+                    "Destroys a selected {C:attention}Joker{} and",
+                    "copies its {C:dark_edition}Edition{} onto the",
                     "{C:attention}Joker{} to its right"
                 }
             },
@@ -304,6 +304,13 @@ return {
                     "will be given {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
                     "or {C:dark_edition}Polychrome{}, and the other",
                     "will be {C:attention}destroyed"
+                }
+            },
+            c_fmod_endless_scarf = {
+                name = "Endless Scarf",
+                text = {
+                    "{C:attention}+#1#{} hand size for the",
+                    "next, or current, round"
                 }
             }
         },
