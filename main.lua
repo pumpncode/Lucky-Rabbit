@@ -62,6 +62,7 @@ local files = {
             "balloon_animal",
             "tightrope",
             "midway_games",
+            "rodeo",
             "fire_breath",
             "soully"
         },
@@ -184,6 +185,7 @@ SMODS.ConsumableType {
         ["c_fmod_tightrope"] = true,
         ["c_fmod_soully"] = true,
         ["c_fmod_fire_breath"] = true,
+        ["c_fmod_rodeo"] = true,
     },
     loc_txt = {
         name = "Silly",

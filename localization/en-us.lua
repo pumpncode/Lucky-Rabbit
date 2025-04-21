@@ -216,15 +216,17 @@ return {
             c_fmod_whoopie_cushion = {
                 name = "Whoopie Cushion",
                 text = {
-                    "Select {C:attention}#1#{} cards, copy the {C:attention}Enhancement",
-                    "of the {C:attention}left{} card onto the {C:attention}right{} card"
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:attention}Enhancement{} of the {C:attention}left",
+                    "card onto the {C:attention}right{} card"
                 }
             },
             c_fmod_joy_buzzer = {
                 name = "Joy Buzzer",
                 text = {
-                    "Select {C:attention}#1#{} cards, copy the {C:dark_edition}Edition",
-                    "of the {C:attention}left{} card onto the {C:attention}right{} card"
+                    "Select {C:attention}#1#{} cards, copy",
+                    "the {C:dark_edition}Edition{} of the {C:attention}left",
+                    "card onto the {C:attention}right{} card"
                 }
             },
             c_fmod_midway_games = {
@@ -293,6 +295,15 @@ return {
                     "Destroy a selected {C:attention}Joker{} and",
                     "copy its {C:dark_edition}Edition{} onto the",
                     "{C:attention}Joker{} to its right"
+                }
+            },
+            c_fmod_rodeo = {
+                name = "Rodeo",
+                text = {
+                    "Select {C:attention}#1#{} cards. A random one",
+                    "will be given {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
+                    "or {C:dark_edition}Polychrome{}, and the other",
+                    "will be {C:attention}destroyed"
                 }
             }
         },
