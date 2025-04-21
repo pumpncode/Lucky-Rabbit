@@ -164,7 +164,7 @@ SMODS.Atlas {
 SMODS.ConsumableType {
     key = 'Silly',
     primary_colour = HEX('f4d494'),
-    secondary_colour = HEX('84b4cc'),
+    secondary_colour = HEX('db8787'),
     collection_rows = { 5, 6 },
     default = 'c_fmod_pie',
     shop_rate = 0,
