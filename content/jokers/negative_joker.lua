@@ -10,7 +10,7 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.rounds, card.ability.extra.rounds - card.ability.extra.uses  } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.rounds, math.max((card.ability.extra.rounds - card.ability.extra.uses), 0)  } }
     end,
     rarity = 1,
     atlas = "Jokers",
