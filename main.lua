@@ -28,6 +28,7 @@ local files = {
             "negative_joker",
             "passport",
             "steve",
+            "blue_angel_mushroom",
         },
         directory = "content/jokers/"
     },

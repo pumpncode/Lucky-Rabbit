@@ -96,6 +96,15 @@ return {
                     "Creates a random {C:dark_edition}Negative {C:attention}Food",
                     "{C:attention}Joker{} at the start of each round",
                 }
+            },
+            j_fmod_blue_angel_mushroom = {
+                name = "Blue Angel Mushroom",
+                text = {
+                    "If death were to occur",
+                    "give {C:red}+1{} hand and resume the round",
+                    "Self-destructs after {C:attention}#1#{} uses",
+                    "{C:inactive}(Uses left: {C:attention}#2#{C:inactive})",
+                }
             }
         },
         Tag = {
@@ -273,7 +282,7 @@ return {
                 name = "Soully",
                 text = {
                     "Creates a {C:legendary,E:1}Legendary{} Joker",
-                    "from the Fennex Mod",
+                    "from the Lucky Rabbit Mod",
                     "{C:inactive}(Must have room)"
                 }
             },
