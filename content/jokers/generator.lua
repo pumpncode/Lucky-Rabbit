@@ -10,6 +10,7 @@ SMODS.Joker{
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
+    eternal_compat = false,
     pos = { x = 2, y = 0 },
     cost = 6,
     calculate = function(self, card, context)
