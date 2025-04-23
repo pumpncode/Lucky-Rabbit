@@ -321,6 +321,15 @@ return {
                     "{C:attention}+#1#{} hand size for the",
                     "next, or current, round"
                 }
+            },
+            c_fmod_knife_throw = {
+                name = "Knife Throw",
+                text = {
+                    "Select up to {C:attention}#1#{} cards,",
+                    "each selected card will",
+                    "either gain a random",
+                    "{C:attention}Seal{}, or be destroyed"
+                }
             }
         },
         Voucher = {
