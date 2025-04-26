@@ -31,6 +31,7 @@ SMODS.Consumable {
                     end
                 end
             end
+            G.hand:unhighlight_all()
             used_consumable:juice_up(0.3, 0.5)
         return true end}))
         delay(0.5)
