@@ -16,7 +16,6 @@ SMODS.Consumable {
     pos = {x = 4, y = 1 },
     cost = 8,
     use = function(self, card, context, copier)
-        local used_consumable = card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             local tags = {
                 "tag_standard",
@@ -28,7 +27,7 @@ SMODS.Consumable {
             add_tag(tag)
             play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
             play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            used_consumable:juice_up(0.3, 0.5)
+            card:juice_up(0.3, 0.5)
         return true end}))
         delay(0.5)
     end,

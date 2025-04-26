@@ -15,7 +15,6 @@ SMODS.Consumable {
     pos = { x = 1, y = 1 },
     cost = 3,
     use = function(self, card, context, copier)
-        local used_consumable = card
         local pseudo = pseudorandom(pseudoseed('tightrope'))
         if pseudo <= 0.5 then
             -- 50% chance to copy 1 card
@@ -64,7 +63,7 @@ SMODS.Consumable {
             local destroy_card = G.hand.highlighted[1]
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                 play_sound('tarot1')
-                used_consumable:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.5)
                 return true
             end }))
             G.E_MANAGER:add_event(Event({

@@ -14,10 +14,9 @@ SMODS.Consumable {
     pos = { x = 5, y = 0 },
     cost = 3,
     use = function(self, card, context, copier)
-        local used_consumable = card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('tarot1')
-            used_consumable:juice_up(0.3, 0.5)
+            card:juice_up(0.3, 0.5)
             return true end }))
         for i=1, #G.hand.highlighted do
             local percent = 1.15 - (i-0.999)/(#G.hand.highlighted-0.998)*0.3
@@ -30,7 +29,7 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 if G.hand.highlighted[i] ~= rightmost then
                         rightmost:set_edition(G.hand.highlighted[i].edition, nil, true)
-                        used_consumable:juice_up(0.3, 0.5)
+                        card:juice_up(0.3, 0.5)
                 end
             return true end }))
         end

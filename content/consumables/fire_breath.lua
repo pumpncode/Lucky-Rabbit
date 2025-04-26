@@ -10,7 +10,6 @@ SMODS.Consumable {
     pos = { x = 9, y = 1 },
     cost = 5,
     use = function(self, card, context, copier)
-        local used_consumable = card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             local save_edition = nil
             if G.jokers.highlighted[1].edition then
@@ -22,7 +21,7 @@ SMODS.Consumable {
                 end
             end
             if not G.jokers.highlighted[1].ability.eternal then G.jokers.highlighted[1]:start_dissolve(nil) end
-            used_consumable:juice_up(0.3, 0.5)
+            card:juice_up(0.3, 0.5)
             return true end }))
         delay(0.6)
     end,

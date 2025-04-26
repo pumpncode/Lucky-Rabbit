@@ -13,10 +13,10 @@ SMODS.Consumable {
     pos = { x = 7, y = 0 },
     cost = 5,
     use = function(self, card, context, copier)
-        local used_consumable = card
+        
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('tarot1')
-            used_consumable:juice_up(0.3, 0.5)
+            card:juice_up(0.3, 0.5)
             delay(0.3)
             for i = 1, #G.hand.cards do
                 G.hand.cards[i]:juice_up(0.3,0.5)
