@@ -16,12 +16,14 @@ SMODS.Consumable {
     use = function(self, card, context, copier)
         local used_consumable = copier or card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('tarot1')
             for i = 1, #G.hand.highlighted do
                 local k_card = G.hand.highlighted[i]
                 if pseudorandom(pseudoseed('knifethrow')) < G.GAME.probabilities.normal/card.ability.extra.chance then
                     local seal = SMODS.poll_seal({
                         guaranteed = true
                     })
+                    k_card:juice_up(0.3, 0.5)
                     k_card:set_seal(seal)
                 else
                     if k_card.ability.name == 'Glass Card' then
@@ -31,9 +33,11 @@ SMODS.Consumable {
                     end
                 end
             end
-            G.hand:unhighlight_all()
             used_consumable:juice_up(0.3, 0.5)
         return true end}))
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function()
+            G.hand:unhighlight_all()
+        return true end }))
         delay(0.5)
     end,
     can_use = function(self, card)
