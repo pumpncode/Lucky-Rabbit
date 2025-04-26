@@ -13,7 +13,7 @@ SMODS.Consumable {
     pos = {x = 7, y = 1 },
     cost = 5,
     use = function(self, card, area, copier)
-        local used_consumable = copier or card
+        local used_consumable = card
         if #G.hand.cards > 1 then
             G.FUNCS.draw_from_deck_to_hand(card.ability.extra.h_size)
         end

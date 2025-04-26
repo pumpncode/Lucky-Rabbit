@@ -14,7 +14,7 @@ SMODS.Consumable {
         return { vars = { card.ability.extra.cards } }
     end,
     use = function(self, card, context, copier)
-        local used_consumable = copier or card
+        local used_consumable = card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('tarot1')
             for i = 1, #G.hand.highlighted do

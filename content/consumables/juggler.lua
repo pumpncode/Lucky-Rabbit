@@ -14,7 +14,7 @@ SMODS.Consumable {
     pos = {x = 6, y = 0 },
     cost = 5,
     use = function(self, card, context, copier)
-        local used_consumable = copier or card
+        local used_consumable = card
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('timpani')
             used_consumable:juice_up(0.3, 0.5)

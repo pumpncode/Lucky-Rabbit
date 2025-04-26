@@ -15,7 +15,7 @@ SMODS.Consumable {
     pos = { x = 1, y = 1 },
     cost = 3,
     use = function(self, card, context, copier)
-        local used_consumable = copier or card
+        local used_consumable = card
         local pseudo = pseudorandom(pseudoseed('tightrope'))
         if pseudo <= 0.5 then
             -- 50% chance to copy 1 card

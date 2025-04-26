@@ -16,7 +16,7 @@ SMODS.Consumable {
     pos = { x = 5, y = 1 },
     cost = 5,
     use = function(self, card, context, copier)
-        local used_consumable = copier or card
+        local used_consumable = card
         local cards = { G.hand.highlighted[1], G.hand.highlighted[2] }
         local destroy_card = pseudorandom_element(cards, pseudoseed('rodeo'))
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
