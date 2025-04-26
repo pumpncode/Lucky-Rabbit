@@ -81,7 +81,6 @@ SMODS.Consumable {
                 end
             }))
         end
-        G.hand:unhighlight_all()
     end,
     can_use = function(self, card)
 		if G.hand and #G.hand.highlighted == 1 then
