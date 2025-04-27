@@ -5,6 +5,8 @@ SMODS.Back {
     config = {
         voucher = 'v_fmod_circus'
     },
+    unlocked = true,
+    discovered = true,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

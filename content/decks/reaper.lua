@@ -2,6 +2,8 @@ SMODS.Back {
     key = 'reaper',
     atlas = 'Decks',
     pos = { x = 3, y = 1 },
+    unlocked = true,
+    discovered = true,
     config = {
         hands = 1,
         discards = 1,

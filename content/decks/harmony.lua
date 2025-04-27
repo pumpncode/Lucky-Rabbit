@@ -2,6 +2,8 @@ SMODS.Back {
     key = 'harmony',
     atlas = 'Decks',
     pos = { x = 2, y = 1 },
+    unlocked = true,
+    discovered = true,
     config = {
         discards = -2
     },
