@@ -156,6 +156,13 @@ return {
                     "are drawn face down"
                 }
             },
+            bl_fmod_tool = {
+                name = "The Tool",
+                text = {
+                    "All consumables",
+                    "are debuffed"
+                }
+            },
             bl_fmod_baby = {
                 name = "The Baby",
                 text = {
