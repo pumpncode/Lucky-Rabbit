@@ -155,6 +155,13 @@ return {
                     "All number cards",
                     "are drawn face down"
                 }
+            },
+            bl_fmod_baby = {
+                name = "The Baby",
+                text = {
+                    "All enhanced cards",
+                    "are drawn face down"
+                }
             }
         },
         Back = {

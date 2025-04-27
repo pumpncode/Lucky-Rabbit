@@ -75,6 +75,7 @@ local files = {
     blinds = {
         list = {
             "hoard",
+            "baby"
         },
         directory = "content/blinds/"
     },
