@@ -115,6 +115,16 @@ return {
                     "when scored"
                 }
             },
+            j_fmod_ferromancy = {
+                name = "Ferromancy",
+                text = {
+                    "{C:attention}Gold{} cards give {X:mult,C:white}X#1#{} Mult",
+                    "when held in hand, while",
+                    "{C:attention}Steel{} cards give {C:money}$#2#{}",
+                    "at end of round",
+                    "{C:inactive}(Overrides default behavior)"
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
