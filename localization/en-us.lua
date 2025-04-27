@@ -169,6 +169,13 @@ return {
                     "All enhanced cards",
                     "are drawn face down"
                 }
+            },
+            bl_fmod_priest = {
+                name = "The Priest",
+                text = {
+                    "Cannot play more",
+                    "than 4 cards"
+                }
             }
         },
         Back = {
