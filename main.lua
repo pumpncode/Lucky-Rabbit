@@ -29,6 +29,7 @@ local files = {
             "passport",
             "steve",
             "blue_angel_mushroom",
+            "impractical_joker",
         },
         directory = "content/jokers/"
     },

@@ -105,7 +105,16 @@ return {
                     "Self-destructs after {C:attention}#1#{} uses",
                     "{C:inactive}(Uses left: {C:attention}#2#{C:inactive})",
                 }
-            }
+            },
+            j_fmod_impractical_joker = {
+                name = "Impractical Joker",
+                text = {
+                    "First {C:attention}lowest ranking{}",
+                    "card in played hand",
+                    "gives {X:mult,C:white}X#1#{} Mult",
+                    "when scored"
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {
