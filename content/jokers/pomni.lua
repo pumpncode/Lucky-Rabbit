@@ -12,6 +12,9 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = {card.ability.extra.base_ante, card.ability.extra.skip_amt, (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.chance_ante, card.ability.extra.blind_count } }
     end,
+    pools = {
+        ["Fmod_Legendary"] = true,
+    },
     rarity = 4,
     atlas = "Jokers",
     unlocked = true,

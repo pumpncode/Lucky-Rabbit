@@ -1,8 +1,5 @@
 FMOD = {}
 
-FM = SMODS.current_mod
-fmod_config = SMODS.current_mod.config
-
 --Optional features
 SMODS.optional_features = {
     cardareas = {
@@ -300,9 +297,9 @@ function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
 end
 
 local gnb = get_new_boss
-function get_new_boss()
+function FMOD.get_new_boss()
     if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(random_showdown_blind('reaper'))
+		local boss = tostring(FMOD.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
 		G.FORCE_BOSS = nil
@@ -314,7 +311,7 @@ function get_new_boss()
     return gnb_val
 end
 
-random_showdown_blind = function(seed)
+function FMOD.random_showdown_blind(seed)
     local eligible_bosses = {}
     for k, v in pairs(G.P_BLINDS) do
         if not v.boss then
@@ -334,7 +331,7 @@ end
 local reroll_ref = G.FUNCS.reroll_boss
 G.FUNCS.reroll_boss = function(e)
 	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(random_showdown_blind('reaper'))
+		local boss = tostring(FMOD.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
 		G.FORCE_BOSS = nil
@@ -346,7 +343,7 @@ G.FUNCS.reroll_boss = function(e)
 	return reroll_val
 end
 
-function get_food_jokers(seed)
+function FMOD.get_food_jokers(seed)
     local possible_jokers = {
         'j_gros_michel',
         'j_egg',
@@ -365,5 +362,17 @@ function get_food_jokers(seed)
     end
     end
     local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_gros_michel'
+    return key
+end
+
+function FMOD.get_fmod_legendaries(seed)
+    local possible_jokers = {}
+    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
+        if v.pools and v.pools.Fmod_Legendary then
+            possible_jokers[#possible_jokers+1] = v.key
+        end
+    end
+    end
+    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_fmod_steve'
     return key
 end
