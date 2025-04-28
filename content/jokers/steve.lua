@@ -14,7 +14,7 @@ SMODS.Joker {
     pos = { x = 2, y = 3 },
     soul_pos = { x = 2, y = 4 },
     blueprint_compat = false,
-    cost = 10,
+    cost = 20,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint then
             card:juice_up(0.3, 0.5)
