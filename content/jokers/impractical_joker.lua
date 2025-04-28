@@ -15,6 +15,7 @@ SMODS.Joker{
     pixel_size = { w = 71, h = 80 },
     pos = { x = 7, y = 0 },
     cost = 4,
+    blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             local temp_ID = 15

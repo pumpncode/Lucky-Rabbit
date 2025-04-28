@@ -10,9 +10,10 @@ SMODS.Joker {
     discovered = true,
     pos = { x = 2, y = 3 },
     soul_pos = { x = 2, y = 4 },
+    blueprint_compat = false,
     cost = 10,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.setting_blind and not context.blueprint then
             card:juice_up(0.3, 0.5)
             local key = get_food_jokers('steve')
             SMODS.add_card({set = 'Joker', key = key, edition = 'e_negative'})

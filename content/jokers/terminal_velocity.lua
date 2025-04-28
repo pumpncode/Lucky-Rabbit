@@ -14,6 +14,7 @@ SMODS.Joker {
     discovered = true,
     pos = { x = 4, y = 2 },
     soul_pos = { x = 1, y = 4 },
+    blueprint_compat = true,
     cost = 6,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then

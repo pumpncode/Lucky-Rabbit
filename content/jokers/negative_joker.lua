@@ -17,9 +17,10 @@ SMODS.Joker{
     unlocked = true,
     discovered = true,
     pos = { x = 6, y = 0 },
+    blueprint_compat = true,
     cost = 4,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.setting_blind and not context.blueprint then
             card.ability.extra.flag = false
         end
         if context.joker_main then
@@ -27,7 +28,7 @@ SMODS.Joker{
                 chips = card.ability.extra.chips
             }
         end
-        if context.end_of_round and not card.ability.extra.flag then
+        if context.end_of_round and not card.ability.extra.flag and not context.blueprint then
             card.ability.extra.uses = card.ability.extra.uses + 1
             if card.ability.extra.uses == card.ability.extra.rounds then
                 card:set_edition(card.ability.extra.edition)

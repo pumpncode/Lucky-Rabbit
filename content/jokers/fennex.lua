@@ -15,11 +15,12 @@ SMODS.Joker{
     discovered = true,
     pos = { x = 0, y = 0 },
     cost = 4,
+    blueprint_compat = false,
     calculate = function(self, card, context)
-        if context.reroll_shop then
+        if context.reroll_shop and not context.blueprint then
             card.ability.extra.rerolls = card.ability.extra.rerolls - 1
         end
-        if card.ability.extra.rerolls == 0 then
+        if card.ability.extra.rerolls == 0 and not context.blueprint then
             G.GAME.current_round.voucher_2 = get_next_voucher_key()
             G.shop_vouchers.config.card_limit = G.shop_vouchers.config.card_limit + 1
             if G.GAME.current_round.voucher_2 and G.P_CENTERS[G.GAME.current_round.voucher_2] then

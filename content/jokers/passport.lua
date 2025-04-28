@@ -6,7 +6,7 @@ SMODS.Joker {
 	cost = 4,
 	unlocked = true,
 	discovered = true,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	config = {
 		extra = {
 			mult = 0,
