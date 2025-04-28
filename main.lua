@@ -78,7 +78,8 @@ local files = {
             "hoard",
             "tool",
             "baby",
-            "priest"
+            "priest",
+            "dice"
         },
         directory = "content/blinds/"
     },

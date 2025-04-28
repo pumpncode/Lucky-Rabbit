@@ -186,6 +186,13 @@ return {
                     "Cannot play more",
                     "than 4 cards"
                 }
+            },
+            bl_fmod_dice = {
+                name = "The Dice",
+                text = {
+                    "All odds fall",
+                    "to zero"
+                }
             }
         },
         Back = {
