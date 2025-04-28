@@ -10,7 +10,7 @@ SMODS.Tag {
     end,
     apply = function(self, tag, context)
         tag:yep('+', G.C.GREEN, function()
-            local key = get_food_jokers('lunchbreak')
+            local key = FMOD.get_food_jokers('lunchbreak')
             SMODS.add_card({set = 'Joker', key = key, edition = 'e_negative'})
             return true
         end)
