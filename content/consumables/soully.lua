@@ -5,8 +5,8 @@ SMODS.Consumable {
         extra = {
             silly_legendaries = {
                 "j_fmod_steve",
-                --[[
                 "j_fmod_pomni",
+                --[[
                 "j_fmod_geiru",
                 "j_fmod_ransome",
                 "j_fmod_loonette",
