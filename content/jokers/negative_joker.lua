@@ -10,6 +10,7 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.e_negative
         return { vars = { card.ability.extra.chips, card.ability.extra.rounds, math.max((card.ability.extra.rounds - card.ability.extra.uses), 0)  } }
     end,
     rarity = 1,
