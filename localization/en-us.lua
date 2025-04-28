@@ -124,6 +124,14 @@ return {
                     "at end of round",
                     "{C:inactive}(Overrides default behavior)"
                 }
+            },
+            j_fmod_jazzercise = {
+                name = "Jazzercise Joker",
+                text = {
+                    "{C:attention}+#1#{} hand size for every {C:attention}#2# {C:inactive}[#3#]",
+                    "cards destroyed in this run",
+                    "{C:inactive}(Currently {C:attention}+#4#{C:inactive})"
+                }
             }
         },
         Tag = {

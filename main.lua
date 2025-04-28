@@ -25,6 +25,7 @@ local files = {
             "nerdcubed",
             "terminal_velocity",
             "nero_the_fool",
+            "jazzercise",
             "negative_joker",
             "passport",
             "blue_angel_mushroom",
