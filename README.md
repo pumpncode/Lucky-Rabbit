@@ -9,7 +9,7 @@ As of now, this mod adds:
 - **12** upgraded and helpful Vouchers
 - **5** practical Decks
 - **4** skip-worthy Tags
-- **5** tough new Boss Blinds
+- **7** tough new Boss Blinds
 
 __Feel free to check out [the in-depth mod progress spreadsheet!](https://docs.google.com/spreadsheets/d/1-gmJJKUTY5EP2TqhpfTXqD-P1NzQQxCRvEpoFnwK72g/edit?gid=1809378509#gid=1809378509)__
 
