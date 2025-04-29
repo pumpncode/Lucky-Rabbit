@@ -209,6 +209,13 @@ return {
                     "All odds fall",
                     "to zero"
                 }
+            },
+            bl_fmod_final_sword = {
+                name = "Ivory Sword",
+                text = {
+                    "Cannot play a",
+                    "#1#"
+                }
             }
         },
         Back = {
