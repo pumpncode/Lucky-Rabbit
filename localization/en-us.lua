@@ -216,6 +216,13 @@ return {
                     "Cannot play a",
                     "#1#"
                 }
+            },
+            bl_fmod_light = {
+                name = "The Light",
+                text = {
+                    "Played Enhanced cards",
+                    "lose their Enhancements"
+                }
             }
         },
         Back = {
