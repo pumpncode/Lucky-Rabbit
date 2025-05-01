@@ -81,6 +81,7 @@ local files = {
             "priest",
             "dice",
             "light",
+            "elder",
             "final_sword"
         },
         directory = "content/blinds/"

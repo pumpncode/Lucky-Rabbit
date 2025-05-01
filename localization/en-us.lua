@@ -232,7 +232,14 @@ return {
                     "Played Enhanced cards",
                     "lose their Enhancements"
                 }
-            }
+            },
+            bl_fmod_elder = {
+                name = "The Elder",
+                text = {
+                    "All unenhanced cards",
+                    "are drawn face down"
+                }
+            },
         },
         Back = {
             b_fmod_recursive = {
