@@ -413,17 +413,17 @@ return {
             v_fmod_circus = {
                 name = "Circus",
                 text = {
-                    "{V:1}Silly Cards{} can",
-                    "be purchased",
-                    "in the {C:attention}shop{}"
+                    "{V:1}Silly Cards{} may",
+                    "appear in any of",
+                    "the {C:tarot}Arcana{} packs"
                 }
             },
             v_fmod_showtime = {
                 name = "Showtime",
                 text = {
-                    "{V:1}Silly Cards{} may",
-                    "appear in any of",
-                    "the {C:tarot}Arcana{} packs"
+                    "{V:1}Silly Cards{} can",
+                    "be purchased",
+                    "in the {C:attention}shop{}"
                 }
             },
             v_fmod_reroll_superfluity = {
