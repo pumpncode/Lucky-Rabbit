@@ -140,6 +140,15 @@ return {
                     "{C:green}#3# in #4#{} chance for {C:attention}-#5#{} Ante",
                     "{C:inactive}(Currently {C:attention}#6#{C:inactive}/#2#)"
                 }
+            },
+            j_fmod_loonette = {
+                name = "Loonette",
+                text = {
+                    "{C:attention}Number{} cards give {X:mult,C:white}X#1#{} Mult when",
+                    "scored, increases by {X:mult,C:white}X#2#{} Mult for",
+                    "each consecutively scored {C:attention}number{} card",
+                    "{C:inactive}(Resets after hand played)"
+                }
             }
         },
         Tag = {
@@ -157,7 +166,7 @@ return {
                     "Creates a random",
                     "{C:dark_edition}Negative {C:attention}Food Joker{}"
                 }
-            },
+           },
             tag_fmod_boost = {
                 name = "Boost Tag",
                 text = {

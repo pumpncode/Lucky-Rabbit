@@ -29,6 +29,7 @@ local files = {
             "impractical_joker",
             "ferromancy",
             "steve",
+            "loonette",
             "pomni"
         },
         directory = "content/jokers/"
