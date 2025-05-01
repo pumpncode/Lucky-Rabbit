@@ -238,8 +238,8 @@ return {
                 name = "Fennex Deck",
                 text = {
                     "Start run with the {C:attention,T:j_fmod_fennex}Fennex{} Joker,",
-                    "{C:legendary}Fennex Mod{C:attention} Jokers{} are {X:green,C:white}3X{}",
-                    "more likely to appear"
+                    "{C:legendary}Lucky Rabbit{C:attention} Jokers{} are",
+                    "{X:green,C:white}3X{} more likely to appear"
                 }
             },
             b_fmod_clown = {
