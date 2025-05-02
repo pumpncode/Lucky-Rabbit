@@ -423,6 +423,15 @@ return {
                     "either gain a random",
                     "{C:attention}Seal{}, or be destroyed"
                 }
+            },
+            c_fmod_trapeze = {
+                name = "Trapeze",
+                text = {
+                    "After this card has been used",
+                    "{C:attention}#2#{} times, its next occurance",
+                    "will be replaced by a {C:attention}Soul{} card",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)"
+                }
             }
         },
         Voucher = {

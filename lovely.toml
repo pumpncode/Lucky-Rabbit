@@ -125,3 +125,26 @@ position = "after"
 payload = '''reaper_set = false,'''
 match_indent = true
 times = 1
+
+# -------- trapeze --------
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''reaper_set = false,'''
+position = "after"
+payload = '''trapeze_count = 0,'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local card = Card(area.T.x + area.T.w/2, area.T.y, G.CARD_W, G.CARD_H, front, center,'''
+position = "before"
+payload = '''if center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
+    center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully"}, pseudoseed("trapeze"))]
+    G.GAME.trapeze_count = 0
+end'''
+match_indent = true
+times = 1

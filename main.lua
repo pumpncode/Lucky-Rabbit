@@ -69,6 +69,7 @@ local files = {
             "endless_scarf",
             "knife_throw",
             "fire_breath",
+            "trapeze",
             "soully"
         },
         directory = 'content/consumables/'
@@ -200,6 +201,7 @@ SMODS.ConsumableType {
         ["c_fmod_rodeo"] = true,
         ["c_fmod_endless_scarf"] = true,
         ["c_fmod_knife_throw"] = true,
+        ["c_fmod_trapeze"] = true,
     },
     loc_txt = {
         name = "Silly",
@@ -398,3 +400,16 @@ function Card:set_sprites(_center, _front)
 		self.children.floating_sprite.states.click.can = false
 	end
 end
+
+--[[ local create_card_ref = SMODS.create_card
+function SMODS.create_card(t)
+    local _card = create_card_ref(t)
+    if _card.config.center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
+        _card = {}
+        _card = create_card_ref({
+            key = pseudorandom_element({"c_soul", "c_fmod_soully"}, pseudoseed("trapeze"))
+        })
+        G.GAME.trapeze_count = 0
+    end
+    return _card
+end ]]--
