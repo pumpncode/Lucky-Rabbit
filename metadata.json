@@ -2,7 +2,11 @@
 	"id": "LuckyRabbit",
 	"name": "Lucky Rabbit",
 	"display_name": "Lucky Rabbit",
-	"author": ["Fennex", "Trif/Trifdotnet", "HarmoniousJoker"],
+	"author": [
+		"Fennex", 
+		"Trif", 
+		"HarmoniousJoker"
+	],
 	"description": "Vanilla+ content mod that adds new jokers, boss blinds, a new consumable type, and more to expand upon the base game. It's time to get silly!",
 	"prefix": "fmod",
 	"main_file": "main.lua",
