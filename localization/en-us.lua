@@ -246,6 +246,13 @@ return {
                     "All #1#s are",
                     "debuffed"
                 }
+            },
+            bl_fmod_final_horn = {
+                name = "Lavender Horn",
+                text = {
+                    "All cards are",
+                    "drawn face down"
+                }
             }
         },
         Back = {
