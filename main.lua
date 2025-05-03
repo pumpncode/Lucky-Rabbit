@@ -83,7 +83,8 @@ local files = {
             "dice",
             "light",
             "elder",
-            "final_sword"
+            "final_sword",
+            "final_shield",
         },
         directory = "content/blinds/"
     },
@@ -400,16 +401,3 @@ function Card:set_sprites(_center, _front)
 		self.children.floating_sprite.states.click.can = false
 	end
 end
-
---[[ local create_card_ref = SMODS.create_card
-function SMODS.create_card(t)
-    local _card = create_card_ref(t)
-    if _card.config.center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
-        _card = {}
-        _card = create_card_ref({
-            key = pseudorandom_element({"c_soul", "c_fmod_soully"}, pseudoseed("trapeze"))
-        })
-        G.GAME.trapeze_count = 0
-    end
-    return _card
-end ]]--

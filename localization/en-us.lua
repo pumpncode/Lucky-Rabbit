@@ -240,6 +240,13 @@ return {
                     "are drawn face down"
                 }
             },
+            bl_fmod_final_shield = {
+                name = "Saffron Shield",
+                text = {
+                    "All #1#s are",
+                    "debuffed"
+                }
+            }
         },
         Back = {
             b_fmod_recursive = {
@@ -600,6 +607,7 @@ return {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
             k_fmod_sillypack = "Silly Pack",
+            r_fmod_mostplayed = "(most played rank)"
         }
     }
 }
