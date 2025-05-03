@@ -621,7 +621,15 @@ return {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
             k_fmod_sillypack = "Silly Pack",
-            r_fmod_mostplayed = "(most played rank)"
+            r_fmod_mostplayed = "(most played rank)",
+
+            k_fmod_config_restart = "Requires Restart",
+            k_fmod_config_jokers = "Enable Jokers",
+            k_fmod_config_silly = "Enable Silly Cards",
+            k_fmod_config_vouchers = "Enable Vouchers",
+            k_fmod_config_blinds = "Enable Blinds",
+            k_fmod_config_tags = "Enable Tags",
+            k_fmod_config_decks = "Enable Decks",
         }
     }
 }

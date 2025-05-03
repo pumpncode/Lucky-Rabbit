@@ -1,5 +1,73 @@
 FMOD = {}
 
+-- config tab
+local config = SMODS.current_mod.config
+
+SMODS.current_mod.config_tab = function()
+    return {
+        n = G.UIT.ROOT,
+        config = {align = "cm", padding = 0.05, emboss = 0.05, r = 0.1, colour = G.C.BLACK},
+        nodes = {
+            {
+                n = G.UIT.R,
+                config = {align = "cm", minh = 1},
+                nodes = {
+                    {
+                        n = G.UIT.T,
+                        config = {text = localize("k_fmod_config_restart"), colour = G.C.RED, scale = 0.5}
+                    }
+                }
+            },
+            {
+                n = G.UIT.R,
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        nodes = {
+                            create_toggle {
+                                label = localize("k_fmod_config_jokers"),
+                                ref_table = config,
+                                ref_value = "jokers_enabled"
+                            },
+                            create_toggle {
+                                label = localize("k_fmod_config_silly"),
+                                ref_table = config,
+                                ref_value = "silly_enabled"
+                            },
+                            create_toggle {
+                                label = localize("k_fmod_config_vouchers"),
+                                ref_table = config,
+                                ref_value = "vouchers_enabled"
+                            },
+                            create_toggle {
+                                label = localize("k_fmod_config_tags"),
+                                ref_table = config,
+                                ref_value = "tags_enabled"
+                            },
+                        }
+                    },
+                    {
+                        n = G.UIT.C,
+                        nodes = {
+                            create_toggle {
+                                label = localize("k_fmod_config_blinds"),
+                                ref_table = config,
+                                ref_value = "blinds_enabled"
+                            },
+                            create_toggle {
+                                label = localize("k_fmod_config_decks"),
+                                ref_table = config,
+                                ref_value = "decks_enabled"
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    }
+end
+
+
 --Optional features
 SMODS.optional_features = {
     cardareas = {
@@ -177,60 +245,79 @@ SMODS.Atlas {
     py = 95
 }
 
--- silly packs
-
-SMODS.ConsumableType {
-    key = 'Silly',
-    primary_colour = HEX('f4d494'),
-    secondary_colour = HEX('db8787'),
-    collection_rows = { 5, 6 },
-    default = 'c_fmod_pie',
-    shop_rate = 0,
-    cards = {
-        ["c_fmod_clown_car"] = true,
-        ["c_fmod_squirt_flower"] = true,
-        ["c_fmod_pie"] = true,
-        ["c_fmod_bang_gun"] = true,
-        ["c_fmod_whoopie_cushion"] = true,
-        ["c_fmod_joy_buzzer"] = true,
-        ["c_fmod_juggler"] = true,
-        ["c_fmod_balloons"] = true,
-        ["c_fmod_split_pants"] = true,
-        ["c_fmod_midway_games"] = true,
-        ["c_fmod_balloon_animal"] = true,
-        ["c_fmod_tightrope"] = true,
-        ["c_fmod_soully"] = true,
-        ["c_fmod_fire_breath"] = true,
-        ["c_fmod_rodeo"] = true,
-        ["c_fmod_endless_scarf"] = true,
-        ["c_fmod_knife_throw"] = true,
-        ["c_fmod_trapeze"] = true,
-    },
-    loc_txt = {
-        name = "Silly",
-        collection = "Silly Cards",
-        undiscovered = {
-            name = "Not Discovered",
-            text = {
-                "Purchase or use",
-                "this card in an",
-                "unseeded run to",
-                "learn what it does"
-            }
-        }
-    },
-}
-
 -- load everything
 
-local function load_files(set)
-    for i = 1, #files[set].list do
-        if files[set].list[i] then assert(SMODS.load_file(files[set].directory .. files[set].list[i] .. '.lua'))() end
+function FMOD.load_files(items, path)
+    for i = 1, #items do
+        assert(SMODS.load_file(path .. "/" .. items[i] .. '.lua'))()
     end
 end
 
-for k, v in pairs(files) do
-    load_files(k)
+if config.jokers_enabled then
+    FMOD.load_files(files.jokers.list, files.jokers.directory)
+end
+
+if config.silly_enabled then
+    -- register silly packs
+    SMODS.ConsumableType {
+        key = 'Silly',
+        primary_colour = HEX('f4d494'),
+        secondary_colour = HEX('db8787'),
+        collection_rows = { 5, 6 },
+        default = 'c_fmod_pie',
+        shop_rate = 0,
+        cards = {
+            ["c_fmod_clown_car"] = true,
+            ["c_fmod_squirt_flower"] = true,
+            ["c_fmod_pie"] = true,
+            ["c_fmod_bang_gun"] = true,
+            ["c_fmod_whoopie_cushion"] = true,
+            ["c_fmod_joy_buzzer"] = true,
+            ["c_fmod_juggler"] = true,
+            ["c_fmod_balloons"] = true,
+            ["c_fmod_split_pants"] = true,
+            ["c_fmod_midway_games"] = true,
+            ["c_fmod_balloon_animal"] = true,
+            ["c_fmod_tightrope"] = true,
+            ["c_fmod_soully"] = true,
+            ["c_fmod_fire_breath"] = true,
+            ["c_fmod_rodeo"] = true,
+            ["c_fmod_endless_scarf"] = true,
+            ["c_fmod_knife_throw"] = true,
+            ["c_fmod_trapeze"] = true,
+        },
+        loc_txt = {
+            name = "Silly",
+            collection = "Silly Cards",
+            undiscovered = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does"
+                }
+            }
+        },
+    }
+    FMOD.load_files(files.consumables.list, files.consumables.directory)
+    FMOD.load_files(files.boosters.list, files.boosters.directory)
+end
+
+if config.vouchers_enabled then
+    FMOD.load_files(files.vouchers.list, files.vouchers.directory)
+end
+
+if config.blinds_enabled then
+    FMOD.load_files(files.blinds.list, files.blinds.directory)
+end
+
+if config.decks_enabled then
+    FMOD.load_files(files.decks.list, files.decks.directory)
+end
+
+if config.tags_enabled then
+    FMOD.load_files(files.tags.list, files.tags.directory)
 end
 
 -- functions
