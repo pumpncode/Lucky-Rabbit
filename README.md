@@ -1,7 +1,7 @@
 # Lucky Rabbit
 Lucky Rabbit is a WIP Vanilla+ Balatro mod that adds new Jokers, boss blinds, a new consumable type, and more to expand upon the base game, cooked up by [Fennex](https://www.twitch.tv/mrfennex), [Trif](https://github.com/Trif3ctal), and [HarmoniousJoker](https://github.com/HarmoniousJoker). It’s time to get silly!
 
-*Note: This mod requires [Steamodded](https://github.com/Steamopollys/Steamodded/archive/refs/heads/main.zip) (obviously)*
+*Note: This mod requires [Steamodded](https://github.com/Steamopollys/Steamodded/archive/refs/heads/main.zip) and [Lovely](https://github.com/ethangreen-dev/lovely-injector/releases/latest) (obviously)*
 
 As of now, this mod adds:
 - **18** fun new Jokers
