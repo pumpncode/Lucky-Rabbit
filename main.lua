@@ -83,6 +83,7 @@ local files = {
             "dice",
             "light",
             "elder",
+            "flux",
             "final_sword",
             "final_shield",
             "final_horn",

@@ -240,6 +240,13 @@ return {
                     "are drawn face down"
                 }
             },
+            bl_fmod_flux = {
+                name = "The Flux",
+                text = {
+                    "Two random suits",
+                    "debuffed every hand",
+                }
+            },
             bl_fmod_final_shield = {
                 name = "Saffron Shield",
                 text = {
