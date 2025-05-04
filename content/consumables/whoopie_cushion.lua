@@ -28,7 +28,7 @@ SMODS.Consumable {
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 if G.hand.highlighted[i] ~= rightmost then
-                        rightmost:set_ability(G.hand.highlighted[i].config.center.key)
+                        rightmost:set_ability(G.hand.highlighted[i].config.center)
                         card:juice_up(0.3, 0.5)
                 end
             return true end }))
