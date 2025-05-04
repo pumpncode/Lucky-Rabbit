@@ -460,7 +460,14 @@ return {
                     "Select up to {C:attention}#1#{} cards to",
                     "{C:attention}mark{} with {C:attention}Ink{}",
                 }
-            }
+            },
+            c_fmod_unicycle = {
+                name = "Unicycle",
+                text = {
+                    "Select up to {C:attention}#1#{} cards to",
+                    "{C:attention}mark{} with a {C:attention}Crease{}",
+                }
+            },
         },
         Voucher = {
             v_fmod_circus = {
@@ -627,6 +634,14 @@ return {
                     "This card can no",
                     "longer be {C:attention}flipped"
                 }
+            },
+            fmod_crease_mark = {
+                name = "Crease",
+                text = {
+                    "This card is prioritized",
+                    "to the {C:attention}top{} of the",
+                    "draw order"
+                }
             }
         }
     },
@@ -647,6 +662,7 @@ return {
         },
         labels = {
             fmod_ink_mark = "Ink",
+            fmod_crease_mark = "Crease",
         }
     }
 }

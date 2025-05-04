@@ -144,6 +144,7 @@ local files = {
             "fire_breath",
             "trapeze",
             "greasepaint",
+            "unicycle",
             "soully"
         },
         directory = 'content/consumables'
@@ -191,7 +192,8 @@ local files = {
     },
     markings = {
         list = {
-            "ink_mark"
+            "crease_mark",
+            "ink_mark",
         },
         directory = "content/markings"
     }
@@ -298,6 +300,7 @@ if config.silly_enabled then
             ["c_fmod_knife_throw"] = true,
             ["c_fmod_trapeze"] = true,
             ["c_fmod_greasepaint"] = true,
+            ["c_fmod_unicycle"] = true,
         },
         loc_txt = {
             name = "Silly",
@@ -504,6 +507,28 @@ function Card:set_sprites(_center, _front)
 	end
 end
 
+local shuffle_ref = CardArea.shuffle
+function CardArea:shuffle(_seed)
+    local g = shuffle_ref(self, _seed)
+    if self == G.deck then
+        local priorities = {}
+        local others = {}
+        for k, v in pairs(self.cards) do
+            if FMOD.has_marking(v) == 'fmod_crease_mark' then
+                table.insert(priorities, v)
+            else
+                table.insert(others, v)
+            end
+        end
+        for _, card in ipairs(priorities) do
+            table.insert(others, card)
+        end
+        self.cards = others
+        self:set_ranks()
+    end
+    return g
+end
+
 function FMOD.is_marking(str)
     for _, v in ipairs(FMOD.ENABLED_MARKINGS) do
         if 'fmod_' .. v == str then
@@ -646,6 +671,7 @@ if config.markings_enabled then
     end
 
     FMOD.ENABLED_MARKINGS = {
+        "crease_mark",
         "ink_mark",
     }
     FMOD.load_files(files.markings.list, files.markings.directory)
