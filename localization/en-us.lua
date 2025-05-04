@@ -457,7 +457,7 @@ return {
             c_fmod_greasepaint = {
                 name = "Greasepaint",
                 text = {
-                    "Select {C:attention}#1#{} cards to",
+                    "Select up to {C:attention}#1#{} cards to",
                     "{C:attention}mark{} with {C:attention}Ink{}",
                 }
             }
