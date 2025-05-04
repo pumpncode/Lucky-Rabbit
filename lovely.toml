@@ -176,3 +176,32 @@ payload = '''local _rankname, played = 'Ace', -1
 match_indent = true
 times = 1
 
+# -------- marking badges --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "badges.mod_set = nil"
+position = "before"
+match_indent = true
+payload = '''
+if FMOD and card and card.ability then
+    local key = FMOD.has_marking(card)
+    if key then
+        SMODS.create_mod_badges(SMODS.Stickers[key], badges)
+    end
+end
+'''
+
+# -------- greasepaint marking --------
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = '''function Blind:stay_flipped(area, card, from_area)
+    if not self.disabled then'''
+position = "at"
+payload = '''function Blind:stay_flipped(area, card, from_area)
+    if not self.disabled and not FMOD.has_marking(card) then'''
+match_indent = true
+times = 1

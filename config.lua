@@ -5,4 +5,5 @@ return {
     blinds_enabled = true,
     tags_enabled = true,
     decks_enabled = true,
+    markings_enabled = true,
 }

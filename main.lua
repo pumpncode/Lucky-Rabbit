@@ -59,6 +59,11 @@ SMODS.current_mod.config_tab = function()
                                 ref_table = config,
                                 ref_value = "decks_enabled"
                             },
+                            create_toggle {
+                                label = "Enable Markings",
+                                ref_table = config,
+                                ref_value = "markings_enabled"
+                            },
                         }
                     }
                 }
@@ -100,7 +105,7 @@ local files = {
             "loonette",
             "pomni"
         },
-        directory = "content/jokers/"
+        directory = "content/jokers"
     },
     vouchers = {
         list = {
@@ -117,7 +122,7 @@ local files = {
             "extreme_couponing",
             "shopaholic"
         },
-        directory = "content/vouchers/"
+        directory = "content/vouchers"
     },
     consumables = {
         list = {
@@ -138,9 +143,10 @@ local files = {
             "knife_throw",
             "fire_breath",
             "trapeze",
+            "greasepaint",
             "soully"
         },
-        directory = 'content/consumables/'
+        directory = 'content/consumables'
     },
     blinds = {
         list = {
@@ -156,7 +162,7 @@ local files = {
             "final_shield",
             "final_horn",
         },
-        directory = "content/blinds/"
+        directory = "content/blinds"
     },
     decks = {
         list = {
@@ -166,7 +172,7 @@ local files = {
             "reaper",
             "recursive",
         },
-        directory = "content/decks/"
+        directory = "content/decks"
     },
     tags = {
         list = {
@@ -175,13 +181,19 @@ local files = {
             "boost",
             "appraisal",
         },
-        directory = "content/tags/"
+        directory = "content/tags"
     },
     boosters = {
         list = {
             "boosters" -- just using one file for ease of use
         },
-        directory = "content/boosters/"
+        directory = "content/boosters"
+    },
+    markings = {
+        list = {
+            "ink_mark"
+        },
+        directory = "content/markings"
     }
 }
 
@@ -285,6 +297,7 @@ if config.silly_enabled then
             ["c_fmod_endless_scarf"] = true,
             ["c_fmod_knife_throw"] = true,
             ["c_fmod_trapeze"] = true,
+            ["c_fmod_greasepaint"] = true,
         },
         loc_txt = {
             name = "Silly",
@@ -320,7 +333,7 @@ if config.tags_enabled then
     FMOD.load_files(files.tags.list, files.tags.directory)
 end
 
--- functions
+-- various functions and hooks
 
 local base_calculate_joker = Card.calculate_joker
 function Card.calculate_joker(self,context)
@@ -489,4 +502,151 @@ function Card:set_sprites(_center, _front)
 		self.children.floating_sprite.states.hover.can = false
 		self.children.floating_sprite.states.click.can = false
 	end
+end
+
+function FMOD.is_marking(str)
+    for _, v in ipairs(FMOD.ENABLED_MARKINGS) do
+        if 'fmod_' .. v == str then
+            return true
+        end
+    end
+end
+
+function FMOD.has_marking(card)
+    for k, v in pairs(card and card.ability or {}) do
+        if FMOD.is_marking(k) then
+            return k, v
+        end
+    end
+end
+function FMOD.set_marking(card, mark)
+    local key = 'fmod_' .. mark .. '_mark'
+    if card and FMOD.is_marking(key) then
+        -- remove existing marks before applying
+        for k, _ in pairs(card.ability) do
+            if FMOD.is_marking(k) then
+                card.ability[k] = nil
+            end
+        end
+
+        SMODS.Stickers[key]:apply(card, true)
+    end
+end
+
+function FMOD.marking_tooltip(mark)
+    local key = 'fmod_' .. mark .. '_mark'
+    local marking = SMODS.Stickers[key]
+    local vars = {}
+    if not marking then return end
+    if marking.loc_vars then
+        local dummy_card = { ability = {} }
+        marking:apply(dummy_card, true)
+        vars = marking:loc_vars({}, dummy_card).vars
+    end
+    return {
+        set = 'Other',
+        key = key,
+        vars = vars
+    }
+end
+
+-- define marking objects
+
+if config.markings_enabled then
+    FMOD.Marking = SMODS.Sticker:extend {
+        prefix_config = { key = true },
+        should_apply = false,
+        config = {},
+        rate = 0,
+        sets = {
+            Default = true
+        },
+
+        draw = function(self, card)
+            -- local x_offset = (card.T.w / 71) * -4 * card.T.scale
+            G.shared_stickers[self.key].role.draw_major = card
+            G.shared_stickers[self.key]:draw_shader('dissolve', nil, nil, nil, card.children.center, nil, nil)
+        end,
+
+        apply = function(self, card, val)
+            card.ability[self.key] = val and copy_table(self.config) or nil
+        end
+    }
+    SMODS.current_mod.custom_collection_tabs = function()
+        return {
+            UIBox_button(
+                {
+                    button = "your_collection_fmod_markings",
+                    id = "your_collection_fmod_markings",
+                    label = { "Markings" },
+                    minw = 5,
+                    minh = 1
+                }
+            )
+        }
+    end
+
+    local function markings_ui()
+        local markings = {}
+        for k, v in pairs(SMODS.Stickers) do
+            if FMOD.is_marking(k) then
+                markings[k] = v
+            end
+        end
+        return SMODS.card_collection_UIBox(
+            markings,
+            { 5, 5 },
+            {
+                snap_back = true,
+                hide_single_page = true,
+                collapse_single_page = true,
+                center = "c_base",
+                h_mod = 1.03,
+                back_func = "your_collection_other_gameobjects",
+                modify_card = function(card, center)
+                    card.ignore_pinned = true
+                    center:apply(card, true)
+                end
+            }
+        )
+    end
+
+    G.FUNCS.your_collection_fmod_markings = function()
+        G.SETTINGS.paused = true
+        G.FUNCS.overlay_menu {
+            definition = markings_ui()
+        }
+    end
+
+    local function wrap_without_markings(func)
+        -- remove from SMODS.Stickers just for this call
+        local removed = {}
+        for k, v in pairs(SMODS.Stickers) do
+            if FMOD.is_marking(k) then
+                removed[k] = v
+                SMODS.Stickers[k] = nil
+            end
+        end
+        local ret = func()
+        -- Add them back once the UI was created
+        for k, v in pairs(removed) do
+            SMODS.Stickers[k] = v
+        end
+        return ret
+    end
+    -- Override the creation of the 'Stickers' tab in the collection
+    local stickers_ui_ref = create_UIBox_your_collection_stickers
+    create_UIBox_your_collection_stickers = function()
+        return wrap_without_markings(stickers_ui_ref)
+    end
+    -- Override the creation of the 'Stickers' tab in our 'Additions' tab
+    local other_objects_ref = create_UIBox_Other_GameObjects
+    create_UIBox_Other_GameObjects = function()
+        return wrap_without_markings(other_objects_ref)
+    end
+
+    FMOD.ENABLED_MARKINGS = {
+        "ink_mark",
+    }
+    FMOD.load_files(files.markings.list, files.markings.directory)
 end

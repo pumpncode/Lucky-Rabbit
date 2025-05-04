@@ -453,6 +453,13 @@ return {
                     "will be replaced by a {C:attention}Soul{} card",
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)"
                 }
+            },
+            c_fmod_greasepaint = {
+                name = "Greasepaint",
+                text = {
+                    "Select {C:attention}#1#{} cards to",
+                    "{C:attention}mark{} with {C:attention}Ink{}",
+                }
             }
         },
         Voucher = {
@@ -614,6 +621,13 @@ return {
                     "be used immediately"
                 }
             },
+            fmod_ink_mark = {
+                name = "Ink",
+                text = {
+                    "This card can no",
+                    "longer be {C:attention}flipped"
+                }
+            }
         }
     },
     misc = {
@@ -630,6 +644,9 @@ return {
             k_fmod_config_blinds = "Enable Blinds",
             k_fmod_config_tags = "Enable Tags",
             k_fmod_config_decks = "Enable Decks",
+        },
+        labels = {
+            fmod_ink_mark = "Ink",
         }
     }
 }
