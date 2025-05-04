@@ -202,6 +202,6 @@ pattern = '''function Blind:stay_flipped(area, card, from_area)
     if not self.disabled then'''
 position = "at"
 payload = '''function Blind:stay_flipped(area, card, from_area)
-    if not self.disabled and not FMOD.has_marking(card) then'''
+    if not self.disabled and not (FMOD.has_marking(card) == 'fmod_ink_mark') then'''
 match_indent = true
 times = 1
