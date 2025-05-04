@@ -629,18 +629,24 @@ return {
                 }
             },
             fmod_ink_mark = {
-                name = "Ink",
+                name = "Inked",
                 text = {
                     "This card can no",
                     "longer be {C:attention}flipped"
                 }
             },
             fmod_crease_mark = {
-                name = "Crease",
+                name = "Creased",
                 text = {
                     "This card is prioritized",
                     "to the {C:attention}top{} of the",
                     "draw order"
+                }
+            },
+            fmod_pinhole_mark = {
+                name = "Pinholed",
+                text = {
+
                 }
             }
         }
@@ -651,7 +657,6 @@ return {
             k_fmod_drained = "Drained!",
             k_fmod_sillypack = "Silly Pack",
             r_fmod_mostplayed = "(most played rank)",
-
             k_fmod_config_restart = "Requires Restart",
             k_fmod_config_jokers = "Enable Jokers",
             k_fmod_config_silly = "Enable Silly Cards",
@@ -661,8 +666,8 @@ return {
             k_fmod_config_decks = "Enable Decks",
         },
         labels = {
-            fmod_ink_mark = "Ink",
-            fmod_crease_mark = "Crease",
-        }
+            fmod_ink_mark = "Inked",
+            fmod_crease_mark = "Creased",
+        },
     }
 }

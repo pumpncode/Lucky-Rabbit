@@ -588,7 +588,6 @@ if config.markings_enabled then
         },
 
         draw = function(self, card)
-            -- local x_offset = (card.T.w / 71) * -4 * card.T.scale
             G.shared_stickers[self.key].role.draw_major = card
             G.shared_stickers[self.key]:draw_shader('dissolve', nil, nil, nil, card.children.center, nil, nil)
         end,
@@ -653,18 +652,18 @@ if config.markings_enabled then
             end
         end
         local ret = func()
-        -- Add them back once the UI was created
+        -- add them back once the UI was created
         for k, v in pairs(removed) do
             SMODS.Stickers[k] = v
         end
         return ret
     end
-    -- Override the creation of the 'Stickers' tab in the collection
+    -- override the creation of the 'Stickers' tab in the collection
     local stickers_ui_ref = create_UIBox_your_collection_stickers
     create_UIBox_your_collection_stickers = function()
         return wrap_without_markings(stickers_ui_ref)
     end
-    -- Override the creation of the 'Stickers' tab in our 'Additions' tab
+    -- override the creation of the 'Stickers' tab in our 'Additions' tab
     local other_objects_ref = create_UIBox_Other_GameObjects
     create_UIBox_Other_GameObjects = function()
         return wrap_without_markings(other_objects_ref)
@@ -676,3 +675,42 @@ if config.markings_enabled then
     }
     FMOD.load_files(files.markings.list, files.markings.directory)
 end
+
+-- PEPPERED friends of jimbo skins
+
+SMODS.Atlas {
+    key = 'peppered_diamonds_lc',
+    path = 'collabs/peppered_diamonds_lc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = 'peppered_diamonds_hc',
+    path = 'collabs/peppered_diamonds_hc.png',
+    px = 71,
+    py = 95
+}
+
+
+SMODS.DeckSkin {
+    key = "peppered_diamonds",
+    suit = "Diamonds",
+    loc_txt = "PEPPERED",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack', '10'},
+            pos_style = 'ranks',
+            atlas = 'fmod_peppered_diamonds_lc'
+        },
+        {
+            key = 'hc',
+            ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack', '10'},
+            pos_style = 'ranks',
+            atlas = 'fmod_peppered_diamonds_hc'
+        }
+    },
+}
