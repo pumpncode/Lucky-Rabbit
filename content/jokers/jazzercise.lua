@@ -11,7 +11,7 @@ SMODS.Joker{
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.h_inc, card.ability.extra.destroy, card.ability.extra.destroy_amt, card.ability.extra.h_size } }
     end,
-    rarity = 1,
+    rarity = 2,
     atlas = "Jokers",
     unlocked = true,
     discovered = true,
