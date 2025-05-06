@@ -193,7 +193,7 @@ if FMOD and card and card.ability then
 end
 '''
 
-# -------- greasepaint marking --------
+# -------- ink marking --------
 
 [[patches]]
 [patches.pattern]
