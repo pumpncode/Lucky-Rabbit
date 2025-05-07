@@ -41,8 +41,12 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 and next(SMODS.get_enhancements(G.hand.highlighted[1])) then
-			return true
+		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 then
+			for i = 1, #G.hand.highlighted do
+                if next(SMODS.get_enhancements(G.hand.highlighted[i])) then
+                    return true
+                end
+            end
 		end
 		return false
     end,

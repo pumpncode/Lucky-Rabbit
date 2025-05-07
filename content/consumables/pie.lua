@@ -45,7 +45,11 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
 		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 then
-			return true
+            for i=1, #G.hand.highlighted do
+                if not SMODS.has_no_rank(G.hand.highlighted[i]) then
+                    return true
+                end
+            end
 		end
 		return false
     end,
