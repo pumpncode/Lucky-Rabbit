@@ -1,5 +1,5 @@
 SMODS.Consumable {
-    key = "pie",
+    key = "cannon",
     set = "Silly",
     config = {
         extra = {
@@ -7,11 +7,12 @@ SMODS.Consumable {
         }
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = FMOD.marking_tooltip("pinhole")
         return { vars = { card.ability.extra.cards } }
     end,
     atlas = "Consumables",
-    pos = { x = 2, y = 0 },
-    cost = 3,
+    pos = { x = 2, y = 1 },
+    cost = 5,
     use = function(self, card, context, copier)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('tarot1')
@@ -22,18 +23,9 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() G.hand.highlighted[i]:flip();play_sound('card1', percent);G.hand.highlighted[i]:juice_up(0.3, 0.3);return true end }))
         end
         delay(0.2)
-        local rightmost = G.hand.highlighted[1]
-        for i=1, #G.hand.highlighted do if G.hand.highlighted[i].T.x > rightmost.T.x then rightmost = G.hand.highlighted[i] end end
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                if G.hand.highlighted[i] ~= rightmost then
-                    if SMODS.has_enhancement(G.hand.highlighted[1], 'm_stone') then
-                        rightmost:set_ability('m_stone', nil, false)
-                    else
-                        SMODS.change_base(rightmost, nil, G.hand.highlighted[i].base.value)
-                        card:juice_up(0.3, 0.5)
-                    end
-                end
+                FMOD.set_marking(G.hand.highlighted[i], 'pinhole')
             return true end }))
         end
         for i=1, #G.hand.highlighted do
@@ -44,13 +36,9 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 then
-            for i=1, #G.hand.highlighted do
-                if not SMODS.has_no_rank(G.hand.highlighted[i]) then
-                    return true
-                end
-            end
+        if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 0 then
+            return true
 		end
 		return false
-    end,
+    end
 }

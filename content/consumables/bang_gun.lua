@@ -40,7 +40,7 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 and not SMODS.has_enhancement(G.hand.highlighted[1], 'm_stone') and not SMODS.has_enhancement(G.hand.highlighted[2], 'm_stone') then
+		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 and not SMODS.has_no_suit(G.hand.highlighted[1]) and not SMODS.has_no_suit(G.hand.highlighted[2]) then
 			return true
 		end
 		return false

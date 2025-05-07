@@ -145,6 +145,7 @@ local files = {
             "trapeze",
             "greasepaint",
             "unicycle",
+            "cannon",
             "soully"
         },
         directory = 'content/consumables'
@@ -194,6 +195,7 @@ local files = {
         list = {
             "crease_mark",
             "ink_mark",
+            "pinhole_mark"
         },
         directory = "content/markings"
     }
@@ -301,6 +303,7 @@ if config.silly_enabled then
             ["c_fmod_trapeze"] = true,
             ["c_fmod_greasepaint"] = true,
             ["c_fmod_unicycle"] = true,
+            ["c_fmod_cannon"] = true,
         },
         loc_txt = {
             name = "Silly",
@@ -672,6 +675,7 @@ if config.markings_enabled then
     FMOD.ENABLED_MARKINGS = {
         "crease_mark",
         "ink_mark",
+        "pinhole_mark"
     }
     FMOD.load_files(files.markings.list, files.markings.directory)
 end

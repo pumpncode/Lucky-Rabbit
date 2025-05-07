@@ -317,7 +317,9 @@ return {
                 name = "Clown Car",
                 text = {
                     "Creates a random {C:dark_edition}Negative{}",
-                    "{C:attention}Joker card"
+                    "{C:attention}Joker card{}, {C:money}-$#1#{} for each",
+                    "{C:dark_edition}Negative{} Joker owned",
+                    "{C:inactive}(Joker has no {C:attention}sell value{C:inactive})"
                 }
             },
             c_fmod_bang_gun = {
@@ -468,6 +470,13 @@ return {
                     "{C:attention}mark{} with a {C:attention}Crease{}",
                 }
             },
+            c_fmod_cannon = {
+                name = "Cannon",
+                text = {
+                    "Select up to {C:attention}#1#{} cards to",
+                    "{C:attention}mark{} with a {C:attention}Pinhole{}",
+                }
+            }
         },
         Voucher = {
             v_fmod_circus = {
@@ -646,7 +655,8 @@ return {
             fmod_pinhole_mark = {
                 name = "Pinholed",
                 text = {
-
+                    "This card is {C:attention}returned",
+                    "to the deck when played",
                 }
             }
         }
@@ -668,6 +678,7 @@ return {
         labels = {
             fmod_ink_mark = "Inked",
             fmod_crease_mark = "Creased",
+            fmod_pinhole_mark = "Pinholed",
         },
     }
 }
