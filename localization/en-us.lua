@@ -317,7 +317,9 @@ return {
                 name = "Clown Car",
                 text = {
                     "Creates a random {C:dark_edition}Negative{}",
-                    "{C:attention}Joker card"
+                    "{C:attention}Joker card{}, {C:money}-$#1#{} for each",
+                    "{C:dark_edition}Negative{} Joker owned",
+                    "{C:inactive}(Joker has no {C:attention}sell value{C:inactive})"
                 }
             },
             c_fmod_bang_gun = {
