@@ -468,6 +468,13 @@ return {
                     "{C:attention}mark{} with a {C:attention}Crease{}",
                 }
             },
+            c_fmod_cannon = {
+                name = "Cannon",
+                text = {
+                    "Select up to {C:attention}#1#{} cards to",
+                    "{C:attention}mark{} with a {C:attention}Pinhole{}",
+                }
+            }
         },
         Voucher = {
             v_fmod_circus = {
@@ -646,7 +653,8 @@ return {
             fmod_pinhole_mark = {
                 name = "Pinholed",
                 text = {
-
+                    "This card is {C:attention}returned",
+                    "to the deck when played",
                 }
             }
         }
@@ -668,6 +676,7 @@ return {
         labels = {
             fmod_ink_mark = "Inked",
             fmod_crease_mark = "Creased",
+            fmod_pinhole_mark = "Pinholed",
         },
     }
 }
