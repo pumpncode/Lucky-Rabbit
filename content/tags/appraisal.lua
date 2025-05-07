@@ -24,7 +24,7 @@ SMODS.Tag {
     end
 }
 
-get_enhanced = function()
+FMOD.get_enhanced = function()
     local amt = 0
     if G.playing_cards then
         for k, v in pairs(G.playing_cards) do

@@ -27,7 +27,7 @@ SMODS.Consumable {
     end,
 }
 
-get_unique_ranks = function()
+FMOD.get_unique_ranks = function()
     local ranks = {}
     if G.hand then
         for _, v in pairs(G.hand.cards) do
