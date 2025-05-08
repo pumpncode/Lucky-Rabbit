@@ -35,7 +35,7 @@ FMOD.get_negatives = function(set)
     local amt = 0
     if set then for i = 1, #set do
         local card = set[i]
-        if card.edition.key == "e_negative" then
+        if card.edition and card.edition.key == "e_negative" then
             amt = amt + 1
         end
     end

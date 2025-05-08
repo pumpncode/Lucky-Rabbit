@@ -149,6 +149,15 @@ return {
                     "each consecutively scored {C:attention}number{} card",
                     "{C:inactive}(Resets after hand played)"
                 }
+            },
+            j_fmod_wordle = {
+                name = "Wordle",
+                text = {
+                    "Gains {C:chips}+#1#{} Chips if played",
+                    "hand contains a {C:attention}3{}, {C:attention}7{}, {C:attention}8{}, or",
+                    "a {C:attention}Queen{}",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+                }
             }
         },
         Tag = {

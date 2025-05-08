@@ -221,14 +221,8 @@ position = "at"
 payload = '''for k, v in ipairs(G.play.cards) do
     if not (v.shattered) and (not v.destroyed) then
         if FMOD.has_marking(v) == "fmod_pinhole_mark" then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                func = function()
-                    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, nil, 0.005)
-                    it = it + 1
-                    return true
-                end
-            }))
+            draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
+            it = it + 1
         else
             draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
             it = it + 1
@@ -250,7 +244,7 @@ if G.GAME.modifiers.flipped_cards and to == G.hand then
 end
 to:emplace(card, nil, stay_flipped)'''
 position = "at"
-payload = '''if card and not FMOD.has_marking(card) == "fmod_pinhole_mark" then drawn = true end
+payload = '''if card and not (FMOD.has_marking(card) == "fmod_pinhole_mark") then drawn = true end
 local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
 if G.GAME.modifiers.flipped_cards and to == G.hand then
     if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
@@ -264,6 +258,10 @@ if to == G.deck and #G.deck.cards > 0 and FMOD.has_marking(card) == "fmod_pinhol
     end
     local rand_card = pseudorandom_element(poss_deck, pseudoseed("pinhole"))
     table.insert(G.deck.cards, rand_card, card)
+    card:set_card_area(to)
+    play_sound('card1', 0.85 + percent*0.2/100, 0.6*(vol or 1))
+    to:set_ranks()
+    to:align_cards()
 else
     to:emplace(card, nil, stay_flipped)
 end'''
