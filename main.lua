@@ -91,22 +91,22 @@ local files = {
             "generator",
             "countdown",
             "penny_joker",
+            "nero_the_fool",
+            "negative_joker",
+            "impractical_joker",
+            "passport",
+            "ferromancy",
+            "fragile_sticker",
+            "hyperfixation",
+            "blue_angel_mushroom",
             "low_hanging_fruit",
+            "wordle",
             "nerdcubed",
             "terminal_velocity",
-            "nero_the_fool",
             "jazzercise",
-            "negative_joker",
-            "passport",
-            "blue_angel_mushroom",
-            "impractical_joker",
-            "ferromancy",
-            "wordle",
-            "hyperfixation",
             "steve",
-            "loonette",
             "pomni",
-            "fragile_sticker",
+            "loonette",
         },
         directory = "content/jokers"
     },
@@ -142,10 +142,10 @@ local files = {
             "tightrope",
             "midway_games",
             "rodeo",
+            "trapeze",
             "endless_scarf",
             "knife_throw",
             "fire_breath",
-            "trapeze",
             "greasepaint",
             "unicycle",
             "cannon",
@@ -159,13 +159,13 @@ local files = {
             "tool",
             "baby",
             "priest",
-            "dice",
             "light",
             "elder",
+            "dice",
             "flux",
+            "final_horn",
             "final_sword",
             "final_shield",
-            "final_horn",
         },
         directory = "content/blinds"
     },
@@ -197,8 +197,8 @@ local files = {
     markings = {
         list = {
             "crease_mark",
-            "ink_mark",
-            "pinhole_mark"
+            "pinhole_mark",
+            "ink_mark"
         },
         directory = "content/markings"
     }
@@ -715,8 +715,8 @@ if config.markings_enabled then
 
     FMOD.ENABLED_MARKINGS = {
         "crease_mark",
-        "ink_mark",
-        "pinhole_mark"
+        "pinhole_mark",
+        "ink_mark"
     }
     FMOD.load_files(files.markings.list, files.markings.directory)
 end
