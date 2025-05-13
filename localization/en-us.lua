@@ -168,6 +168,13 @@ return {
                     "{C:attention}required rank {}({C:attention}#4#{}) is played {C:attention}#5#{} times {C:inactive}[#6#]",
                     "{C:inactive}(Required rank changes every round)"
                 }
+            },
+            j_fmod_fragile_sticker = {
+                name = "Fragile Sticker",
+                text = {
+                    "{C:attention}Glass{} no longer breaks",
+                    "through use",
+                }
             }
         },
         Tag = {

@@ -105,7 +105,8 @@ local files = {
             "hyperfixation",
             "steve",
             "loonette",
-            "pomni"
+            "pomni",
+            "fragile_sticker",
         },
         directory = "content/jokers"
     },
