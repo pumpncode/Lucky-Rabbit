@@ -164,8 +164,8 @@ return {
                 text = {
                     "Each played {C:attention}#1#{} of {V:1}#2#{}",
                     "is retriggered {C:attention}#3#{} time(s)",
-                    "Number of retriggers increases after a",
-                    "{C:attention}required rank {}({C:attention}#4#{}) is played {C:attention}#5#{} times {C:inactive}[#6#]",
+                    "Gains {C:attention}1{} retrigger every {C:attention}#5#{} {C:inactive}[#6#]{} times",
+                    "a round's {C:attention}required rank{} (#4#) is scored",
                     "{C:inactive}(Required rank changes every round)"
                 }
             },

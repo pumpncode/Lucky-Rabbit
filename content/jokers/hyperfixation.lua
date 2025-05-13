@@ -4,7 +4,7 @@ SMODS.Joker{
         extra = {
             retriggers = 0,
             amt_needed = 5,
-            current_amt = 0,
+            current_amt = 5,
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -33,9 +33,15 @@ SMODS.Joker{
         end
         if context.individual and not context.blueprint then
             if context.other_card:get_id() == G.GAME.current_round.hyperfix_card.id then
-                card.ability.extra.current_amt = card.ability.extra.current_amt + 1
-                if card.ability.extra.current_amt >= card.ability.extra.amt_needed then
-                    card.ability.extra.current_amt = 0
+                card.ability.extra.current_amt = card.ability.extra.current_amt - 1
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card:juice_up()
+                        return true
+                    end
+                }))
+                if card.ability.extra.current_amt == 0 then
+                    card.ability.extra.current_amt = card.ability.extra.amt_needed
                     card.ability.extra.retriggers = card.ability.extra.retriggers + 1
                     return {
                         message = localize('k_fmod_upgraded'),
