@@ -533,24 +533,6 @@ function FMOD.get_fmod_legendaries(seed)
     return key
 end
 
-local set_spritesref = Card.set_sprites
-function Card:set_sprites(_center, _front)
-	set_spritesref(self, _center, _front)
-	if _center and _center.name == "c_fmod_soully" then
-		self.children.floating_sprite = Sprite(
-			self.T.x,
-			self.T.y,
-			self.T.w,
-			self.T.h,
-			G.ASSET_ATLAS[_center.atlas or _center.set],
-			{ x = 2, y = 2 }
-		)
-		self.children.floating_sprite.role.draw_major = self
-		self.children.floating_sprite.states.hover.can = false
-		self.children.floating_sprite.states.click.can = false
-	end
-end
-
 local shuffle_ref = CardArea.shuffle
 function CardArea:shuffle(_seed)
     local g = shuffle_ref(self, _seed)
