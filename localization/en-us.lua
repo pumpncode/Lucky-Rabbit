@@ -383,8 +383,10 @@ return {
             c_fmod_balloons = {
                 name = "Balloons",
                 text = {
-                    "Doubles the total {C:chips}Chip value{}",
-                    "of every card held in hand"
+                    "All cards held in hand gain",
+                    "extra chips equal to {C:attention}double",
+                    "their total {C:chips}Chip value",
+                    "{C:inactive}(Excludes {C:dark_edition}Editions{C:inactive})"
                 }
             },
             c_fmod_split_pants = {
