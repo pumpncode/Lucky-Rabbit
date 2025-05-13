@@ -158,6 +158,16 @@ return {
                     "a {C:attention}Queen{}",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
+            },
+            j_fmod_hyperfixation = {
+                name = "Hyperfixation",
+                text = {
+                    "Each played {C:attention}#1#{} of {V:1}#2#{}",
+                    "is retriggered {C:attention}#3#{} time(s)",
+                    "Number of retriggers increases after a",
+                    "{C:attention}required rank {}({C:attention}#4#{}) is played {C:attention}#5#{} times {C:inactive}[#6#]",
+                    "{C:inactive}(Required rank changes every round)"
+                }
             }
         },
         Tag = {

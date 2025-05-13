@@ -102,6 +102,7 @@ local files = {
             "impractical_joker",
             "ferromancy",
             "wordle",
+            "hyperfixation",
             "steve",
             "loonette",
             "pomni"
@@ -457,6 +458,44 @@ G.FUNCS.reroll_boss = function(e)
     G.FORCE_BOSS = nil
 
 	return reroll_val
+end
+
+function FMOD.reset_hyperfix_rank()
+    G.GAME.current_round.hyperfix_card.rank = 'Ace'
+    local valid_hyperfix_cards = {}
+    for k, v in ipairs(G.playing_cards) do
+        if not SMODS.has_no_rank(v) then
+            valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
+        end
+    end
+    if valid_hyperfix_cards[1] then
+        local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
+        G.GAME.current_round.hyperfix_card.rank = hyperfix_card.base.value
+        G.GAME.current_round.hyperfix_card.id = hyperfix_card.base.id
+    end
+end
+
+function FMOD.reset_hyperfix_full_card(type)
+    local rank = 'Ace'
+    local suit = 'Spades'
+    local id = 14
+    local valid_hyperfix_cards = {}
+    for k, v in ipairs(G.playing_cards) do
+        if not SMODS.has_no_rank(v) and not SMODS.has_no_suit(v) then
+            valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
+        end
+    end
+    if valid_hyperfix_cards[1] then
+        local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix_'..G.GAME.round_resets.ante))
+        rank = hyperfix_card.base.value
+        suit = hyperfix_card.base.suit
+        id = hyperfix_card.base.id
+    end
+    if type == 'rank' then
+        return rank, id
+    elseif type == 'suit' then
+        return suit
+    end
 end
 
 function FMOD.get_food_jokers(seed)
