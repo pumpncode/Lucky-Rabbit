@@ -37,6 +37,10 @@ SMODS.Joker{
                 if card.ability.extra.current_amt >= card.ability.extra.amt_needed then
                     card.ability.extra.current_amt = 0
                     card.ability.extra.retriggers = card.ability.extra.retriggers + 1
+                    return {
+                        message = localize('k_fmod_upgraded'),
+                        card = card
+                    }
                 end
             end
         end
