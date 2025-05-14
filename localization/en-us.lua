@@ -54,8 +54,8 @@ return {
                 text = {
                     "The next {C:attention}#1#{} scored gives",
 			        "{C:mult}+#2#{} Mult, and decreases rank once.",
-                    "When an {C:attention}#3#{} is scored, gain {X:mult,C:white}X#4#{}",
-                    "Mult and reset to a {C:attention}King{}"
+                    "When an {C:attention}#3#{} is scored, gives {X:mult,C:white}X#4#{}",
+                    "Mult and resets to a {C:attention}King{}"
                 }
             },
             j_fmod_despicable_bear = {
