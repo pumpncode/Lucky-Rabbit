@@ -323,6 +323,12 @@ if config.silly_enabled then
             }
         },
     }
+    SMODS.UndiscoveredSprite {
+        key = 'Silly',
+        atlas = 'Consumables',
+        pos = { x = 3, y = 2 },
+        --overlay_pos = { x = 4, y = 2 }
+    }
     FMOD.load_files(files.consumables.list, files.consumables.directory)
     FMOD.load_files(files.boosters.list, files.boosters.directory)
 end
