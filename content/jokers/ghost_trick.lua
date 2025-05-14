@@ -16,8 +16,8 @@ SMODS.Joker {
     cost = 4,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and not context.blueprint then
-			if not context.other_card.ghost_tricked then
+        if context.individual and context.cardarea == G.play then
+			if not context.other_card.ghost_tricked and not context.blueprint then
 				context.other_card.ghost_tricked = true
 				local c = context.other_card
 				G.E_MANAGER:add_event(Event({
