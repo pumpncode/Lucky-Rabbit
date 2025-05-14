@@ -20,8 +20,11 @@ SMODS.Consumable {
             delay(0.3)
             for i = 1, #G.hand.cards do
                 G.hand.cards[i]:juice_up(0.3,0.5)
-                G.hand.cards[i].base.face_nominal = G.hand.cards[i].base.face_nominal - G.hand.cards[i].base.nominal
-                G.hand.cards[i].base.nominal = G.hand.cards[i].base.nominal * card.ability.extra.mult
+                if not G.hand.cards[i].ability.perma_bonus then
+                    G.hand.cards[i].ability.perma_bonus = G.hand.cards[i].base.nominal
+                else
+                    G.hand.cards[i].ability.perma_bonus = (G.hand.cards[i].ability.perma_bonus + G.hand.cards[i].base.nominal) * card.ability.extra.mult - G.hand.cards[i].base.nominal
+                end
                 delay(0.1)
             end
             play_sound('timpani')

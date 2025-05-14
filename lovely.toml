@@ -267,3 +267,50 @@ else
 end'''
 match_indent = true
 times = 1
+
+# -------- hyperfixation --------
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''trapeze_count = 0,'''
+position = "after"
+payload = '''hyperfix_card = {
+    rank = 'Ace',
+    suit = 'Spades',
+    id = 14,
+},'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''reset_idol_card()'''
+position = "after"
+payload = '''FMOD.reset_hyperfix_rank()
+G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.id = FMOD.reset_hyperfix_full_card("rank")
+G.GAME.hyperfix_card.suit = FMOD.reset_hyperfix_full_card("suit")
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''reset_idol_card()'''
+position = "after"
+payload = '''FMOD.reset_hyperfix_rank()
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''idol_card = {suit = 'Spades', rank = 'Ace'},'''
+position = "after"
+payload = '''hyperfix_card = {rank = 'Ace', id = 14},
+'''
+match_indent = true
+times = 1

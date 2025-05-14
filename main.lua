@@ -91,20 +91,23 @@ local files = {
             "generator",
             "countdown",
             "penny_joker",
+            "nero_the_fool",
+            "negative_joker",
+            "impractical_joker",
+            "passport",
+            "ferromancy",
+            "fragile_sticker",
+            "hyperfixation",
+            "blue_angel_mushroom",
             "low_hanging_fruit",
+            "wordle",
+            "ghost_trick",
             "nerdcubed",
             "terminal_velocity",
-            "nero_the_fool",
             "jazzercise",
-            "negative_joker",
-            "passport",
-            "blue_angel_mushroom",
-            "impractical_joker",
-            "ferromancy",
-            "wordle",
             "steve",
+            "pomni",
             "loonette",
-            "pomni"
         },
         directory = "content/jokers"
     },
@@ -140,10 +143,10 @@ local files = {
             "tightrope",
             "midway_games",
             "rodeo",
+            "trapeze",
             "endless_scarf",
             "knife_throw",
             "fire_breath",
-            "trapeze",
             "greasepaint",
             "unicycle",
             "cannon",
@@ -157,13 +160,13 @@ local files = {
             "tool",
             "baby",
             "priest",
-            "dice",
             "light",
             "elder",
+            "dice",
             "flux",
+            "final_horn",
             "final_sword",
             "final_shield",
-            "final_horn",
         },
         directory = "content/blinds"
     },
@@ -195,8 +198,8 @@ local files = {
     markings = {
         list = {
             "crease_mark",
-            "ink_mark",
-            "pinhole_mark"
+            "pinhole_mark",
+            "ink_mark"
         },
         directory = "content/markings"
     }
@@ -319,6 +322,12 @@ if config.silly_enabled then
                 }
             }
         },
+    }
+    SMODS.UndiscoveredSprite {
+        key = 'Silly',
+        atlas = 'Consumables',
+        pos = { x = 3, y = 2 },
+        --overlay_pos = { x = 4, y = 2 }
     }
     FMOD.load_files(files.consumables.list, files.consumables.directory)
     FMOD.load_files(files.boosters.list, files.boosters.directory)
@@ -459,6 +468,44 @@ G.FUNCS.reroll_boss = function(e)
 	return reroll_val
 end
 
+function FMOD.reset_hyperfix_rank()
+    G.GAME.current_round.hyperfix_card.rank = 'Ace'
+    local valid_hyperfix_cards = {}
+    for k, v in ipairs(G.playing_cards) do
+        if not SMODS.has_no_rank(v) then
+            valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
+        end
+    end
+    if valid_hyperfix_cards[1] then
+        local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
+        G.GAME.current_round.hyperfix_card.rank = hyperfix_card.base.value
+        G.GAME.current_round.hyperfix_card.id = hyperfix_card.base.id
+    end
+end
+
+function FMOD.reset_hyperfix_full_card(type)
+    local rank = 'Ace'
+    local suit = 'Spades'
+    local id = 14
+    local valid_hyperfix_cards = {}
+    for k, v in ipairs(G.playing_cards) do
+        if not SMODS.has_no_rank(v) and not SMODS.has_no_suit(v) then
+            valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
+        end
+    end
+    if valid_hyperfix_cards[1] then
+        local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix_'..G.GAME.round_resets.ante))
+        rank = hyperfix_card.base.value
+        suit = hyperfix_card.base.suit
+        id = hyperfix_card.base.id
+    end
+    if type == 'rank' then
+        return rank, id
+    elseif type == 'suit' then
+        return suit
+    end
+end
+
 function FMOD.get_food_jokers(seed)
     local possible_jokers = {
         'j_gros_michel',
@@ -491,24 +538,6 @@ function FMOD.get_fmod_legendaries(seed)
     end
     local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_fmod_steve'
     return key
-end
-
-local set_spritesref = Card.set_sprites
-function Card:set_sprites(_center, _front)
-	set_spritesref(self, _center, _front)
-	if _center and _center.name == "c_fmod_soully" then
-		self.children.floating_sprite = Sprite(
-			self.T.x,
-			self.T.y,
-			self.T.w,
-			self.T.h,
-			G.ASSET_ATLAS[_center.atlas or _center.set],
-			{ x = 2, y = 2 }
-		)
-		self.children.floating_sprite.role.draw_major = self
-		self.children.floating_sprite.states.hover.can = false
-		self.children.floating_sprite.states.click.can = false
-	end
 end
 
 local shuffle_ref = CardArea.shuffle
@@ -675,13 +704,13 @@ if config.markings_enabled then
 
     FMOD.ENABLED_MARKINGS = {
         "crease_mark",
-        "ink_mark",
-        "pinhole_mark"
+        "pinhole_mark",
+        "ink_mark"
     }
     FMOD.load_files(files.markings.list, files.markings.directory)
 end
 
--- PEPPERED friends of jimbo skins
+-- friends of jimbo skins
 
 SMODS.Atlas {
     key = 'peppered_diamonds_lc',
@@ -716,6 +745,78 @@ SMODS.DeckSkin {
             display_ranks = {'Ace', 'King', 'Queen', 'Jack', '10'},
             pos_style = 'ranks',
             atlas = 'fmod_peppered_diamonds_hc'
+        }
+    },
+}
+
+SMODS.Atlas {
+    key = 'yttd_clubs_lc',
+    path = 'collabs/yttd_clubs_lc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = 'yttd_clubs_hc',
+    path = 'collabs/yttd_clubs_hc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.DeckSkin {
+    key = "yttd_clubs",
+    suit = "Clubs",
+    loc_txt = "Your Turn To Die",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_yttd_clubs_lc'
+        },
+        {
+            key = 'hc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_yttd_clubs_hc'
+        }
+    },
+}
+
+SMODS.Atlas {
+    key = 'catgirl_hearts_lc',
+    path = 'collabs/catgirl_hearts_lc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = 'catgirl_hearts_hc',
+    path = 'collabs/catgirl_hearts_hc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.DeckSkin {
+    key = "catgirl_hearts",
+    suit = "Hearts",
+    loc_txt = "Catgirls",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_catgirl_hearts_lc'
+        },
+        {
+            key = 'hc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_catgirl_hearts_hc'
         }
     },
 }

@@ -158,6 +158,31 @@ return {
                     "a {C:attention}Queen{}",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
+            },
+            j_fmod_hyperfixation = {
+                name = "Hyperfixation",
+                text = {
+                    "Each played {C:attention}#1#{} of {V:1}#2#{}",
+                    "is retriggered {C:attention}#3#{} time(s)",
+                    "Gains {C:attention}1{} retrigger every {C:attention}#5#{} {C:inactive}[#6#]{} times",
+                    "a round's {C:attention}required rank{} (#4#) is scored",
+                    "{C:inactive}(Required rank changes every round)"
+                }
+            },
+            j_fmod_fragile_sticker = {
+                name = "Fragile Sticker",
+                text = {
+                    "{C:attention}Glass{} no longer breaks",
+                    "through use",
+                }
+            },
+            j_fmod_ghost_trick = {
+                name = "Ghost Trick",
+                text = {
+                    "Played cards have a {C:green}#1# in #2#{} chance",
+                    "to create a {C:dark_edition}Negative {C:spectral}Spectral{}",
+                    "card when {C:attention}retriggered",
+                }
             }
         },
         Tag = {
@@ -383,8 +408,10 @@ return {
             c_fmod_balloons = {
                 name = "Balloons",
                 text = {
-                    "Doubles the total {C:chips}Chip value{}",
-                    "of every card held in hand"
+                    "All cards held in hand gain",
+                    "extra chips equal to {C:attention}double",
+                    "their total {C:chips}Chip value",
+                    "{C:inactive}(Excludes {C:dark_edition}Editions{C:inactive})"
                 }
             },
             c_fmod_split_pants = {
@@ -674,6 +701,7 @@ return {
         dictionary = {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
+            k_fmod_upgraded = "Upgraded!",
             k_fmod_sillypack = "Silly Pack",
             r_fmod_mostplayed = "(most played rank)",
             k_fmod_config_restart = "Requires Restart",
