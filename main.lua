@@ -710,7 +710,7 @@ if config.markings_enabled then
     FMOD.load_files(files.markings.list, files.markings.directory)
 end
 
--- PEPPERED friends of jimbo skins
+-- friends of jimbo skins
 
 SMODS.Atlas {
     key = 'peppered_diamonds_lc',
@@ -745,6 +745,78 @@ SMODS.DeckSkin {
             display_ranks = {'Ace', 'King', 'Queen', 'Jack', '10'},
             pos_style = 'ranks',
             atlas = 'fmod_peppered_diamonds_hc'
+        }
+    },
+}
+
+SMODS.Atlas {
+    key = 'yttd_clubs_lc',
+    path = 'collabs/yttd_clubs_lc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = 'yttd_clubs_hc',
+    path = 'collabs/yttd_clubs_hc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.DeckSkin {
+    key = "yttd_clubs",
+    suit = "Clubs",
+    loc_txt = "Your Turn To Die",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_yttd_clubs_lc'
+        },
+        {
+            key = 'hc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_yttd_clubs_hc'
+        }
+    },
+}
+
+SMODS.Atlas {
+    key = 'catgirl_hearts_lc',
+    path = 'collabs/catgirl_hearts_lc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = 'catgirl_hearts_hc',
+    path = 'collabs/catgirl_hearts_hc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.DeckSkin {
+    key = "catgirl_hearts",
+    suit = "Hearts",
+    loc_txt = "Catgirls",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_catgirl_hearts_lc'
+        },
+        {
+            key = 'hc',
+            ranks = {'Jack', 'Queen', 'King', 'Ace'},
+            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            pos_style = 'ranks',
+            atlas = 'fmod_catgirl_hearts_hc'
         }
     },
 }
