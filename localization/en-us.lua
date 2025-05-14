@@ -175,6 +175,15 @@ return {
                     "{C:attention}Glass{} no longer breaks",
                     "through use",
                 }
+            },
+            j_fmod_ghost_trick = {
+                name = "Ghost Trick",
+                text = {
+                    "Played cards have a {C:green}#1# in #2#{} chance",
+                    "to create a random {C:spectral}Spectral{}",
+                    "card when {C:attention}retriggered",
+                    "{C:inactive}(Must have room)"
+                }
             }
         },
         Tag = {

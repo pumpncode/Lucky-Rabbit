@@ -101,6 +101,7 @@ local files = {
             "blue_angel_mushroom",
             "low_hanging_fruit",
             "wordle",
+            "ghost_trick",
             "nerdcubed",
             "terminal_velocity",
             "jazzercise",
