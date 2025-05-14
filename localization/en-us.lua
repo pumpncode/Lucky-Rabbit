@@ -180,9 +180,8 @@ return {
                 name = "Ghost Trick",
                 text = {
                     "Played cards have a {C:green}#1# in #2#{} chance",
-                    "to create a random {C:spectral}Spectral{}",
+                    "to create a {C:dark_edition}Negative {C:spectral}Spectral{}",
                     "card when {C:attention}retriggered",
-                    "{C:inactive}(Must have room)"
                 }
             }
         },
