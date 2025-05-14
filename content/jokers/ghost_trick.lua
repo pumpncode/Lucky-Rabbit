@@ -6,6 +6,7 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = {key = 'e_negative_consumable', set = 'Edition', config = {extra = 1}}
         return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
     end,
     rarity = 2,
