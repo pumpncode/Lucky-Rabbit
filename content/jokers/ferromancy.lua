@@ -60,6 +60,8 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.m_gold
+        info_queue[#info_queue+1] = G.P_CENTERS.m_steel
         return { vars = { card.ability.extra.xmult, card.ability.extra.money } }
     end,
     rarity = 3,
