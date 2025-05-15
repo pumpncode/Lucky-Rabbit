@@ -183,6 +183,16 @@ return {
                     "to create a {C:dark_edition}Negative {C:spectral}Spectral{}",
                     "card when {C:attention}retriggered",
                 }
+            },
+            j_fmod_rabbit = {
+                name = "Rabbit",
+                text = {
+                    "If played hand is a {C:attention}Five",
+                    "{C:attention}of a Kind{}, creates a {C:attention}copy{} of",
+                    "the leftmost playing card",
+                    "and {C:attention}discards{} it",
+                    "{C:inactive}(Can be done twice per round)"
+                }
             }
         },
         Tag = {

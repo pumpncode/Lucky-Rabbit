@@ -105,6 +105,7 @@ local files = {
             "nerdcubed",
             "terminal_velocity",
             "jazzercise",
+            "rabbit",
             "steve",
             "pomni",
             "loonette",
