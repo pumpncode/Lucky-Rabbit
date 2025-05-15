@@ -3,7 +3,7 @@ SMODS.Enhancement:take_ownership('m_steel',
         loc_vars = function(self, info_queue, card)
             if #SMODS.find_card('j_fmod_ferromancy') > 0 then
                 return {
-                    vars = { '$' .. card.ability.h_dollars },
+                    vars = { '$' .. (card.ability.h_dollars or 5) },
                     key = 'm_gold'
                 }
             else
@@ -29,7 +29,7 @@ SMODS.Enhancement:take_ownership('m_gold',
         loc_vars = function(self, info_queue, card)
             if #SMODS.find_card('j_fmod_ferromancy') > 0 then
                 return {
-                    vars = { card.ability.h_x_mult },
+                    vars = { (card.ability.h_x_mult or 2) },
                     key = 'm_steel'
                 }
             else
@@ -60,6 +60,8 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.m_gold
+        info_queue[#info_queue+1] = G.P_CENTERS.m_steel
         return { vars = { card.ability.extra.xmult, card.ability.extra.money } }
     end,
     rarity = 3,
@@ -69,4 +71,12 @@ SMODS.Joker {
     blueprint_compat = false,
     pos = { x = 9, y = 0 },
     cost = 8,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_steel') or SMODS.has_enhancement(playing_card, 'm_gold') then
+                return true
+            end
+        end
+        return false
+    end
 }

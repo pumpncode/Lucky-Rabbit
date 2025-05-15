@@ -54,8 +54,8 @@ return {
                 text = {
                     "The next {C:attention}#1#{} scored gives",
 			        "{C:mult}+#2#{} Mult, and decreases rank once.",
-                    "When an {C:attention}#3#{} is scored, gain {X:mult,C:white}X#4#{}",
-                    "Mult and reset to a {C:attention}King{}"
+                    "When an {C:attention}#3#{} is scored, gives {X:mult,C:white}X#4#{}",
+                    "Mult and resets to a {C:attention}King{}"
                 }
             },
             j_fmod_despicable_bear = {
@@ -182,6 +182,16 @@ return {
                     "Played cards have a {C:green}#1# in #2#{} chance",
                     "to create a {C:dark_edition}Negative {C:spectral}Spectral{}",
                     "card when {C:attention}retriggered",
+                }
+            },
+            j_fmod_rabbit = {
+                name = "Rabbit",
+                text = {
+                    "If played hand is a {C:attention}Five",
+                    "{C:attention}of a Kind{}, creates a {C:attention}copy{} of",
+                    "the leftmost playing card",
+                    "and {C:attention}discards{} it",
+                    "{C:inactive}(Can be done twice per round)"
                 }
             }
         },

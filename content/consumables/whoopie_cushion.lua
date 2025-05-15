@@ -50,4 +50,12 @@ SMODS.Consumable {
 		end
 		return false
     end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if next(SMODS.get_enhancements(playing_card)) then
+                return true
+            end
+        end
+        return false
+    end
 }
