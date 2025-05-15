@@ -22,4 +22,5 @@ SMODS.Joker {
     blueprint_compat = false,
     pos = { x = 0, y = 1 },
     cost = 8,
+    enhancement_gate = "m_glass"
 }

@@ -28,5 +28,6 @@ SMODS.Joker {
                 }
             end
         end
-    end
+    end,
+    enhancement_gate = "m_wild",
 }
