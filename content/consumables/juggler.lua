@@ -8,7 +8,7 @@ SMODS.Consumable {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.dollars + (G.GAME.juggler_count * card.ability.extra.increase), card.ability.extra.increase } }
+        return { vars = { card.ability.extra.dollars + ((G.GAME.juggler_count or 0) * card.ability.extra.increase), card.ability.extra.increase } }
     end,
     atlas = "Consumables",
     pos = {x = 6, y = 0 },
