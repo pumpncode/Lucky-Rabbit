@@ -3,11 +3,11 @@ SMODS.Joker {
     config = {
         extra = {
             chips = 0,
-            chip_gain = 2
+            chip_gain = 1
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
     end,
     rarity = 1,
     atlas = "Jokers",
