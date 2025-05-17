@@ -18,15 +18,14 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if context.after and G.GAME.current_round.hands_left == 0 and G.GAME.blind.chips > G.GAME.chips then
-            if card.ability.extra.uses <= 1 then
-                card.ability.extra.uses = card.ability.extra.uses + 1
-                G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + 1
+            card.ability.extra.uses = card.ability.extra.uses + 1
+            G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + 1
+            if card.ability.extra.uses < card.ability.extra.life then
                 return {
                     message = localize('k_saved_ex'),
                     colour = G.C.RED
                 }
             else
-                G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + 1
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         G.hand_text_area.blind_chips:juice_up()
