@@ -479,6 +479,9 @@ function FMOD.reset_hyperfix_rank()
     end
     if valid_hyperfix_cards[1] then
         local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
+        while hyperfix_card.id == G.GAME.hyperfix_card.id do
+            hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
+        end
         G.GAME.current_round.hyperfix_card.rank = hyperfix_card.base.value
         G.GAME.current_round.hyperfix_card.id = hyperfix_card.base.id
     end
