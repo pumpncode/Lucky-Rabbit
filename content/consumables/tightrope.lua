@@ -79,6 +79,7 @@ SMODS.Consumable {
                     return true
                 end
             }))
+            SMODS.calculate_context({ remove_playing_cards = true, removed = {destroy_card} })
         end
     end,
     can_use = function(self, card)
