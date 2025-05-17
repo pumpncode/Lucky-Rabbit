@@ -44,7 +44,7 @@ return {
             j_fmod_penny_joker = {
                 name = "Penny Joker",
                 text = {
-                    "Gains {C:chips}+2 Chips{} for",
+                    "Gains {C:chips}+#2# Chip{} for",
 			        "every card scored.",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 }

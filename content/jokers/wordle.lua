@@ -2,7 +2,7 @@ SMODS.Joker{
     key = "wordle",
     config = {
         extra = {
-            chip_gain = 15,
+            chip_gain = 10,
             chips = 0
         }
     },
@@ -24,7 +24,7 @@ SMODS.Joker{
             }
         end
         if context.before and context.main_eval and not context.blueprint then
-            for _, playingcard in ipairs(context.full_hand) do
+            for _, playingcard in ipairs(context.scoring_hand) do
                 if not SMODS.has_no_rank(playingcard) and playingcard:get_id() == 3
                 or playingcard:get_id() == 7 or playingcard:get_id() == 8
                 or playingcard:get_id() == 12 then
