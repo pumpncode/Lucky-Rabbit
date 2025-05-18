@@ -326,7 +326,7 @@ if not results.top and results[v] then"""
 position = "before"
 payload = '''
 if next(SMODS.find_card("j_fmod_despicable_bear")) and #hand == 4 and results["Two Pair"] then
-    results["Four of a Kind"] = SMODS.merge_lists(results["Four of a Kind"], results["Two Pair"])
+    results["Four of a Kind"] = { SMODS.merge_lists(results["Four of a Kind"], results["Two Pair"]) }
 end'''
 match_indent = true
 
