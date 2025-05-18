@@ -19,12 +19,9 @@ SMODS.Consumable {
             card:juice_up(0.3, 0.5)
             delay(0.3)
             for i = 1, #G.hand.cards do
-                G.hand.cards[i]:juice_up(0.3,0.5)
-                if not G.hand.cards[i].ability.perma_bonus then
-                    G.hand.cards[i].ability.perma_bonus = G.hand.cards[i].base.nominal
-                else
-                    G.hand.cards[i].ability.perma_bonus = (G.hand.cards[i].ability.perma_bonus + G.hand.cards[i].base.nominal) * card.ability.extra.mult - G.hand.cards[i].base.nominal
-                end
+                local hand_card = G.hand.cards[i]
+                hand_card:juice_up(0.3,0.5)
+                hand_card.ability.perma_bonus = (hand_card.ability.perma_bonus or 0) + hand_card:get_chip_bonus()
                 delay(0.1)
             end
             play_sound('timpani')

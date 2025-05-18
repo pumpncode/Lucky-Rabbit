@@ -416,12 +416,8 @@ return {
             c_fmod_balloons = {
                 name = "Balloons",
                 text = {
-                    -- TODO it's not double, it's single, and implemented with wrong math
-                    -- Needs rework to come up with a precise effect
-                    "{C:inactive}(NOTE: rework){}",
-                    "All cards held in hand gain",
-                    "extra chips equal to {C:attention}double",
-                    "their total {C:chips}Chip value",
+                    "{C:attention}Doubles{} the {C:chips}Chip value{}",
+                    "of all cards held in hand",
                     "{C:inactive}(Excludes {C:dark_edition}Editions{C:inactive})"
                 }
             },
