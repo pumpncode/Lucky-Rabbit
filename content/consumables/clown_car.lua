@@ -21,7 +21,8 @@ SMODS.Consumable {
                 ease_dollars(-(FMOD.get_negatives(G.jokers.cards) * card.ability.extra.minus_money))
             end
             local joker = SMODS.add_card({set = 'Joker', area = G.jokers, edition = "e_negative"})
-            joker.sell_cost = card.ability.extra.sell
+            joker.ability.fmod_no_sell_value = true
+            joker:set_cost()
             card:juice_up(0.3, 0.5)
             return true end }))
         delay(0.6)

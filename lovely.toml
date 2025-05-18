@@ -329,3 +329,16 @@ if SMODS.find_card("j_fmod_despicable_bear") and #hand == 4 and results["Two Pai
     results["Four of a Kind"] = SMODS.merge_lists(results["Four of a Kind"], results["Two Pair"])
 end'''
 match_indent = true
+
+# -------- clown car --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.sell_cost = * + (self.ability.extra_value or 0)"
+position = "after"
+match_indent = true
+payload = '''
+if self.ability.fmod_no_sell_value then
+    self.sell_cost = self.ability.extra_value or 0
+end'''
