@@ -25,7 +25,7 @@ SMODS.Joker{
         end
         if context.before and context.main_eval and not context.blueprint then
             for _, playingcard in ipairs(context.scoring_hand) do
-                if not SMODS.has_no_rank(playingcard) and playingcard:get_id() == 3
+                if not SMODS.has_no_rank(playingcard) and not playingcard.debuff and playingcard:get_id() == 3
                 or playingcard:get_id() == 7 or playingcard:get_id() == 8
                 or playingcard:get_id() == 12 then
                     card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
