@@ -71,7 +71,7 @@ function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
 end
 
 local gnb = get_new_boss
-function FMOD.get_new_boss()
+function get_new_boss()
     if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
 		local boss = tostring(FMOD.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
