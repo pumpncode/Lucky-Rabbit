@@ -14,11 +14,22 @@ SMODS.Consumable {
         return { vars = { card.ability.extra.cards } }
     end,
     use = function(self, card, context, copier)
+        local outcomes = {}
+        local destroyed_cards = {}
+        for i = 1, #G.hand.highlighted do
+            local k_card = G.hand.highlighted[i]
+            if pseudorandom(pseudoseed('knifethrow')) < G.GAME.probabilities.normal/card.ability.extra.chance then
+                table.insert(outcomes, { k_card = k_card, success = true })
+            else
+                table.insert(outcomes, { k_card = k_card, success = false })
+                table.insert(destroyed_cards, k_card)
+            end
+        end
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('tarot1')
-            for i = 1, #G.hand.highlighted do
-                local k_card = G.hand.highlighted[i]
-                if pseudorandom(pseudoseed('knifethrow')) < G.GAME.probabilities.normal/card.ability.extra.chance then
+            for _, outcome in ipairs(outcomes) do
+                local k_card = outcome.k_card
+                if outcome.success then
                     local seal = SMODS.poll_seal({
                         guaranteed = true
                     })
@@ -38,6 +49,7 @@ SMODS.Consumable {
             G.hand:unhighlight_all()
         return true end }))
         delay(0.5)
+        SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
     end,
     can_use = function(self, card)
         if G.hand and #G.hand.highlighted >= 1 and #G.hand.highlighted <= card.ability.extra.cards then

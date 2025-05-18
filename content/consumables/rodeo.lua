@@ -60,6 +60,7 @@ SMODS.Consumable {
             end
         }))
         delay(0.6)
+        SMODS.calculate_context({ remove_playing_cards = true, removed = {destroy_card} })
     end,
     can_use = function(self, card, context, copier)
         if #G.hand.highlighted == card.ability.extra.cards then
