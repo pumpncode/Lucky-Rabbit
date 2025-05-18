@@ -8,8 +8,18 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { localize(G.GAME.hyperfix_card.rank, 'ranks'), localize(G.GAME.hyperfix_card.suit, 'suits_plural'),
-        card.ability.extra.retriggers, G.GAME.current_round.hyperfix_card.rank, card.ability.extra.amt_needed, card.ability.extra.current_amt, colours = {G.C.SUITS[G.GAME.hyperfix_card.suit]} } }
+        return {
+            vars = {
+                localize(G.GAME.hyperfix_card.rank, 'ranks'), 
+                localize(G.GAME.hyperfix_card.suit, 'suits_plural'),
+                card.ability.extra.retriggers,
+                G.GAME.current_round.hyperfix_card.rank,
+                card.ability.extra.amt_needed,
+                card.ability.extra.current_amt,
+                card.ability.extra.retriggers == 1 and "" or "s",
+                colours = {G.C.SUITS[G.GAME.hyperfix_card.suit]}
+            }
+        }
     end,
     rarity = 2,
     atlas = "Jokers",

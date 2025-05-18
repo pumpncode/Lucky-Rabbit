@@ -3,8 +3,6 @@ SMODS.Joker{
     config = {
         extra = {
             cards_played = 2,
-            cards_destroyed = {},
-            destroy = false
         }
     },
     loc_vars = function(self, info_queue, card)
