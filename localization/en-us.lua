@@ -694,7 +694,7 @@ return {
             fmod_pinhole_mark = {
                 name = "Pinholed",
                 text = {
-                    "{C:attention}Returns to the",
+                    "{C:attention}Returns{} to the",
                     "deck when played",
                 }
             }
