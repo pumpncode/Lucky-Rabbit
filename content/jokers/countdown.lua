@@ -37,6 +37,7 @@ SMODS.Joker {
                     if not context.blueprint then card.ability.extra.rank = card.ability.extra.rank - 1 end
                     ret = {
                         message = localize("k_reset"),
+                        mult = card.ability.extra.mult,
                         xmult = card.ability.extra.xmult,
                         message_card = context.blueprint_card or card
                     }

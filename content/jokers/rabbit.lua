@@ -8,6 +8,14 @@ SMODS.Joker {
             base = 0
         }
     },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.max_times,
+                card.ability.extra.max_times - card.ability.extra.base
+            }
+        }
+    end,
     unlocked = true,
     discovered = true,
     pos = { x = 8, y = 2 },

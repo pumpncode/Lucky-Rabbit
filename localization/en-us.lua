@@ -4,11 +4,10 @@ return {
             j_fmod_generator = {
                 name = "Generator",
                 text = {
-                        "Retrigger all {C:attention}played cards{},",
-                        "{C:red}destroys{} {C:attention}leftmost{} consumable",
-                        "at beginning of round",
-                        "{C:red}Self destructs{} if no consumables",
-                        "can be destroyed"
+                    "Retrigger all {C:attention}played cards{}",
+                    "{C:red}Destroy{} {C:attention}leftmost{} consumable at",
+                    "start of round, {C:red}self destructs{} if",
+                    "no consumable can be destroyed"
                 },
             },
             j_fmod_fennex = {
@@ -37,25 +36,25 @@ return {
             j_fmod_nerdcubed = {
                 name = "Nerdcubed",
                 text = {
-                    "Each played {C:attention}3{}",
-			        "is retriggered {C:attention}3{} times"
+                    "Each played {C:attention}3{} is",
+			        "retriggered {C:attention}3{} times"
                 }
             },
             j_fmod_penny_joker = {
                 name = "Penny Joker",
                 text = {
-                    "Gains {C:chips}+#2# Chip{} for",
-			        "every card scored.",
+                    "Gains {C:chips}+#2#{} Chip for",
+			        "every card scored",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 }
             },
             j_fmod_countdown = {
                 name = "Countdown",
                 text = {
-                    "The next {C:attention}#1#{} scored gives",
-			        "{C:mult}+#2#{} Mult, and decreases rank once.",
-                    "When an {C:attention}#3#{} is scored, gives {X:mult,C:white}X#4#{}",
-                    "Mult and resets to a {C:attention}King{}"
+                    "The next {C:attention}#1#{} scored gives {C:mult}+#2#{} Mult,",
+			        "then required rank decreases by {C:attention}1{}",
+                    "When an {C:attention}#3#{} is reached and scored,",
+                    "it gives {X:mult,C:white}X#4#{} Mult"
                 }
             },
             j_fmod_despicable_bear = {
@@ -70,7 +69,7 @@ return {
                 name = "Nero the Fool",
                 text = {
                     "If {C:attention}first hand{} of round",
-                    "has exactly {C:attention}2{} cards,",
+                    "has exactly {C:attention}#1#{} cards,",
                     "destroy them"
                 }
             },
@@ -86,7 +85,7 @@ return {
                 name = "Passport",
                 text = {
                     "{C:mult}+#1#{} Mult per unique",
-                    "{C:attention}Poker Hand{} played",
+                    "{C:attention}poker hand{} played",
                     "{C:inactive}(Currently: {C:mult}+#2#{C:inactive} Mult)",
                 }
             },
@@ -100,10 +99,9 @@ return {
             j_fmod_blue_angel_mushroom = {
                 name = "Blue Angel Mushroom",
                 text = {
-                    "If death were to occur",
-                    "give {C:red}+1{} hand and resume the round",
-                    "Self-destructs after {C:attention}#1#{} uses",
-                    "{C:inactive}(Uses left: {C:attention}#2#{C:inactive})",
+                    "The next {C:attention}#2#{} times",
+                    "you would {C:attention}die{}, instead",
+                    "resume the round with {C:blue}+1{} hand",
                 }
             },
             j_fmod_impractical_joker = {
@@ -118,9 +116,9 @@ return {
             j_fmod_ferromancy = {
                 name = "Ferromancy",
                 text = {
-                    "{C:attention}Gold{} cards give {X:mult,C:white}X#1#{} Mult",
-                    "when held in hand, while",
-                    "{C:attention}Steel{} cards give {C:money}$#2#{}",
+                    "{C:attention}Gold Cards{} give {X:mult,C:white}X#1#{} Mult",
+                    "when held in hand",
+                    "{C:attention}Steel Cards{} give {C:money}$#2#{}",
                     "at end of round",
                     "{C:inactive}(Overrides default behavior)"
                 }
@@ -128,8 +126,8 @@ return {
             j_fmod_jazzercise = {
                 name = "Jazzercise Joker",
                 text = {
-                    "{C:attention}+#1#{} hand size for every {C:attention}#2# {C:inactive}[#3#]",
-                    "cards destroyed in this run",
+                    "Gains {C:attention}+#1#{} hand size for",
+                    "every {C:attention}#2# {C:inactive}[#3#]{} cards destroyed",
                     "{C:inactive}(Currently {C:attention}+#4#{C:inactive})"
                 }
             },
@@ -137,7 +135,7 @@ return {
                 name = "Pomni",
                 text = {
                     "After skipping {C:attention}#2#{} Blinds, {C:attention}-#1#{} Ante",
-                    "{C:green}#3# in #4#{} chance for {C:attention}-#5#{} Ante",
+                    "{C:green}#3# in #4#{} chance for {C:attention}-#5#{} Ante instead",
                     "{C:inactive}(Currently {C:attention}#6#{C:inactive}/#2#)"
                 }
             },
@@ -153,9 +151,9 @@ return {
             j_fmod_wordle = {
                 name = "Wordle",
                 text = {
-                    "Gains {C:chips}+#1#{} Chips if scored",
-                    "hand contains a {C:attention}3{}, {C:attention}7{}, {C:attention}8{}, or",
-                    "a {C:attention}Queen{}",
+                    "Gains {C:chips}+#1#{} Chips if played",
+                    "hand contains a scoring",
+                    "{C:attention}3{}, {C:attention}7{}, {C:attention}8{}, or {C:attention}Queen{}",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
@@ -163,7 +161,7 @@ return {
                 name = "Hyperfixation",
                 text = {
                     "Each played {C:attention}#1#{} of {V:1}#2#{}",
-                    "is retriggered {C:attention}#3#{} time(s)",
+                    "is retriggered {C:attention}#3#{} time#7#",
                     "Gains {C:attention}1{} retrigger every {C:attention}#5#{} {C:inactive}[#6#]{} times",
                     "a round's {C:attention}required rank{} (#4#) is scored",
                     "{C:inactive}(Required rank changes every round)"
@@ -172,8 +170,8 @@ return {
             j_fmod_fragile_sticker = {
                 name = "Fragile Sticker",
                 text = {
-                    "{C:attention}Glass{} no longer breaks",
-                    "through use",
+                    "{C:attention}Glass Cards{} no longer",
+                    "break through use",
                 }
             },
             j_fmod_ghost_trick = {
@@ -187,11 +185,11 @@ return {
             j_fmod_rabbit = {
                 name = "Rabbit",
                 text = {
-                    "If played hand is a {C:attention}Five",
-                    "{C:attention}of a Kind{}, creates a {C:attention}copy{} of",
-                    "the leftmost playing card",
-                    "and {C:attention}discards{} it",
-                    "{C:inactive}(Can be done twice per round)"
+                    "The first {C:attention}#1#{} times each round",
+                    "you play a {C:attention}Five of a Kind{},",
+                    "create a {C:attention}copy{} of the leftmost",
+                    "played card and {C:attention}discard{} it",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive} remaining){}"
                 }
             }
         },
@@ -200,7 +198,7 @@ return {
                 name = "Appraisal Tag",
                 text = {
                     "Gives {C:money}$#1#{} for each {C:attention}Enhanced",
-                    "{C:attention}Card{} in your full deck",
+                    "card in your full deck",
                     "{C:inactive}(Will give {C:money}$#2#{C:inactive})"
                 }
             },
@@ -214,7 +212,7 @@ return {
             tag_fmod_boost = {
                 name = "Boost Tag",
                 text = {
-                    "Adds two {C:attention}Free",
+                    "Adds two {C:attention}free",
                     "{C:attention}Booster Packs",
                     "to the next shop"
                 }
@@ -318,7 +316,8 @@ return {
             b_fmod_fennex = {
                 name = "Fennex Deck",
                 text = {
-                    "Start run with the {C:attention,T:j_fmod_fennex}Fennex{} Joker,",
+                    "Start run with the",
+                    "{C:attention,T:j_fmod_fennex}Fennex{} Joker,",
                     "{C:legendary}Lucky Rabbit{C:attention} Jokers{} are",
                     "{X:green,C:white}3X{} more likely to appear"
                 }
@@ -333,17 +332,17 @@ return {
             b_fmod_reaper = {
                 name = "Reaper Deck",
                 text = {
-                    "Every Boss Blind is a {C:attention}Finisher{}",
-                    "{C:attention}Blind{} with {X:mult,C:white,s:1.2}X2{} {C:red}Base Size{}",
-                    "{C:chips}+1{} Hand, {C:red}+1{} Discard, {C:chips}+1{} Hand",
-                    "Size, {C:attention}+1{} Joker Slot"
+                    "Every Boss Blind is a",
+                    "{C:attention}Finisher Blind{} with {X:mult,C:white}X2{} {C:red}Size{}",
+                    "{C:chips}+1{} Hand, {C:red}+1{} Discard, {C:attention}+1{}",
+                    "Hand Size, {C:attention}+1{} Joker Slot"
                 }
             },
             b_fmod_harmony = {
                 name = "Harmony Deck",
                 text = {
-                    "All cards in deck are the",
-                    "same {C:attention}Rank{} and {C:attention}Suit{}",
+                    "All cards in deck are",
+                    "the same {C:attention}rank{} and {C:attention}suit{}",
                     "{C:red}-2{} Discards"
                 }
             }
@@ -352,16 +351,16 @@ return {
             c_fmod_pie = {
                 name = "Pie",
                 text = {
-                    "Select {C:attention}#1#{} cards, copy the {C:attention}rank",
-                    "of the {C:attention}left{} card onto the {C:attention}right{}",
-                    "card"
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:attention}rank{} of the {C:attention}left{} card",
+                    "onto the {C:attention}right{} card"
                 }
             },
             c_fmod_clown_car = {
                 name = "Clown Car",
                 text = {
                     "Creates a random {C:dark_edition}Negative{}",
-                    "{C:attention}Joker card{}, {C:money}-$#1#{} for each",
+                    "{C:attention}Joker{}, {C:money}-$#1#{} for each",
                     "{C:dark_edition}Negative{} Joker owned",
                     "{C:inactive}(Joker has no {C:attention}sell value{C:inactive})"
                 }
@@ -369,33 +368,33 @@ return {
             c_fmod_bang_gun = {
                 name = "Bang Gun",
                 text = {
-                    "Select {C:attention}#1#{} cards, copy the {C:attention}suit",
-                    "of the {C:attention}left{} card onto the {C:attention}right{}",
-                    "card"
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:attention}suit{} of the {C:attention}left{} card",
+                    "onto the {C:attention}right{} card"
                 }
             },
             c_fmod_squirt_flower = {
                 name = "Squirt Flower",
                 text = {
-                    "Select {C:attention}#1#{} cards, copy the {C:attention}seal",
-                    "of the {C:attention}left{} card onto the {C:attention}right{}",
-                    "card"
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:attention}seal{} of the {C:attention}left{} card",
+                    "onto the {C:attention}right{} card"
                 }
             },
             c_fmod_whoopie_cushion = {
                 name = "Whoopie Cushion",
                 text = {
                     "Select {C:attention}#1#{} cards, copy the",
-                    "{C:attention}Enhancement{} of the {C:attention}left",
-                    "card onto the {C:attention}right{} card"
+                    "{C:attention}Enhancement{} of the {C:attention}left card",
+                    "onto the {C:attention}right{} card"
                 }
             },
             c_fmod_joy_buzzer = {
                 name = "Joy Buzzer",
                 text = {
-                    "Select {C:attention}#1#{} cards, copy",
-                    "the {C:dark_edition}Edition{} of the {C:attention}left",
-                    "card onto the {C:attention}right{} card"
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:dark_edition}Edition{} of the {C:attention}left card",
+                    "onto the {C:attention}right{} card"
                 }
             },
             c_fmod_midway_games = {
@@ -411,16 +410,14 @@ return {
                 text = {
                     "Gain {C:money}$#1#{}. Increases",
                     "by +{C:money}$#2#{} each time",
-                    "a Juggler card is",
-                    "used in this run"
+                    "Juggler is used this run"
                 }
             },
             c_fmod_balloons = {
                 name = "Balloons",
                 text = {
-                    "All cards held in hand gain",
-                    "extra chips equal to {C:attention}double",
-                    "their total {C:chips}Chip value",
+                    "{C:attention}Doubles{} the {C:chips}Chip value{}",
+                    "of all cards held in hand",
                     "{C:inactive}(Excludes {C:dark_edition}Editions{C:inactive})"
                 }
             },
@@ -444,18 +441,18 @@ return {
                 name = "Soully",
                 text = {
                     "Creates a {C:legendary,E:1}Legendary{} Joker",
-                    "from the Lucky Rabbit Mod",
+                    "from the {C:attention}Lucky Rabbit{} Mod",
                     "{C:inactive}(Must have room)"
                 }
             },
             c_fmod_tightrope = {
                 name = "Tightrope",
                 text = {
-                    "{C:green}1 in 2{} chance to create",
+                    "{C:green}50%{} chance to create",
                     "{C:attention}1{} copy of {C:attention}1{} selected card",
-                    "{C:green}1 in 4{} chance to create",
+                    "{C:green}25%{} chance to create",
                     "{C:attention}2{} copies",
-                    "{C:green}1 in 4{} chance to {C:red}destroy{}",
+                    "{C:green}25%{} chance to {C:red}destroy{}",
                     "selected card",
                     "{C:inactive}(Odds cannot be changed)"
                 }
@@ -463,25 +460,24 @@ return {
             c_fmod_fire_breath = {
                 name = "Fire Breath",
                 text = {
-                    "Destroys a selected {C:attention}Joker{} and",
-                    "copies its {C:dark_edition}Edition{} onto the",
+                    "Destroy selected {C:attention}Joker{}, then",
+                    "copy its {C:dark_edition}Edition{} onto the",
                     "{C:attention}Joker{} to its right"
                 }
             },
             c_fmod_rodeo = {
                 name = "Rodeo",
                 text = {
-                    "Select {C:attention}#1#{} cards. A random one",
-                    "will be given {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
-                    "or {C:dark_edition}Polychrome{}, and the other",
-                    "will be {C:attention}destroyed"
+                    "Select {C:attention}#1#{} cards. Give a random one",
+                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or {C:dark_edition}Polychrome{},",
+                    "and {C:red}destroy{} the other"
                 }
             },
             c_fmod_endless_scarf = {
                 name = "Endless Scarf",
                 text = {
-                    "{C:attention}+#1#{} hand size for the",
-                    "next, or current, round"
+                    "{C:attention}+#1#{} hand size",
+                    "until end of round"
                 }
             },
             c_fmod_knife_throw = {
@@ -496,9 +492,9 @@ return {
             c_fmod_trapeze = {
                 name = "Trapeze",
                 text = {
-                    "After this card has been used",
-                    "{C:attention}#2#{} times, its next occurance",
-                    "will be replaced by a {C:attention}Soul{} card",
+                    "After using Trapeze {C:attention}#2#{} times,",
+                    "its next appearance will be",
+                    "replaced by a {C:attention}Soul{} card",
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)"
                 }
             },
@@ -552,8 +548,8 @@ return {
             v_fmod_buffet = {
                 name = "Buffet",
                 text = {
-                    "Permanently gain yet",
-                    "another {C:blue}+#1#{}",
+                    "Permanently gain",
+                    "yet another {C:blue}+#1#{}",
                     "hands per round"
                 }
             },
@@ -568,10 +564,10 @@ return {
             v_fmod_anti_higgs_boson = {
                 name = "Anti-Higgs Boson",
                 text = {
-                    "Additional {C:dark_edition}+1{} Joker Slot",
-                    "{C:inactive}Blank{} and {C:dark_edition}Antimatter{}",
-                    "vouchers are reintroduced",
-                    " into the voucher pool"
+                    "{C:dark_edition}+1{} Joker Slot",
+                    "The {C:inactive}Blank{} and {C:dark_edition}Antimatter{}",
+                    "{C:attention}Vouchers{} are returned",
+                    "to the {C:attention}Voucher{} pool"
                 }
             },
             v_fmod_big_bang = {
@@ -584,8 +580,6 @@ return {
             v_fmod_color_swatches = {
                 name = "Color Swatches",
                 text = {
-                    "Permanently gain",
-                    "yet another",
                     "{C:attention}+#1#{} hand size"
                 }
             },
@@ -593,7 +587,7 @@ return {
                 name = "Fire Sale",
                 text = {
                     "{C:attention}+#1#{} card slot,",
-                    "{C:attention}+#2#{} pack slot",
+                    "{C:attention}+#2#{} {C:attention}Booster Pack{} slot",
                     "available in shop",
                 }
             },
@@ -613,8 +607,8 @@ return {
                 name = "Shopaholic",
                 text = {
                     "Add a {C:attention}free{}",
-                    "extra {C:attention}booster",
-                    "{C:attention}pack{} to the shop"
+                    "{C:attention}Booster Pack{}",
+                    "to each shop"
                 }
             }
         },
@@ -686,23 +680,22 @@ return {
             fmod_ink_mark = {
                 name = "Inked",
                 text = {
-                    "This card can no",
-                    "longer be {C:attention}flipped"
+                    "Cannot be",
+                    "{C:attention}flipped"
                 }
             },
             fmod_crease_mark = {
                 name = "Creased",
                 text = {
-                    "This card is prioritized",
-                    "to the {C:attention}top{} of the",
-                    "draw order"
+                    "Always shuffled to",
+                    "the {C:attention}top{} of deck",
                 }
             },
             fmod_pinhole_mark = {
                 name = "Pinholed",
                 text = {
-                    "This card is {C:attention}returned",
-                    "to the deck when played",
+                    "{C:attention}Returns{} to the",
+                    "deck when played",
                 }
             }
         }

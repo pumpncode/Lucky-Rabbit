@@ -314,3 +314,31 @@ payload = '''hyperfix_card = {rank = 'Ace', id = 14},
 '''
 match_indent = true
 times = 1
+
+# -------- despicable bear --------
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = """
+for _, v in ipairs(G.handlist) do
+if not results.top and results[v] then"""
+position = "before"
+payload = '''
+if next(SMODS.find_card("j_fmod_despicable_bear")) and #hand == 4 and results["Two Pair"] then
+    results["Four of a Kind"] = { SMODS.merge_lists(results["Four of a Kind"], results["Two Pair"]) }
+end'''
+match_indent = true
+
+# -------- clown car --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.sell_cost = * + (self.ability.extra_value or 0)"
+position = "after"
+match_indent = true
+payload = '''
+if self.ability.fmod_no_sell_value then
+    self.sell_cost = self.ability.extra_value or 0
+end'''
