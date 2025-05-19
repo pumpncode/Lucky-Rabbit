@@ -3,7 +3,7 @@ SMODS.Consumable {
     set = "Silly",
     config = {
         extra = {
-            dollars = 3,
+            dollars = 5,
             increase = 2
         }
     },
