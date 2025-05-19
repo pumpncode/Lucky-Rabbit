@@ -85,7 +85,8 @@ return {
                 name = "Passport",
                 text = {
                     "{C:mult}+#1#{} Mult per unique",
-                    "{C:attention}poker hand{} played",
+                    "{C:attention}poker hand{} played,",
+                    "resets after boss blind blind is defeated",
                     "{C:inactive}(Currently: {C:mult}+#2#{C:inactive} Mult)",
                 }
             },
