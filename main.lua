@@ -9,15 +9,15 @@ SMODS.load_file("utilities/func.lua")()
 SMODS.current_mod.config_tab = function()
     return {
         n = G.UIT.ROOT,
-        config = {align = "cm", padding = 0.05, emboss = 0.05, r = 0.1, colour = G.C.BLACK},
+        config = { align = "cm", padding = 0.05, emboss = 0.05, r = 0.1, colour = G.C.BLACK },
         nodes = {
             {
                 n = G.UIT.R,
-                config = {align = "cm", minh = 1},
+                config = { align = "cm", minh = 1 },
                 nodes = {
                     {
                         n = G.UIT.T,
-                        config = {text = localize("k_fmod_config_restart"), colour = G.C.RED, scale = 0.5}
+                        config = { text = localize("k_fmod_config_restart"), colour = G.C.RED, scale = 0.5 }
                     }
                 }
             },
@@ -79,7 +79,7 @@ end
 --Optional features
 SMODS.optional_features = {
     cardareas = {
-        unscored=true,
+        unscored = true,
     }
 }
 
@@ -404,15 +404,15 @@ SMODS.DeckSkin {
     palettes = {
         {
             key = 'lc',
-            ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'},
-            display_ranks = {'Ace', 'King', 'Queen', 'Jack', '10'},
+            ranks = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack', '10' },
             pos_style = 'ranks',
             atlas = 'fmod_peppered_diamonds_lc'
         },
         {
             key = 'hc',
-            ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'},
-            display_ranks = {'Ace', 'King', 'Queen', 'Jack', '10'},
+            ranks = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack', '10' },
             pos_style = 'ranks',
             atlas = 'fmod_peppered_diamonds_hc'
         }
@@ -426,15 +426,15 @@ SMODS.DeckSkin {
     palettes = {
         {
             key = 'lc',
-            ranks = {'Jack', 'Queen', 'King', 'Ace'},
-            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
             pos_style = 'ranks',
             atlas = 'fmod_yttd_clubs_lc'
         },
         {
             key = 'hc',
-            ranks = {'Jack', 'Queen', 'King', 'Ace'},
-            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
             pos_style = 'ranks',
             atlas = 'fmod_yttd_clubs_hc'
         }
@@ -448,17 +448,61 @@ SMODS.DeckSkin {
     palettes = {
         {
             key = 'lc',
-            ranks = {'Jack', 'Queen', 'King', 'Ace'},
-            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
             pos_style = 'ranks',
             atlas = 'fmod_catgirl_hearts_lc'
         },
         {
             key = 'hc',
-            ranks = {'Jack', 'Queen', 'King', 'Ace'},
-            display_ranks = {'Ace', 'King', 'Queen', 'Jack'},
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
             pos_style = 'ranks',
             atlas = 'fmod_catgirl_hearts_hc'
+        }
+    },
+}
+
+SMODS.DeckSkin {
+    key = "deathnote_spades",
+    suit = "Spades",
+    loc_txt = "Death Note",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_deathnote_spades_lc'
+        },
+        {
+            key = 'hc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_deathnote_spades_hc'
+        }
+    },
+}
+
+SMODS.DeckSkin {
+    key = "deltarune_hearts",
+    suit = "Hearts",
+    loc_txt = "Deltarune",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_deltarune_hearts_lc'
+        },
+        {
+            key = 'hc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_deltarune_hearts_hc'
         }
     },
 }

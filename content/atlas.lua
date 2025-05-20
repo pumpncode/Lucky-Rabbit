@@ -15,10 +15,10 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas {
-	key = "modicon",
-	path = "Fennex_Mod_Icon.png",
-	px = 32,
-	py = 32
+    key = "modicon",
+    path = "Fennex_Mod_Icon.png",
+    px = 32,
+    py = 32
 }
 
 SMODS.Atlas {
@@ -99,6 +99,34 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = 'catgirl_hearts_hc',
     path = 'collabs/catgirl_hearts_hc.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "deathnote_spades_lc",
+    path = "collabs/deathnote_spades_lc.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "deathnote_spades_hc",
+    path = "collabs/deathnote_spades_hc.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "deltarune_hearts_lc",
+    path = "collabs/deltarune_hearts_lc.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "deltarune_hearts_hc",
+    path = "collabs/deltarune_hearts_hc.png",
     px = 71,
     py = 95
 }
