@@ -506,3 +506,72 @@ SMODS.DeckSkin {
         }
     },
 }
+
+if next(SMODS.find_mod("paperback")) then
+    SMODS.Atlas {
+        key = "peppered_stars_lc",
+        path = "collabs/peppered_stars_lc.png",
+        px = 71,
+        py = 95
+    }
+    SMODS.Atlas {
+        key = "peppered_stars_hc",
+        path = "collabs/peppered_stars_hc.png",
+        px = 71,
+        py = 95
+    }
+    SMODS.Atlas {
+        key = "yttd_crowns_lc",
+        path = "collabs/yttd_crowns_lc.png",
+        px = 71,
+        py = 95
+    }
+    SMODS.Atlas {
+        key = "yttd_crowns_hc",
+        path = "collabs/yttd_crowns_hc.png",
+        px = 71,
+        py = 95
+    }
+    SMODS.DeckSkin {
+        key = "peppered_paperback_stars",
+        suit = "paperback_Stars",
+        loc_txt = "PEPPERED",
+        palettes = {
+            {
+                key = 'lc',
+                ranks = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' },
+                display_ranks = { 'Ace', 'King', 'Queen', 'Jack', '10' },
+                pos_style = 'ranks',
+                atlas = 'fmod_peppered_stars_lc'
+            },
+            {
+                key = 'hc',
+                ranks = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' },
+                display_ranks = { 'Ace', 'King', 'Queen', 'Jack', '10' },
+                pos_style = 'ranks',
+                atlas = 'fmod_peppered_stars_hc'
+            }
+        },
+    }
+    SMODS.DeckSkin {
+        key = "yttd_paperback_crowns",
+        suit = "paperback_Crowns",
+        loc_txt = "Your Turn To Die",
+        palettes = {
+            {
+                key = 'lc',
+                ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+                display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+                pos_style = 'ranks',
+                atlas = 'fmod_yttd_crowns_lc'
+            },
+            {
+                key = 'hc',
+                ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+                display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+                pos_style = 'ranks',
+                atlas = 'fmod_yttd_crowns_hc'
+            }
+        }
+    }
+end
