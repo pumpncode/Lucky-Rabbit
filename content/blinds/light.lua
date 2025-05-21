@@ -6,7 +6,9 @@ SMODS.Blind {
     boss = { min = 2 },
     boss_colour = HEX('d8d5c0'),
     calculate = function(self, card, context)
-        if context.before and not context.blueprint then
+        -- SMODS blind calc might get fixed,
+        -- then G.GAME.blind.disabled won't be needed
+        if not G.GAME.blind.disabled and context.before and not context.blueprint then
             for k, v in ipairs(context.scoring_hand) do
                 if next(SMODS.get_enhancements(v)) and not v.debuff and not v.vampired then
                     v.vampired = true
