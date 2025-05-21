@@ -17,8 +17,8 @@ SMODS.Consumable {
     use = function(self, card, context, copier)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('timpani')
-            if FMOD.get_negatives(G.jokers.cards) > 0 then
-                ease_dollars(-(FMOD.get_negatives(G.jokers.cards) * card.ability.extra.minus_money))
+            if LR_UTIL.get_negatives(G.jokers.cards) > 0 then
+                ease_dollars(-(LR_UTIL.get_negatives(G.jokers.cards) * card.ability.extra.minus_money))
             end
             local joker = SMODS.add_card({set = 'Joker', area = G.jokers, edition = "e_negative"})
             joker.ability.fmod_no_sell_value = true
@@ -32,7 +32,7 @@ SMODS.Consumable {
     end
 }
 
-FMOD.get_negatives = function(set)
+LR_UTIL.get_negatives = function(set)
     local amt = 0
     if set then for i = 1, #set do
         local card = set[i]

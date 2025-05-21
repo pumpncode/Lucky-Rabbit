@@ -185,8 +185,8 @@ pattern = "badges.mod_set = nil"
 position = "before"
 match_indent = true
 payload = '''
-if FMOD and card and card.ability then
-    local key = FMOD.has_marking(card)
+if LR_UTIL and card and card.ability then
+    local key = LR_UTIL.has_marking(card)
     if key then
         SMODS.create_mod_badges(SMODS.Stickers[key], badges)
     end
@@ -202,7 +202,7 @@ pattern = '''function Blind:stay_flipped(area, card, from_area)
     if not self.disabled then'''
 position = "at"
 payload = '''function Blind:stay_flipped(area, card, from_area)
-    if not self.disabled and not (FMOD.has_marking(card) == 'fmod_ink_mark') then'''
+    if not self.disabled and not (LR_UTIL.has_marking(card) == 'fmod_ink_mark') then'''
 match_indent = true
 times = 1
 
@@ -220,7 +220,7 @@ pattern = '''for k, v in ipairs(G.play.cards) do
 position = "at"
 payload = '''for k, v in ipairs(G.play.cards) do
     if not (v.shattered) and (not v.destroyed) then
-        if FMOD.has_marking(v) == "fmod_pinhole_mark" then
+        if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
             draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
             it = it + 1
         else
@@ -244,14 +244,14 @@ if G.GAME.modifiers.flipped_cards and to == G.hand then
 end
 to:emplace(card, nil, stay_flipped)'''
 position = "at"
-payload = '''if card and not (FMOD.has_marking(card) == "fmod_pinhole_mark") then drawn = true end
+payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end
 local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
 if G.GAME.modifiers.flipped_cards and to == G.hand then
     if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
         stay_flipped = true
     end
 end
-if to == G.deck and #G.deck.cards > 0 and FMOD.has_marking(card) == "fmod_pinhole_mark" then
+if to == G.deck and #G.deck.cards > 0 and LR_UTIL.has_marking(card) == "fmod_pinhole_mark" then
     local poss_deck = {}
     for k, v in ipairs(G.deck.cards) do
         poss_deck[#poss_deck+1] = k
@@ -288,9 +288,9 @@ times = 1
 target = 'game.lua'
 pattern = '''reset_idol_card()'''
 position = "after"
-payload = '''FMOD.reset_hyperfix_rank()
-G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.id = FMOD.reset_hyperfix_full_card("rank")
-G.GAME.hyperfix_card.suit = FMOD.reset_hyperfix_full_card("suit")
+payload = '''LR_UTIL.reset_hyperfix_rank()
+G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.id = LR_UTIL.reset_hyperfix_full_card("rank")
+G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card("suit")
 '''
 match_indent = true
 times = 1
@@ -300,7 +300,7 @@ times = 1
 target = 'functions/state_events.lua'
 pattern = '''reset_idol_card()'''
 position = "after"
-payload = '''FMOD.reset_hyperfix_rank()
+payload = '''LR_UTIL.reset_hyperfix_rank()
 '''
 match_indent = true
 times = 1

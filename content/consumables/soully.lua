@@ -18,7 +18,7 @@ SMODS.Consumable {
     soul_set = "Spectral",
     use = function(self, card, context, copier)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            local key = FMOD.get_fmod_legendaries('soully')
+            local key = LR_UTIL.get_fmod_legendaries('soully')
             play_sound('timpani')
             SMODS.add_card({set = 'Joker', area = G.jokers, key = key})
             return true end }))

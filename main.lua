@@ -1,7 +1,7 @@
-FMOD = {}
+LR_UTIL = {}
 
 -- config tab
-local config = SMODS.current_mod.config
+LR_CONFIG = SMODS.current_mod.config
 
 SMODS.load_file("content/atlas.lua")()
 SMODS.load_file("utilities/func.lua")()
@@ -29,22 +29,22 @@ SMODS.current_mod.config_tab = function()
                         nodes = {
                             create_toggle {
                                 label = localize("k_fmod_config_jokers"),
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "jokers_enabled"
                             },
                             create_toggle {
                                 label = localize("k_fmod_config_silly"),
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "silly_enabled"
                             },
                             create_toggle {
                                 label = localize("k_fmod_config_vouchers"),
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "vouchers_enabled"
                             },
                             create_toggle {
                                 label = localize("k_fmod_config_tags"),
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "tags_enabled"
                             },
                         }
@@ -54,17 +54,17 @@ SMODS.current_mod.config_tab = function()
                         nodes = {
                             create_toggle {
                                 label = localize("k_fmod_config_blinds"),
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "blinds_enabled"
                             },
                             create_toggle {
                                 label = localize("k_fmod_config_decks"),
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "decks_enabled"
                             },
                             create_toggle {
                                 label = "Enable Markings",
-                                ref_table = config,
+                                ref_table = LR_CONFIG,
                                 ref_value = "markings_enabled"
                             },
                         }
@@ -211,17 +211,17 @@ local files = {
 
 -- load everything
 
-function FMOD.load_files(items, path)
+function LR_UTIL.load_files(items, path)
     for i = 1, #items do
         assert(SMODS.load_file(path .. "/" .. items[i] .. '.lua'))()
     end
 end
 
-if config.jokers_enabled then
-    FMOD.load_files(files.jokers.list, files.jokers.directory)
+if LR_CONFIG.jokers_enabled then
+    LR_UTIL.load_files(files.jokers.list, files.jokers.directory)
 end
 
-if config.silly_enabled then
+if LR_CONFIG.silly_enabled then
     -- register silly packs
     SMODS.ConsumableType {
         key = 'Silly',
@@ -273,30 +273,30 @@ if config.silly_enabled then
         pos = { x = 3, y = 2 },
         --overlay_pos = { x = 4, y = 2 }
     }
-    FMOD.load_files(files.consumables.list, files.consumables.directory)
-    FMOD.load_files(files.boosters.list, files.boosters.directory)
+    LR_UTIL.load_files(files.consumables.list, files.consumables.directory)
+    LR_UTIL.load_files(files.boosters.list, files.boosters.directory)
 end
 
-if config.vouchers_enabled then
-    FMOD.load_files(files.vouchers.list, files.vouchers.directory)
+if LR_CONFIG.vouchers_enabled then
+    LR_UTIL.load_files(files.vouchers.list, files.vouchers.directory)
 end
 
-if config.blinds_enabled then
-    FMOD.load_files(files.blinds.list, files.blinds.directory)
+if LR_CONFIG.blinds_enabled then
+    LR_UTIL.load_files(files.blinds.list, files.blinds.directory)
 end
 
-if config.decks_enabled then
-    FMOD.load_files(files.decks.list, files.decks.directory)
+if LR_CONFIG.decks_enabled then
+    LR_UTIL.load_files(files.decks.list, files.decks.directory)
 end
 
-if config.tags_enabled then
-    FMOD.load_files(files.tags.list, files.tags.directory)
+if LR_CONFIG.tags_enabled then
+    LR_UTIL.load_files(files.tags.list, files.tags.directory)
 end
 
 -- define marking objects
 
-if config.markings_enabled then
-    FMOD.Marking = SMODS.Sticker:extend {
+if LR_CONFIG.markings_enabled then
+    LR_UTIL.Marking = SMODS.Sticker:extend {
         prefix_config = { key = true },
         should_apply = false,
         config = {},
@@ -331,7 +331,7 @@ if config.markings_enabled then
     local function markings_ui()
         local markings = {}
         for k, v in pairs(SMODS.Stickers) do
-            if FMOD.is_marking(k) then
+            if LR_UTIL.is_marking(k) then
                 markings[k] = v
             end
         end
@@ -364,7 +364,7 @@ if config.markings_enabled then
         -- remove from SMODS.Stickers just for this call
         local removed = {}
         for k, v in pairs(SMODS.Stickers) do
-            if FMOD.is_marking(k) then
+            if LR_UTIL.is_marking(k) then
                 removed[k] = v
                 SMODS.Stickers[k] = nil
             end
@@ -387,12 +387,12 @@ if config.markings_enabled then
         return wrap_without_markings(other_objects_ref)
     end
 
-    FMOD.ENABLED_MARKINGS = {
+    LR_UTIL.ENABLED_MARKINGS = {
         "crease_mark",
         "pinhole_mark",
         "ink_mark"
     }
-    FMOD.load_files(files.markings.list, files.markings.directory)
+    LR_UTIL.load_files(files.markings.list, files.markings.directory)
 end
 
 -- friends of jimbo skins

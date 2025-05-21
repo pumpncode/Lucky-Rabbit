@@ -7,7 +7,7 @@ SMODS.Consumable {
         }
     },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = FMOD.marking_tooltip("pinhole")
+        info_queue[#info_queue+1] = LR_UTIL.marking_tooltip("pinhole")
         return { vars = { card.ability.extra.cards } }
     end,
     atlas = "Consumables",
@@ -25,7 +25,7 @@ SMODS.Consumable {
         delay(0.2)
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                FMOD.set_marking(G.hand.highlighted[i], 'pinhole')
+                LR_UTIL.set_marking(G.hand.highlighted[i], 'pinhole')
             return true end }))
         end
         for i=1, #G.hand.highlighted do
