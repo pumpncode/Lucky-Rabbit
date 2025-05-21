@@ -206,6 +206,24 @@ payload = '''function Blind:stay_flipped(area, card, from_area)
 match_indent = true
 times = 1
 
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then"
+position = "at"
+payload = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards and not (LR_UTIL.has_marking(card) == 'fmod_ink_mark') then"
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then"
+position = "at"
+payload = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards and not (LR_UTIL.has_marking(card) == 'fmod_ink_mark') then"
+match_indent = true
+times = 1
+
 # -------- pinhole marking --------
 
 [[patches]]
