@@ -192,6 +192,13 @@ return {
                     "played card and {C:attention}discard{} it",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive} remaining){}"
                 }
+            },
+            j_fmod_crazy_neils_crazy_deals = {
+                name = "Crazy Neil's Crazy Deals",
+                text = {
+                    "One random shop item is",
+                    "{C:attention}#1#%{} off every shop"
+                }
             }
         },
         Tag = {
@@ -706,6 +713,7 @@ return {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
             k_fmod_upgraded = "Upgraded!",
+            k_fmod_neil_deal = "Discounted!",
             k_fmod_sillypack = "Silly Pack",
             r_fmod_mostplayed = "(most played rank)",
             k_fmod_config_restart = "Requires Restart",

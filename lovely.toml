@@ -360,3 +360,17 @@ payload = '''
 if self.ability.fmod_no_sell_value then
     self.sell_cost = self.ability.extra_value or 0
 end'''
+
+# -------- crazy neil --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'
+position = "before"
+payload = '''
+if self.ability.fmod_crazy_neil_discount then
+    self.cost = math.max(1, math.floor(self.cost - (self.cost * 0.75)))
+end'''
+times = 1
+match_indent = true
