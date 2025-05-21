@@ -33,7 +33,7 @@ end
 local gnb = get_new_boss
 function get_new_boss()
     if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(FMOD.random_showdown_blind('reaper'))
+		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
 		G.FORCE_BOSS = nil
@@ -45,7 +45,7 @@ function get_new_boss()
     return gnb_val
 end
 
-function FMOD.random_showdown_blind(seed)
+function LR_UTIL.random_showdown_blind(seed)
     local eligible_bosses = {}
     for k, v in pairs(G.P_BLINDS) do
         if not v.boss then
@@ -65,7 +65,7 @@ end
 local reroll_ref = G.FUNCS.reroll_boss
 G.FUNCS.reroll_boss = function(e)
 	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(FMOD.random_showdown_blind('reaper'))
+		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
 		G.FORCE_BOSS = nil
@@ -77,7 +77,7 @@ G.FUNCS.reroll_boss = function(e)
 	return reroll_val
 end
 
-function FMOD.reset_hyperfix_rank()
+function LR_UTIL.reset_hyperfix_rank()
     G.GAME.current_round.hyperfix_card.rank = 'Ace'
     local valid_hyperfix_cards = {}
     for k, v in ipairs(G.playing_cards) do
@@ -95,7 +95,7 @@ function FMOD.reset_hyperfix_rank()
     end
 end
 
-function FMOD.reset_hyperfix_full_card(type)
+function LR_UTIL.reset_hyperfix_full_card(type)
     local rank = 'Ace'
     local suit = 'Spades'
     local id = 14
@@ -118,7 +118,7 @@ function FMOD.reset_hyperfix_full_card(type)
     end
 end
 
-function FMOD.get_food_jokers(seed)
+function LR_UTIL.get_food_jokers(seed)
     local possible_jokers = {
         'j_gros_michel',
         'j_egg',
@@ -140,7 +140,7 @@ function FMOD.get_food_jokers(seed)
     return key
 end
 
-function FMOD.get_fmod_legendaries(seed)
+function LR_UTIL.get_fmod_legendaries(seed)
     local possible_jokers = {}
     if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
         if v.pools and v.pools.Fmod_Legendary then
@@ -159,7 +159,7 @@ function CardArea:shuffle(_seed)
         local priorities = {}
         local others = {}
         for k, v in pairs(self.cards) do
-            if FMOD.has_marking(v) == 'fmod_crease_mark' then
+            if LR_UTIL.has_marking(v) == 'fmod_crease_mark' then
                 table.insert(priorities, v)
             else
                 table.insert(others, v)
@@ -174,27 +174,27 @@ function CardArea:shuffle(_seed)
     return g
 end
 
-function FMOD.is_marking(str)
-    for _, v in ipairs(FMOD.ENABLED_MARKINGS) do
+function LR_UTIL.is_marking(str)
+    for _, v in ipairs(LR_UTIL.ENABLED_MARKINGS) do
         if 'fmod_' .. v == str then
             return true
         end
     end
 end
 
-function FMOD.has_marking(card)
+function LR_UTIL.has_marking(card)
     for k, v in pairs(card and card.ability or {}) do
-        if FMOD.is_marking(k) then
+        if LR_UTIL.is_marking(k) then
             return k, v
         end
     end
 end
-function FMOD.set_marking(card, mark)
+function LR_UTIL.set_marking(card, mark)
     local key = 'fmod_' .. mark .. '_mark'
-    if card and FMOD.is_marking(key) then
+    if card and LR_UTIL.is_marking(key) then
         -- remove existing marks before applying
         for k, _ in pairs(card.ability) do
-            if FMOD.is_marking(k) then
+            if LR_UTIL.is_marking(k) then
                 card.ability[k] = nil
             end
         end
@@ -203,7 +203,7 @@ function FMOD.set_marking(card, mark)
     end
 end
 
-function FMOD.marking_tooltip(mark)
+function LR_UTIL.marking_tooltip(mark)
     local key = 'fmod_' .. mark .. '_mark'
     local marking = SMODS.Stickers[key]
     local vars = {}

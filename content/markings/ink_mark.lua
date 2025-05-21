@@ -1,4 +1,4 @@
-FMOD.Marking {
+LR_UTIL.Marking {
     key = "ink_mark",
     atlas = "Decks",
     pos = { x = 2, y = 0 },

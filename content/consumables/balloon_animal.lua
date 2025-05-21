@@ -7,7 +7,7 @@ SMODS.Consumable {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.money, card.ability.extra.money * FMOD.get_unique_ranks() } }
+        return { vars = { card.ability.extra.money, card.ability.extra.money * LR_UTIL.get_unique_ranks() } }
     end,
     atlas = "Consumables",
     pos = { x = 0, y = 1 },
@@ -16,7 +16,7 @@ SMODS.Consumable {
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('timpani')
             card:juice_up(0.3, 0.5)
-            ease_dollars((card.ability.extra.money * FMOD.get_unique_ranks()), true)
+            ease_dollars((card.ability.extra.money * LR_UTIL.get_unique_ranks()), true)
             return true end }))
         delay(0.6)
     end,
@@ -27,7 +27,7 @@ SMODS.Consumable {
     end,
 }
 
-FMOD.get_unique_ranks = function()
+LR_UTIL.get_unique_ranks = function()
     local ranks = {}
     if G.hand then
         for _, v in pairs(G.hand.cards) do
