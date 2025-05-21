@@ -3,8 +3,8 @@ SMODS.Consumable {
     set = "Silly",
     config = {
         extra = {
-            dollars = 5,
-            increase = 2
+            dollars = 10,
+            increase = 5
         }
     },
     loc_vars = function(self, info_queue, card)
