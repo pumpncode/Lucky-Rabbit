@@ -86,7 +86,7 @@ return {
                 text = {
                     "{C:mult}+#1#{} Mult per unique",
                     "{C:attention}poker hand{} played,",
-                    "resets after boss blind blind is defeated",
+                    "resets after {C:attention}Boss Blind{}",
                     "{C:inactive}(Currently: {C:mult}+#2#{C:inactive} Mult)",
                 }
             },

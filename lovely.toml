@@ -296,7 +296,6 @@ position = "after"
 payload = '''hyperfix_card = {
     rank = 'Ace',
     suit = 'Spades',
-    id = 14,
 },'''
 match_indent = true
 times = 1
@@ -306,9 +305,9 @@ times = 1
 target = 'game.lua'
 pattern = '''reset_idol_card()'''
 position = "after"
-payload = '''LR_UTIL.reset_hyperfix_rank()
-G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.id = LR_UTIL.reset_hyperfix_full_card("rank")
-G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card("suit")
+payload = '''
+G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
+LR_UTIL.reset_hyperfix_rank()
 '''
 match_indent = true
 times = 1
@@ -328,7 +327,7 @@ times = 1
 target = 'game.lua'
 pattern = '''idol_card = {suit = 'Spades', rank = 'Ace'},'''
 position = "after"
-payload = '''hyperfix_card = {rank = 'Ace', id = 14},
+payload = '''hyperfix_card = {rank = '2'},
 '''
 match_indent = true
 times = 1
@@ -374,3 +373,22 @@ if self.ability.fmod_crazy_neil_discount then
 end'''
 times = 1
 match_indent = true
+
+# -------- harmony deck --------
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''    card_from_control(v)
+end'''
+position = "after"
+payload = '''
+        if G.GAME.starting_params.fmod_harmony then
+            local chosen = pseudorandom_element(G.playing_cards, pseudoseed('harmony'))
+            local suit, rank = chosen.base.suit, chosen.base.value
+            for i = 1, #G.playing_cards do
+                SMODS.change_base(G.playing_cards[i], suit, rank)
+            end
+        end'''
+times = 1
+match_indent = false

@@ -78,27 +78,36 @@ G.FUNCS.reroll_boss = function(e)
 end
 
 function LR_UTIL.reset_hyperfix_rank()
-    G.GAME.current_round.hyperfix_card.rank = 'Ace'
+    -- If this function somehow isn't working, fail fast
+    G.GAME.current_round.hyperfix_card.rank = "This is a bug"
     local valid_hyperfix_cards = {}
     for k, v in ipairs(G.playing_cards) do
-        if not SMODS.has_no_rank(v) then
+        if not SMODS.has_no_rank(v) and v.base.value ~= G.GAME.hyperfix_card.rank then
             valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
         end
     end
     if valid_hyperfix_cards[1] then
         local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
-        while hyperfix_card.id == G.GAME.hyperfix_card.id do
-            hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
-        end
         G.GAME.current_round.hyperfix_card.rank = hyperfix_card.base.value
-        G.GAME.current_round.hyperfix_card.id = hyperfix_card.base.id
+        return
     end
+    -- Edge case: every card matched G.GAME.hyperfix_card's rank
+    local valid_ranks = {}
+    for _, k in ipairs(SMODS.Rank.obj_buffer) do
+        if k ~= G.GAME.hyperfix_card.rank then
+            valid_ranks[#valid_ranks+1] = k
+        end
+    end
+    if valid_ranks[1] then
+        local hyperfix_rank = pseudorandom_element(valid_ranks, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
+        G.GAME.current_round.hyperfix_card.rank = hyperfix_rank
+        return
+    end
+    -- Somehow, there's no other rank to pick
+    G.GAME.current_round.hyperfix_card.rank = 'None'
 end
 
-function LR_UTIL.reset_hyperfix_full_card(type)
-    local rank = 'Ace'
-    local suit = 'Spades'
-    local id = 14
+function LR_UTIL.reset_hyperfix_full_card()
     local valid_hyperfix_cards = {}
     for k, v in ipairs(G.playing_cards) do
         if not SMODS.has_no_rank(v) and not SMODS.has_no_suit(v) then
@@ -109,13 +118,9 @@ function LR_UTIL.reset_hyperfix_full_card(type)
         local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix_'..G.GAME.round_resets.ante))
         rank = hyperfix_card.base.value
         suit = hyperfix_card.base.suit
-        id = hyperfix_card.base.id
+        return rank, suit
     end
-    if type == 'rank' then
-        return rank, id
-    elseif type == 'suit' then
-        return suit
-    end
+    return "Ace", "Spades"
 end
 
 function LR_UTIL.get_food_jokers(seed)
