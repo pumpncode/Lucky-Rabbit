@@ -101,6 +101,7 @@ local files = {
             "ferromancy",
             "fragile_sticker",
             "hyperfixation",
+            "pop_idol_cat",
             "crazy_neils_crazy_deals",
             "blue_angel_mushroom",
             "low_hanging_fruit",
