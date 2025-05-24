@@ -159,6 +159,12 @@ local files = {
         },
         directory = 'content/consumables'
     },
+    enhancements = {
+        list = {
+            "raffle_card",
+        },
+        directory = "content/enhancements"
+    },
     blinds = {
         list = {
             "hoard",
@@ -293,6 +299,8 @@ end
 if LR_CONFIG.tags_enabled then
     LR_UTIL.load_files(files.tags.list, files.tags.directory)
 end
+
+LR_UTIL.load_files(files.enhancements.list, files.enhancements.directory)
 
 -- define marking objects
 

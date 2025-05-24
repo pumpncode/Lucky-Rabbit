@@ -620,6 +620,17 @@ return {
                 }
             }
         },
+        Enhanced = {
+            m_fmod_raffle_card = {
+                name = "Raffle Card",
+                text = {
+                    "{C:green}#1# in #2#{} chance to create",
+                    "a random {C:attention}Consumable",
+                    "when scored",
+                    "{C:inactive}(Must have room)"
+                }
+            }
+        },
         Other = {
             p_fmod_silly_small = {
                 name = "Silly Pack",
