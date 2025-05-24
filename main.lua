@@ -114,6 +114,7 @@ local files = {
             "steve",
             "pomni",
             "loonette",
+            "pub_burger"
         },
         directory = "content/jokers"
     },

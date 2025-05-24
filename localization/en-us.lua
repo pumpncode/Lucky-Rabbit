@@ -208,7 +208,15 @@ return {
                     "one is triggered, {C:attention}resets{}",
                     "after hand played"
                 }
-            }
+            },
+            j_fmod_pub_burger = {
+                name = "Pub Burger",
+                text = {
+                    "{C:attention}+#1#{} discards, {C:red}-#2#{}",
+                    "for every hand played",
+                    "after the first hand"
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {
@@ -743,6 +751,9 @@ return {
             k_fmod_config_blinds = "Enable Blinds",
             k_fmod_config_tags = "Enable Tags",
             k_fmod_config_decks = "Enable Decks",
+        },
+        v_dictionary={
+            a_fmod_discards = "+#1# Discards",
         },
         labels = {
             fmod_ink_mark = "Inked",

@@ -134,6 +134,7 @@ function LR_UTIL.get_food_jokers(seed)
         'j_popcorn',
         'j_ramen',
         'j_selzer',
+        'j_fmod_pub_burger'
     }
     if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
         if v.pools and v.pools.Food then
