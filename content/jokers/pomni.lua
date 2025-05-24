@@ -38,7 +38,7 @@ SMODS.Joker {
                     G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.base_ante
                 end
                 return {
-                    message = localize('k_reset_ex'),
+                    message = localize('k_reset'),
                 }
             else
                 return {
