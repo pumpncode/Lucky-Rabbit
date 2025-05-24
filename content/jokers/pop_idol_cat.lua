@@ -19,7 +19,6 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_lucky") then
             G.GAME.pop_idol_plus = (G.GAME.pop_idol_plus or 0) + card.ability.extra.plus_chance
-            print(G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))
             return {
                 message = "+"..card.ability.extra.plus_chance,
                 colour = G.C.GREEN,
