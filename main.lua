@@ -518,6 +518,28 @@ SMODS.DeckSkin {
     },
 }
 
+SMODS.DeckSkin {
+    key = "celeste_spades",
+    suit = "Spades",
+    loc_txt = "Celeste",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_celeste_spades_lc'
+        },
+        {
+            key = 'hc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_celeste_spades_hc'
+        }
+    },
+}
+
 if next(SMODS.find_mod("paperback")) then
     SMODS.Atlas {
         key = "peppered_stars_lc",
