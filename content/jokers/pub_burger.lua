@@ -4,6 +4,7 @@ SMODS.Joker {
         extra = {
             discards = 5,
             discard_mod = 1,
+            base_discard = 3
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -11,18 +12,29 @@ SMODS.Joker {
     end,
     rarity = 3,
     atlas = "Jokers",
+    pools = {
+        Food = true
+    },
     unlocked = true,
     discovered = true,
     pos = { x = 6, y = 1 },
     blueprint_compat = false,
     cost = 6,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.base_discard = G.GAME.round_resets.discards
+        G.E_MANAGER:add_event(Event({func = function()
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
+            ease_discard((card.ability.extra.discards), nil, false)
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_fmod_discards', vars = {card.ability.extra.discards}}})
+        return true end }))
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.E_MANAGER:add_event(Event({func = function()
+            G.GAME.round_resets.discards = card.ability.extra.base_discard
+            ease_discard(-(card.ability.extra.discards), nil, false)
+        return true end }))
+    end,
     calculate = function(self, card, context)
-        if context.setting_blind and not card.getting_sliced and not context.blueprint then
-            G.E_MANAGER:add_event(Event({func = function()
-                ease_discard((card.ability.extra.discards), nil, true)
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_fmod_discards', vars = {card.ability.extra.discards}}})
-            return true end }))
-        end
         if context.before and G.GAME.current_round.hands_played > 0 then
             if card.ability.extra.discards - card.ability.extra.discard_mod <= 0 then
                 G.E_MANAGER:add_event(Event({
@@ -47,6 +59,8 @@ SMODS.Joker {
                 }
             else
                 card.ability.extra.discards = card.ability.extra.discards - card.ability.extra.discard_mod
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discard_mod
+                ease_discard(-(card.ability.extra.discard_mod), nil, false)
                 return {
                     message = localize{type='variable',key='a_chips_minus',vars={card.ability.extra.discard_mod}},
                     colour = G.C.RED

@@ -105,6 +105,7 @@ local files = {
             "crazy_neils_crazy_deals",
             "blue_angel_mushroom",
             "low_hanging_fruit",
+            "pub_burger",
             "wordle",
             "ghost_trick",
             "nerdcubed",
@@ -114,7 +115,6 @@ local files = {
             "steve",
             "pomni",
             "loonette",
-            "pub_burger"
         },
         directory = "content/jokers"
     },
