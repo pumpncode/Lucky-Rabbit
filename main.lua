@@ -157,6 +157,7 @@ local files = {
             "greasepaint",
             "unicycle",
             "cannon",
+            "barker",
             "soully"
         },
         directory = 'content/consumables'
@@ -261,6 +262,7 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_greasepaint"] = true,
             ["c_fmod_unicycle"] = true,
             ["c_fmod_cannon"] = true,
+            ["c_fmod_barker"] = true,
         },
         loc_txt = {
             name = "Silly",

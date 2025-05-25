@@ -543,6 +543,14 @@ return {
                     "Select up to {C:attention}#1#{} cards to",
                     "{C:attention}mark{} with a {C:attention}Pinhole{}",
                 }
+            },
+            c_fmod_barker = {
+                name = "Barker",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards into",
+                    "{C:attention}Raffle Cards{}",
+                }
             }
         },
         Voucher = {
