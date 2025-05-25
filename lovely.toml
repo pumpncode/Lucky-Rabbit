@@ -426,3 +426,35 @@ pop_idol_plus = 0,
 '''
 match_indent = true
 times = 1
+
+# ------bepis' implementation of ferromancy
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif _c.set == 'Enhanced' then'''
+position = "after"
+payload = '''
+    if #SMODS.find_card('j_fmod_ferromancy') > 0 then
+        if _c.effect == "Gold Card" and not _c.ferromancy_converted then
+            _c.ferromancy_converted = true
+            _c.effect = "Steel Card"
+            _c.key = "m_steel"
+        elseif _c.effect == "Steel Card" and not _c.ferromancy_converted then
+            _c.ferromancy_converted = true
+            _c.effect = "Gold Card"
+            _c.key = "m_gold"
+        end
+    else
+        if _c.effect == "Gold Card" and _c.ferromancy_converted then
+            _c.ferromancy_converted = false
+            _c.effect = "Steel Card"
+            _c.key = "m_steel"
+        elseif _c.effect == "Steel Card" and _c.ferromancy_converted then
+            _c.ferromancy_converted = false
+            _c.effect = "Gold Card"
+            _c.key = "m_gold"
+        end
+    end
+'''
+times = 1
+match_indent = true
