@@ -63,10 +63,15 @@ SMODS.current_mod.config_tab = function()
                                 ref_value = "decks_enabled"
                             },
                             create_toggle {
-                                label = "Enable Markings",
+                                label = localize("k_fmod_config_markings"),
                                 ref_table = LR_CONFIG,
                                 ref_value = "markings_enabled"
                             },
+                            create_toggle {
+                                label = localize("k_fmod_config_enhancements"),
+                                ref_table = LR_CONFIG,
+                                ref_value = "enhancements_enabled"
+                            }
                         }
                     }
                 }
@@ -304,7 +309,9 @@ if LR_CONFIG.tags_enabled then
     LR_UTIL.load_files(files.tags.list, files.tags.directory)
 end
 
-LR_UTIL.load_files(files.enhancements.list, files.enhancements.directory)
+if LR_CONFIG.enhancements_enabled then
+    LR_UTIL.load_files(files.enhancements.list, files.enhancements.directory)
+end
 
 -- define marking objects
 

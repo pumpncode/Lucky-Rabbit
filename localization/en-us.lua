@@ -759,6 +759,8 @@ return {
             k_fmod_config_blinds = "Enable Blinds",
             k_fmod_config_tags = "Enable Tags",
             k_fmod_config_decks = "Enable Decks",
+            k_fmod_config_markings = "Enable Markings",
+            k_fmod_config_enhancements = "Enable Enhancements",
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
