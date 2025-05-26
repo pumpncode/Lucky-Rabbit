@@ -551,6 +551,14 @@ return {
                     "selected cards into",
                     "{C:attention}Raffle Cards{}",
                 }
+            },
+            c_fmod_suspenders = {
+                name = "Suspenders",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:attention}Paperclip{} of the {C:attention}left{} card",
+                    "onto the {C:attention}right{} card",
+                }
             }
         },
         Voucher = {

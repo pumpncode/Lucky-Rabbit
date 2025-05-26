@@ -163,6 +163,7 @@ local files = {
             "unicycle",
             "cannon",
             "barker",
+            "suspenders",
             "soully"
         },
         directory = 'content/consumables'
@@ -268,6 +269,7 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_unicycle"] = true,
             ["c_fmod_cannon"] = true,
             ["c_fmod_barker"] = true,
+            ["c_fmod_suspenders"] = true,
         },
         loc_txt = {
             name = "Silly",
