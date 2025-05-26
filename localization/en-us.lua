@@ -217,6 +217,14 @@ return {
                     "after the first hand"
                 }
             },
+            j_fmod_orbit = {
+                name = "Orbit",
+                text = {
+                    "If holding a non-{C:dark_edition}Negative {C:planet}Planet{} card",
+                    "at end of round, create a random",
+                    "{C:dark_edition}Negative {C:planet}Planet{}",
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
@@ -769,6 +777,7 @@ return {
             k_fmod_config_decks = "Enable Decks",
             k_fmod_config_markings = "Enable Markings",
             k_fmod_config_enhancements = "Enable Enhancements",
+            k_fmod_planet_orbit = "+1 Planet",
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
