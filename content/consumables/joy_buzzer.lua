@@ -3,12 +3,10 @@ SMODS.Consumable {
     key = "joy_buzzer",
     set = "Silly",
     config = {
-        extra = {
-            cards = 2
-        }
+        max_highlighted = 2
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.cards } }
+        return { vars = { card.ability.max_highlighted } }
     end,
     atlas = "Consumables",
     pos = { x = 5, y = 0 },
@@ -27,7 +25,7 @@ SMODS.Consumable {
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 if G.hand.highlighted[i] ~= leftmost then
-                        leftmost:set_edition(G.hand.highlighted[i].edition, nil, true)
+                        G.hand.highlighted[i]:set_edition(leftmost.edition, nil, true)
                         card:juice_up(0.3, 0.5)
                 end
             return true end }))
@@ -40,14 +38,12 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 1 then
-			for i = 1, #G.hand.highlighted do
-                if G.hand.highlighted[1].edition then
-                    return true
-                end
+        if #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 then
+            if G.hand.highlighted[1].edition then
+                return true
             end
-		end
-		return false
+        end
+        return false
     end,
     in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do

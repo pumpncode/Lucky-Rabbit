@@ -4,12 +4,10 @@ if next(SMODS.find_mod("paperback")) then
             key = "suspenders",
             set = "Silly",
             config = {
-                extra = {
-                    cards = 2
-                }
+                max_highlighted = 2,
             },
             loc_vars = function(self, info_queue, card)
-                return { vars = { card.ability.extra.cards } }
+                return { vars = { card.ability.max_highlighted } }
             end,
             atlas = "Consumables",
             pos = { x = 5, y = 2 },
@@ -70,8 +68,7 @@ if next(SMODS.find_mod("paperback")) then
                 delay(0.5)
             end,
             can_use = function(self, card)
-                local leftmost = G.hand.highlighted[1]
-                if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 1 and PB_UTIL.has_paperclip(leftmost) then
+                if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 and PB_UTIL.has_paperclip(G.hand.highlighted[1]) then
                     return true
                 end
                 return false

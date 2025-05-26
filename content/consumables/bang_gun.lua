@@ -2,12 +2,10 @@ SMODS.Consumable {
     key = "bang_gun",
     set = "Silly",
     config = {
-        extra = {
-            cards = 2
-        }
+        max_highlighted = 2,
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.cards } }
+        return { vars = { card.ability.max_highlighted } }
     end,
     atlas = "Consumables",
     pos = { x = 3, y = 0 },
@@ -23,12 +21,11 @@ SMODS.Consumable {
         end
         delay(0.2)
         local leftmost = G.hand.highlighted[1]
-        for i=1, #G.hand.highlighted do if G.hand.highlighted[i].T.x > leftmost.T.x then leftmost = G.hand.highlighted[i] end end
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 if G.hand.highlighted[i] ~= leftmost then
-                        SMODS.change_base(leftmost, G.hand.highlighted[i].base.suit, nil)
-                        card:juice_up(0.3, 0.5)
+                    SMODS.change_base(G.hand.highlighted[i], leftmost.base.suit, nil)
+                    card:juice_up(0.3, 0.5)
                 end
             return true end }))
         end
@@ -40,9 +37,13 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 and not SMODS.has_no_suit(G.hand.highlighted[1]) and not SMODS.has_no_suit(G.hand.highlighted[2]) then
-			return true
-		end
-		return false
+        if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 then
+            for i = 1, #G.hand.highlighted do
+                if SMODS.has_no_rank(G.hand.highlighted[i]) then
+                    return false
+                end
+            end
+            return true
+        end
     end,
 }

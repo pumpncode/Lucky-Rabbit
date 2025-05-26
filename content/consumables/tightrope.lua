@@ -2,6 +2,7 @@ SMODS.Consumable {
     key = "tightrope",
     set = "Silly",
     config = {
+        max_highlighted = 1,
         extra = {
             copy_1_amt = 1,
             copy_2_amt = 2,
@@ -81,11 +82,5 @@ SMODS.Consumable {
             }))
             SMODS.calculate_context({ remove_playing_cards = true, removed = {destroy_card} })
         end
-    end,
-    can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == 1 then
-			return true
-		end
-		return false
     end,
 }

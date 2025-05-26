@@ -2,12 +2,10 @@ SMODS.Consumable {
     key = "squirt_flower",
     set = "Silly",
     config = {
-        extra = {
-            cards = 2
-        }
+        max_highlighted = 2
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.cards } }
+        return { vars = { card.ability.max_highlighted } }
     end,
     atlas = "Consumables",
     pos = { x = 1, y = 0 },
@@ -39,7 +37,7 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 1 then
+		if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 then
             if G.hand.highlighted[1].seal then
                 return true
             end

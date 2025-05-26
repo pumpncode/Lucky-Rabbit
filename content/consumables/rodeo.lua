@@ -2,15 +2,13 @@ SMODS.Consumable {
     key = "rodeo",
     set = "Silly",
     config = {
-        extra = {
-            cards = 2,
-        }
+        max_highlighted = 2,
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_foil
         info_queue[#info_queue+1] = G.P_CENTERS.e_holo
         info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
-        return { vars = { card.ability.extra.cards } }
+        return { vars = { card.ability.max_highlighted } }
     end,
     atlas = "Consumables",
     pos = { x = 5, y = 1 },
@@ -61,10 +59,5 @@ SMODS.Consumable {
         }))
         delay(0.6)
         SMODS.calculate_context({ remove_playing_cards = true, removed = {destroy_card} })
-    end,
-    can_use = function(self, card, context, copier)
-        if #G.hand.highlighted == card.ability.extra.cards then
-            return true
-        end
     end,
 }

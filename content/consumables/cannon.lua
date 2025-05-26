@@ -2,13 +2,11 @@ SMODS.Consumable {
     key = "cannon",
     set = "Silly",
     config = {
-        extra = {
-            cards = 2
-        }
+        max_highlighted = 2,
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = LR_UTIL.marking_tooltip("pinhole")
-        return { vars = { card.ability.extra.cards } }
+        return { vars = { card.ability.max_highlighted } }
     end,
     atlas = "Consumables",
     pos = { x = 2, y = 1 },
@@ -35,10 +33,4 @@ SMODS.Consumable {
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''}); G.hand:unhighlight_all(); return true end }))
         delay(0.5)
     end,
-    can_use = function(self, card)
-        if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 0 then
-            return true
-		end
-		return false
-    end
 }

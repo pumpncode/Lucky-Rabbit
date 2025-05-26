@@ -3,15 +3,15 @@ SMODS.Consumable {
     set = "Silly",
     atlas = "Consumables",
     config = {
+        max_highlighted = 3,
         extra = {
             chance = 2,
-            cards = 3
         }
     },
     pos = {x = 8, y = 1 },
     cost = 3,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.cards } }
+        return { vars = { card.ability.max_highlighted } }
     end,
     use = function(self, card, context, copier)
         local outcomes = {}
@@ -51,9 +51,4 @@ SMODS.Consumable {
         delay(0.5)
         SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
     end,
-    can_use = function(self, card)
-        if G.hand and #G.hand.highlighted >= 1 and #G.hand.highlighted <= card.ability.extra.cards then
-            return true
-        end
-    end
 }
