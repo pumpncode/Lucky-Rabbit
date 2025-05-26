@@ -40,7 +40,7 @@ SMODS.Joker {
                         end
                     end
                     card.ability.extra.xmult = adjusted_id(first_card) - adjusted_id(last_card)
-                    if card.ability.extra.xmult > 0 then
+                    if card.ability.extra.xmult > 1 then
                         card.ability.extra.inactive_hands = card.ability.extra.xmult
                         return {
                             xmult = card.ability.extra.xmult
