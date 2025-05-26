@@ -220,9 +220,9 @@ return {
             j_fmod_orbit = {
                 name = "Orbit",
                 text = {
-                    "If holding a non-{C:dark_edition}Negative {C:planet}Planet{} card",
-                    "at end of round, create a random",
-                    "{C:dark_edition}Negative {C:planet}Planet{}",
+                    "If holding a non-{C:dark_edition}Negative",
+                    "{C:planet}Planet{} card at end of round,",
+                    "create a random {C:dark_edition}Negative {C:planet}Planet{}",
                 }
             }
         },
