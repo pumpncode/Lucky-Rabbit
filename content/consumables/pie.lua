@@ -22,15 +22,14 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() G.hand.highlighted[i]:flip();play_sound('card1', percent);G.hand.highlighted[i]:juice_up(0.3, 0.3);return true end }))
         end
         delay(0.2)
-        local rightmost = G.hand.highlighted[1]
-        for i=1, #G.hand.highlighted do if G.hand.highlighted[i].T.x > rightmost.T.x then rightmost = G.hand.highlighted[i] end end
+        local leftmost = G.hand.highlighted[1]
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                if G.hand.highlighted[i] ~= rightmost then
-                    if SMODS.has_enhancement(G.hand.highlighted[1], 'm_stone') then
-                        rightmost:set_ability('m_stone', nil, false)
+                if G.hand.highlighted[i] ~= leftmost then
+                    if SMODS.has_enhancement(leftmost, 'm_stone') then
+                        G.hand.highlighted[i]:set_ability('m_stone', nil, false)
                     else
-                        SMODS.change_base(rightmost, nil, G.hand.highlighted[i].base.value)
+                        SMODS.change_base(G.hand.highlighted[i], nil, leftmost.base.value)
                         card:juice_up(0.3, 0.5)
                     end
                 end
@@ -44,11 +43,9 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 then
-            for i=1, #G.hand.highlighted do
-                if not SMODS.has_no_rank(G.hand.highlighted[i]) then
-                    return true
-                end
+        if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 1 then
+            if not SMODS.has_no_rank(G.hand.highlighted[1]) then
+                return true
             end
 		end
 		return false

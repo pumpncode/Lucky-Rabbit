@@ -22,12 +22,12 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() G.hand.highlighted[i]:flip();play_sound('card1', percent);G.hand.highlighted[i]:juice_up(0.3, 0.3);return true end }))
         end
         delay(0.2)
-        local rightmost = G.hand.highlighted[1]
-        for i=1, #G.hand.highlighted do if G.hand.highlighted[i].T.x > rightmost.T.x then rightmost = G.hand.highlighted[i] end end
+        local leftmost = G.hand.highlighted[1]
+        for i=1, #G.hand.highlighted do if G.hand.highlighted[i].T.x > leftmost.T.x then leftmost = G.hand.highlighted[i] end end
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                if G.hand.highlighted[i] ~= rightmost then
-                        SMODS.change_base(rightmost, G.hand.highlighted[i].base.suit, nil)
+                if G.hand.highlighted[i] ~= leftmost then
+                        SMODS.change_base(leftmost, G.hand.highlighted[i].base.suit, nil)
                         card:juice_up(0.3, 0.5)
                 end
             return true end }))

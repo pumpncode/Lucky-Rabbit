@@ -22,13 +22,12 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() G.hand.highlighted[i]:flip();play_sound('card1', percent);G.hand.highlighted[i]:juice_up(0.3, 0.3);return true end }))
         end
         delay(0.2)
-        local rightmost = G.hand.highlighted[1]
-        for i=1, #G.hand.highlighted do if G.hand.highlighted[i].T.x > rightmost.T.x then rightmost = G.hand.highlighted[i] end end
+        local leftmost = G.hand.highlighted[1]
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                if G.hand.highlighted[i] ~= rightmost then
-                        rightmost:set_seal(G.hand.highlighted[i].seal, nil, true)
-                        card:juice_up(0.3, 0.5)
+                if G.hand.highlighted[i] ~= leftmost then
+                    G.hand.highlighted[i]:set_seal(leftmost.seal, nil, true)
+                    card:juice_up(0.3, 0.5)
                 end
             return true end }))
         end
@@ -40,11 +39,9 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-		if G.hand and #G.hand.highlighted == card.ability.extra.cards and #G.hand.highlighted > 0 then
-            for i=1, #G.hand.highlighted do
-                if G.hand.highlighted[i].seal then
-                    return true
-                end
+		if G.hand and #G.hand.highlighted <= card.ability.extra.cards and #G.hand.highlighted > 1 then
+            if G.hand.highlighted[1].seal then
+                return true
             end
 		end
 		return false
