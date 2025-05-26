@@ -224,6 +224,23 @@ return {
                     "{C:planet}Planet{} card at end of round,",
                     "create a random {C:dark_edition}Negative {C:planet}Planet{}",
                 }
+            },
+            j_fmod_calculator = {
+                name = "Calculator",
+                text = {
+                    {
+                    "Gains Xmult equal to the {C:attention}Rank Difference",
+                    "between First and Last {C:attention}Scored Cards.",
+                    "Inactive for that many rounds after scoring",
+                    },
+                    {
+                    "No effect if scoring hand is {C:attention}High Card",
+                    "or difference between cards =< 1",
+                    },
+                    {
+                    "{C:inactive}Activity Status: {C:attention}#1#",
+                    }
+                }
             }
         },
         Tag = {
