@@ -231,7 +231,7 @@ return {
                     {
                     "Gains Xmult equal to the {C:attention}Rank Difference",
                     "between First and Last {C:attention}Scored Cards.",
-                    "Inactive for that many rounds after scoring",
+                    "Inactive for that many hands after scoring",
                     },
                     {
                     "No effect if scoring hand is {C:attention}High Card",

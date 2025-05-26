@@ -3,13 +3,13 @@ SMODS.Joker {
     config = {
         extra = {
             xmult = 1,
-            inactive_rounds = 0,
+            inactive_hands = 0,
         }
     },
     loc_vars = function(self, info_queue, card)
-        if card.ability.extra.inactive_rounds > 0 then
-            local rounds_left = card.ability.extra.inactive_rounds
-            return { vars = { "Inactive for " .. rounds_left .. " round(s)" } }
+        if card.ability.extra.inactive_hands > 0 then
+            local hands_left = card.ability.extra.inactive_hands
+            return { vars = { "Inactive for " .. hands_left .. " hand(s)" } }
         else
             return { vars = { "Active" } }
         end
@@ -26,8 +26,8 @@ SMODS.Joker {
 			local first_card = context.scoring_hand[1]
             local last_card = context.scoring_hand[#context.scoring_hand]
             if first_card ~= last_card then
-                if card.ability.extra.inactive_rounds > 0 then
-                    card.ability.extra.inactive_rounds = card.ability.extra.inactive_rounds - 1
+                if card.ability.extra.inactive_hands > 0 then
+                    card.ability.extra.inactive_hands = card.ability.extra.inactive_hands - 1
                 else
                     local function adjusted_id(card)
                         local id = card:get_id()
@@ -41,7 +41,7 @@ SMODS.Joker {
                     end
                     card.ability.extra.xmult = adjusted_id(first_card) - adjusted_id(last_card)
                     if card.ability.extra.xmult > 0 then
-                        card.ability.extra.inactive_rounds = card.ability.extra.xmult
+                        card.ability.extra.inactive_hands = card.ability.extra.xmult
                         return {
                             xmult = card.ability.extra.xmult
                         }
