@@ -107,6 +107,7 @@ local files = {
             "fragile_sticker",
             "hyperfixation",
             "calculator",
+            "civic_secretary",
             "pop_idol_cat",
             "crazy_neils_crazy_deals",
             "blue_angel_mushroom",

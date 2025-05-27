@@ -234,7 +234,15 @@ return {
                     "{C:inactive}(No effect if difference < 1)",
                     "{C:attention}#1#",
                 }
-            }
+            },
+            j_fmod_civic_secretary = {
+                name = "Civic Secretary",
+                text = {
+                    "Any time a joker gives {C:chips}+chips{}",
+                    "or {C:mult}+mult{}, that amount is",
+                    "matched by this joker"
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {
