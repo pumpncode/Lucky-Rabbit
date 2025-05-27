@@ -228,18 +228,11 @@ return {
             j_fmod_calculator = {
                 name = "Calculator",
                 text = {
-                    {
-                    "Gains Xmult equal to the {C:attention}Rank Difference",
-                    "between First and Last {C:attention}Scored Cards.",
-                    "Inactive for that many hands after scoring",
-                    },
-                    {
-                    "No effect if scoring hand is {C:attention}High Card",
-                    "or difference between cards =< 1",
-                    },
-                    {
-                    "{C:inactive}Activity Status: {C:attention}#1#",
-                    }
+                    "Gives {X:mult,C:white}Xmult{} equal to the {C:attention}rank difference",
+                    "between first and last {C:attention}scored cards,",
+                    "inactive for that many hands after scoring",
+                    "{C:inactive}(No effect if difference < 1)",
+                    "{C:attention}#1#",
                 }
             }
         },
