@@ -63,10 +63,15 @@ SMODS.current_mod.config_tab = function()
                                 ref_value = "decks_enabled"
                             },
                             create_toggle {
-                                label = "Enable Markings",
+                                label = localize("k_fmod_config_markings"),
                                 ref_table = LR_CONFIG,
                                 ref_value = "markings_enabled"
                             },
+                            create_toggle {
+                                label = localize("k_fmod_config_enhancements"),
+                                ref_table = LR_CONFIG,
+                                ref_value = "enhancements_enabled"
+                            }
                         }
                     }
                 }
@@ -101,15 +106,20 @@ local files = {
             "ferromancy",
             "fragile_sticker",
             "hyperfixation",
+            "calculator",
+            "civic_secretary",
+            "pop_idol_cat",
             "crazy_neils_crazy_deals",
             "blue_angel_mushroom",
             "low_hanging_fruit",
+            "pub_burger",
             "wordle",
             "ghost_trick",
             "nerdcubed",
             "terminal_velocity",
-            "jazzercise",
+            "orbit",
             "rabbit",
+            "jazzercise",
             "steve",
             "pomni",
             "loonette",
@@ -155,9 +165,17 @@ local files = {
             "greasepaint",
             "unicycle",
             "cannon",
+            "barker",
+            "suspenders",
             "soully"
         },
         directory = 'content/consumables'
+    },
+    enhancements = {
+        list = {
+            "raffle_card",
+        },
+        directory = "content/enhancements"
     },
     blinds = {
         list = {
@@ -253,6 +271,8 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_greasepaint"] = true,
             ["c_fmod_unicycle"] = true,
             ["c_fmod_cannon"] = true,
+            ["c_fmod_barker"] = true,
+            ["c_fmod_suspenders"] = true,
         },
         loc_txt = {
             name = "Silly",
@@ -292,6 +312,10 @@ end
 
 if LR_CONFIG.tags_enabled then
     LR_UTIL.load_files(files.tags.list, files.tags.directory)
+end
+
+if LR_CONFIG.enhancements_enabled then
+    LR_UTIL.load_files(files.enhancements.list, files.enhancements.directory)
 end
 
 -- define marking objects
@@ -504,6 +528,28 @@ SMODS.DeckSkin {
             display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
             pos_style = 'ranks',
             atlas = 'fmod_deltarune_hearts_hc'
+        }
+    },
+}
+
+SMODS.DeckSkin {
+    key = "celeste_spades",
+    suit = "Spades",
+    loc_txt = "Celeste",
+    palettes = {
+        {
+            key = 'lc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_celeste_spades_lc'
+        },
+        {
+            key = 'hc',
+            ranks = { 'Jack', 'Queen', 'King', 'Ace' },
+            display_ranks = { 'Ace', 'King', 'Queen', 'Jack' },
+            pos_style = 'ranks',
+            atlas = 'fmod_celeste_spades_hc'
         }
     },
 }

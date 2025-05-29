@@ -6,4 +6,5 @@ return {
     tags_enabled = true,
     decks_enabled = true,
     markings_enabled = true,
+    enhancements_enabled = true,
 }

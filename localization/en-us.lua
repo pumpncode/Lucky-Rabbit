@@ -199,7 +199,50 @@ return {
                     "One random shop item is",
                     "{C:attention}#1#%{} off every shop"
                 }
-            }
+            },
+            j_fmod_pop_idol_cat = {
+                name = "Pop Idol Cat",
+                text = {
+                    "Increase the {C:green}odds{} of {C:attention}Lucky",
+                    "{C:attention}Cards{} by {C:green}#1#{} every time",
+                    "one is triggered, {C:attention}resets{}",
+                    "after hand played"
+                }
+            },
+            j_fmod_pub_burger = {
+                name = "Pub Burger",
+                text = {
+                    "{C:attention}+#1#{} discards, {C:red}-#2#{}",
+                    "for every hand played",
+                    "after the first hand"
+                }
+            },
+            j_fmod_orbit = {
+                name = "Orbit",
+                text = {
+                    "If holding a non-{C:dark_edition}Negative",
+                    "{C:planet}Planet{} card at end of round,",
+                    "create a random {C:dark_edition}Negative {C:planet}Planet{}",
+                }
+            },
+            j_fmod_calculator = {
+                name = "Calculator",
+                text = {
+                    "Gives {X:mult,C:white}Xmult{} equal to the {C:attention}rank difference",
+                    "between first and last {C:attention}scored cards,",
+                    "inactive for that many hands after scoring",
+                    "{C:inactive}(No effect if difference < 1)",
+                    "{C:attention}#1#",
+                }
+            },
+            j_fmod_civic_secretary = {
+                name = "Civic Secretary",
+                text = {
+                    "Any time a joker gives {C:chips}+Chips{}",
+                    "or {C:mult}+Mult{}, that amount is",
+                    "matched by this joker"
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {
@@ -526,6 +569,22 @@ return {
                     "Select up to {C:attention}#1#{} cards to",
                     "{C:attention}mark{} with a {C:attention}Pinhole{}",
                 }
+            },
+            c_fmod_barker = {
+                name = "Barker",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards into",
+                    "{C:attention}Raffle Cards{}",
+                }
+            },
+            c_fmod_suspenders = {
+                name = "Suspenders",
+                text = {
+                    "Select {C:attention}#1#{} cards, copy the",
+                    "{C:attention}Clip{} of the {C:attention}left{} card",
+                    "onto the {C:attention}right{} card",
+                }
             }
         },
         Voucher = {
@@ -617,6 +676,17 @@ return {
                     "Add a {C:attention}free{}",
                     "{C:attention}Booster Pack{}",
                     "to each shop"
+                }
+            }
+        },
+        Enhanced = {
+            m_fmod_raffle_card = {
+                name = "Raffle Card",
+                text = {
+                    "{C:green}#1# in #2#{} chance to create",
+                    "a random {C:attention}Consumable",
+                    "when scored",
+                    "{C:inactive}(Must have room)"
                 }
             }
         },
@@ -723,6 +793,12 @@ return {
             k_fmod_config_blinds = "Enable Blinds",
             k_fmod_config_tags = "Enable Tags",
             k_fmod_config_decks = "Enable Decks",
+            k_fmod_config_markings = "Enable Markings",
+            k_fmod_config_enhancements = "Enable Enhancements",
+            k_fmod_planet_orbit = "+1 Planet",
+        },
+        v_dictionary={
+            a_fmod_discards = "+#1# Discards",
         },
         labels = {
             fmod_ink_mark = "Inked",

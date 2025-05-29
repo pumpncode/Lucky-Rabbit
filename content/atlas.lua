@@ -130,3 +130,17 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+
+SMODS.Atlas {
+    key = "celeste_spades_lc",
+    path = "collabs/celeste_spades_lc.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "celeste_spades_hc",
+    path = "collabs/celeste_spades_hc.png",
+    px = 71,
+    py = 95
+}

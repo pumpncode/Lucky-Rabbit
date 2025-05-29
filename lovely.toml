@@ -342,7 +342,7 @@ for _, v in ipairs(G.handlist) do
 if not results.top and results[v] then"""
 position = "before"
 payload = '''
-if next(SMODS.find_card("j_fmod_despicable_bear")) and #hand == 4 and results["Two Pair"] then
+if next(SMODS.find_card("j_fmod_despicable_bear")) and #hand == 4 and next(results["Two Pair"]) then
     results["Four of a Kind"] = { SMODS.merge_lists(results["Four of a Kind"], results["Two Pair"]) }
 end'''
 match_indent = true
@@ -392,3 +392,69 @@ payload = '''
         end'''
 times = 1
 match_indent = false
+
+# -------- pop idol cat --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if pseudorandom('lucky_money') < G.GAME.probabilities.normal/15 then'''
+position = "at"
+payload = '''if pseudorandom('lucky_money') < (G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))/15 then'''
+times = 1
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if pseudorandom('lucky_mult') < G.GAME.probabilities.normal/5 then'''
+position = "at"
+payload = '''if pseudorandom('lucky_mult') < (G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))/5 then'''
+times = 1
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''hyperfix_card = {
+    rank = 'Ace',
+    suit = 'Spades',
+},'''
+position = "after"
+payload = '''
+pop_idol_plus = 0,
+'''
+match_indent = true
+times = 1
+
+# ------bepis' implementation of ferromancy
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif _c.set == 'Enhanced' then'''
+position = "after"
+payload = '''
+    if #SMODS.find_card('j_fmod_ferromancy') > 0 then
+        if _c.effect == "Gold Card" and not _c.ferromancy_converted then
+            _c.ferromancy_converted = true
+            _c.effect = "Steel Card"
+            _c.key = "m_steel"
+        elseif _c.effect == "Steel Card" and not _c.ferromancy_converted then
+            _c.ferromancy_converted = true
+            _c.effect = "Gold Card"
+            _c.key = "m_gold"
+        end
+    else
+        if _c.effect == "Gold Card" and _c.ferromancy_converted then
+            _c.ferromancy_converted = false
+            _c.effect = "Steel Card"
+            _c.key = "m_steel"
+        elseif _c.effect == "Steel Card" and _c.ferromancy_converted then
+            _c.ferromancy_converted = false
+            _c.effect = "Gold Card"
+            _c.key = "m_gold"
+        end
+    end
+'''
+times = 1
+match_indent = true
