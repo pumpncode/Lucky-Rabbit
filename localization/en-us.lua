@@ -238,9 +238,9 @@ return {
             j_fmod_civic_secretary = {
                 name = "Civic Secretary",
                 text = {
-                    "Any time a joker gives {C:chips}+Chips{}",
-                    "or {C:mult}+Mult{}, that amount is",
-                    "matched by this joker"
+                    "When another Joker gives",
+                    "{C:chips}+Chips{} or {C:mult}+Mult{}, that amount",
+                    "is {C:attention}matched{} by this Joker"
                 }
             },
         },
