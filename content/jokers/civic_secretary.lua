@@ -22,7 +22,7 @@ SMODS.Joker{
             local total_chips = 0
             local total_mult = 0
 			for _, v in ipairs(G.jokers.cards) do
-				if v.ability.name ~= 'Blueprint' and v.ability.name ~= 'Brainstorm' then
+				if v.ability.name ~= 'Blueprint' and v.ability.name ~= 'Brainstorm' and v.ability.name ~= "j_fmod_civic_secretary" then
 					context.blueprint = nil
 					local ret = SMODS.blueprint_effect(card, v, context)
 					if ret then
