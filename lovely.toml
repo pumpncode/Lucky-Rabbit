@@ -47,40 +47,12 @@ times = 1
 # -------- recursive deck --------
 
 [[patches]]
-[patches.pattern]
+[patches.regex]
 target = 'functions/common_events.lua'
-pattern = '''elseif not (G.GAME.used_jokers[v.key] and not pool_opts.allow_duplicates and not next(find_joker("Showman"))) and'''
+pattern = '''and not next\(find_joker\("Showman"\)\)'''
 position = "at"
-payload = '''elseif not (G.GAME.used_jokers[v.key] and not pool_opts.allow_duplicates and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")) and'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''if (_type == v.type.key or _type == v.soul_set) and not (G.GAME.used_jokers[v.key] and not next(find_joker("Showman")) and not v.can_repeat_soul) and (not v.in_pool or (type(v.in_pool) ~= "function") or v:in_pool()) then'''
-position = "at"
-payload = '''if (_type == v.type.key or _type == v.soul_set) and not (G.GAME.used_jokers[v.key] and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive") and not v.can_repeat_soul) and (not v.in_pool or (type(v.in_pool) ~= "function") or v:in_pool()) then'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''not (G.GAME.used_jokers['c_soul'] and not next(find_joker("Showman")))'''
-position = "at"
-payload = '''not (G.GAME.used_jokers['c_soul'] and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive"))'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''not (G.GAME.used_jokers['c_black_hole'] and not next(find_joker("Showman")))'''
-position = "at"
-payload = '''not (G.GAME.used_jokers['c_black_hole'] and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive"))'''
-match_indent = true
-times = 1
+payload = '''and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
+times = 4
 
 # -------- fennex deck ---------
 [[patches]]
@@ -104,16 +76,12 @@ payload = '''
 [patches.pattern]
 target = "functions/UI_definitions.lua"
 pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling"
-position = "at"
+position = "after"
 match_indent = true
 payload = '''
-local blind_amt = 0
 if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss and G.GAME.reaper_set then
-    local temp_mult = blind_choice.config.mult * 2
     G.GAME.reaper_set = false
-    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*temp_mult*G.GAME.starting_params.ante_scaling
-else
-    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling
+    blind_amt = blind_amt * 2
 end
 '''
 
@@ -229,23 +197,13 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
-pattern = '''for k, v in ipairs(G.play.cards) do
-        if (not v.shattered) and (not v.destroyed) then 
-            draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-            it = it + 1
-        end
-    end'''
+pattern = '''draw_card(G.play,G.discard, it*100/play_count,'down', false, v)'''
 position = "at"
-payload = '''for k, v in ipairs(G.play.cards) do
-    if not (v.shattered) and (not v.destroyed) then
-        if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
-            draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
-            it = it + 1
-        else
-            draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-            it = it + 1
-        end
-    end
+payload = '''
+if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
+    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
+else
+    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
 end'''
 match_indent = true
 times = 1
