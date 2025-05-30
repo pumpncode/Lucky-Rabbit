@@ -225,23 +225,13 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
-pattern = '''for k, v in ipairs(G.play.cards) do
-        if (not v.shattered) and (not v.destroyed) then 
-            draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-            it = it + 1
-        end
-    end'''
+pattern = '''draw_card(G.play,G.discard, it*100/play_count,'down', false, v)'''
 position = "at"
-payload = '''for k, v in ipairs(G.play.cards) do
-    if not (v.shattered) and (not v.destroyed) then
-        if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
-            draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
-            it = it + 1
-        else
-            draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-            it = it + 1
-        end
-    end
+payload = '''
+if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
+    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
+else
+    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
 end'''
 match_indent = true
 times = 1
