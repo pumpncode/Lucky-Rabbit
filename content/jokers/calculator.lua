@@ -45,7 +45,9 @@ SMODS.Joker {
                     end
                     local xmult = adjusted_id(first_card) - adjusted_id(last_card)
                     if xmult > 1 then
-                        card.ability.extra.inactive_hands_to_add = (card.ability.extra.inactive_hands_to_add or 0) + xmult
+                        if not context.blueprint then
+                            card.ability.extra.inactive_hands_to_add = (card.ability.extra.inactive_hands_to_add or 0) + xmult
+                        end
                         return {
                             xmult = xmult
                         }
