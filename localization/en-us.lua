@@ -243,6 +243,14 @@ return {
                     "is {C:attention}matched{} by this Joker"
                 }
             },
+            j_fmod_trans_joker = {
+                name = "Trans Joker",
+                text = {
+                    "Any cards that have had",
+                    "their {C:attention,V:1}rank{} or {C:attention,V:2}suit{} changed",
+                    "gain {C:mult}+#1#{} Mult"
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
