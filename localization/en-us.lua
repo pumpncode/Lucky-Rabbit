@@ -250,6 +250,15 @@ return {
                     "their {C:attention,V:1}rank{} or {C:attention,V:2}suit{} changed",
                     "gain {C:mult}+#1#{} Mult"
                 }
+            },
+            j_fmod_litterbug = {
+                name = "Litterbug",
+                text = {
+                    "When hand played, {C:attention}discards{} a",
+                    "random card and gains {C:white,X:mult}#2#X{}",
+                    "its base {C:chips}Chip value{} as {C:mult}XMult{}",
+                    "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
