@@ -2,7 +2,7 @@ SMODS.Joker{
     key = "wordle",
     config = {
         extra = {
-            chip_gain = 10,
+            chip_gain = 5,
             chips = 0
         }
     },
