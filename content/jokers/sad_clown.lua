@@ -43,7 +43,6 @@ SMODS.Joker {
                 else
                     card.ability.extra.discards_remaining = card.ability.extra.discards
                 end
-            return nil, true
             end
             if not context.blueprint then
                 card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1
