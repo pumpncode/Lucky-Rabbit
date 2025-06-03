@@ -259,6 +259,14 @@ return {
                     "its base {C:chips}Chip value{} as {C:mult}XMult{}",
                     "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_sad_clown = {
+                name = "Sad Clown",
+                text = {
+                    "Creates a random {V:1}Silly{} card",
+                    "every {C:attention}#1# {C:inactive}[#2#]{} discards",
+                    "{C:inactive}(Must have room)"
+                }
             }
         },
         Tag = {
@@ -816,6 +824,7 @@ return {
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
+            a_fmod_silly_card = "+#1# Silly"
         },
         labels = {
             fmod_ink_mark = "Inked",

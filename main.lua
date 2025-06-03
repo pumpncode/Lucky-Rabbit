@@ -122,6 +122,7 @@ local files = {
             "jazzercise",
             "trans_joker",
             "litterbug",
+            "sad_clown",
             "steve",
             "pomni",
             "loonette",
