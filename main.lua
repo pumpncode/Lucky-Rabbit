@@ -120,6 +120,8 @@ local files = {
             "orbit",
             "rabbit",
             "jazzercise",
+            "trans_joker",
+            "litterbug",
             "steve",
             "pomni",
             "loonette",
