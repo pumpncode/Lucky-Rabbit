@@ -117,6 +117,7 @@ local files = {
             "ghost_trick",
             "nerdcubed",
             "terminal_velocity",
+            "claw_machine",
             "orbit",
             "rabbit",
             "jazzercise",
@@ -126,6 +127,7 @@ local files = {
             "steve",
             "pomni",
             "loonette",
+            "fennex_the_clown",
         },
         directory = "content/jokers"
     },

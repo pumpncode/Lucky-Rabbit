@@ -22,6 +22,7 @@ SMODS.Joker {
             if card.ability.extra.discards_remaining <= 1 then
                 if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    local bp = context.blueprint_card
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.E_MANAGER:add_event(Event({
@@ -35,7 +36,7 @@ SMODS.Joker {
                             SMODS.calculate_effect({
                                 message = localize({ type = "variable", key = "a_fmod_silly_card", vars = { card.ability.extra.card_amt } }),
                                 colour = HEX("ff98e2"),
-                            }, context.blueprint_card or card)
+                            }, bp or card)
                             card.ability.extra.discards_remaining = card.ability.extra.discards
                             return true
                         end

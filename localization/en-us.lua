@@ -267,6 +267,23 @@ return {
                     "every {C:attention}#1# {C:inactive}[#2#]{} discards",
                     "{C:inactive}(Must have room)"
                 }
+            },
+            j_fmod_claw_machine = {
+                name = "Claw Machine",
+                text = {
+                    "Each {C:attention}7{} held in hand gives",
+                    "{C:white,X:mult}X#1#{} Mult, and has a {C:green}#2#",
+                    "{C:green}in #3#{} chance to increase",
+                    "given Mult by {C:white,X:mult}X#4#"
+                }
+            },
+            j_fmod_fennex_the_clown = {
+                name = "Fennex the Clown",
+                text = {
+                    "This Joker gains {C:white,X:mult}X#1#{}",
+                    "Mult per {C:attention}Voucher{} owned",
+                    "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive})"
+                }
             }
         },
         Tag = {
