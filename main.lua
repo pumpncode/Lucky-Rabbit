@@ -117,6 +117,7 @@ local files = {
             "ghost_trick",
             "nerdcubed",
             "terminal_velocity",
+            "claw_machine",
             "orbit",
             "rabbit",
             "jazzercise",
