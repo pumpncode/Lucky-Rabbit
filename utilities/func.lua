@@ -247,3 +247,14 @@ function Card:set_base(card, initial)
         end
     end
 end
+
+function LR_UTIL.num_vouchers()
+    if not G.GAME.used_vouchers then return 0 end
+	local count = 0
+	for k, v in pairs(G.GAME.used_vouchers) do
+		if v then
+			count = count + 1
+		end
+	end
+	return count
+end

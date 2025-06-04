@@ -127,6 +127,7 @@ local files = {
             "steve",
             "pomni",
             "loonette",
+            "fennex_the_clown",
         },
         directory = "content/jokers"
     },
