@@ -238,7 +238,7 @@ return {
             j_fmod_tax_return = {
                 name = "Tax Return",
                 text = {
-                    "Give {C:money}$#1#{} for each",
+                    "Earn {C:money}$#1#{} for each",
                     "{C:attention}unscored{} card in",
                     "played hand",
                 }
