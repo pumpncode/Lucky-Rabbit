@@ -16,20 +16,10 @@ SMODS.Joker {
         }
 	end,
 	calculate = function(self, card, context)
-		if context.after then
-			local scored_lookup = {}
-			for _, v in ipairs(context.scoring_hand) do
-				scored_lookup[v] = true
-			end
-			local unscored_cards = {}
-			for _, v in ipairs(G.play.cards) do
-				if not scored_lookup[v] then
-					table.insert(unscored_cards, v)
-				end
-			end
-			if #unscored_cards > 0 then
-                ease_dollars(#unscored_cards * card.ability.extra.dollars)
-            end
+		if context.individual and context.cardarea == 'unscored' then
+			return {
+				dollars = card.ability.extra.dollars
+			}
 		end
 	end
 }
