@@ -235,6 +235,14 @@ return {
                     "{C:inactive}(#1#{C:attention}#2#{C:inactive}#3#)",
                 }
             },
+            j_fmod_tax_return = {
+                name = "Tax Return",
+                text = {
+                    "Give {C:money}$#1#{} for each",
+                    "{C:attention}unscored{} card in",
+                    "played hand",
+                }
+            },
             j_fmod_civic_secretary = {
                 name = "Civic Secretary",
                 text = {
