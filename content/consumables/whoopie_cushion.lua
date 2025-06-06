@@ -39,8 +39,10 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
 		if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 then
-            if next(SMODS.get_enhancements(G.hand.highlighted[1])) then
-                return true
+            for _, playing_card in ipairs(G.hand.highlighted) do
+                if next(SMODS.get_enhancements(playing_card)) then
+                    return true
+                end
             end
 		end
 		return false
