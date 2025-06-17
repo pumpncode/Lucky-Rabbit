@@ -292,6 +292,63 @@ return {
                     "Mult per {C:attention}Voucher{} owned",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive})"
                 }
+            },
+            j_fmod_dating_sim = {
+                name = "Dating Sim",
+                text = {
+                    "Played {C:hearts}Hearts{} permanently",
+                    "gain {C:chips}+#1#{} Chips when",
+                    "scored"
+                }
+            },
+            j_fmod_rhythm_game = {
+                name = "Rhythm Game",
+                text = {
+                    "Played {C:diamonds}Diamonds{C:attention} retrigger",
+                    "when scored"
+                }
+            },
+            j_fmod_dungeon_crawler = {
+                name = "Dungeon Crawler",
+                text = {
+                    "If played hand contains a",
+                    "scoring {C:spades}Spade{}, a {C:spades}Spade in",
+                    "that hand is given a random",
+                    "{C:attention}Enhancement{}, {C:attention}Seal{}, or {C:attention}Marking{}",
+                    "{C:inactive}(Won't override existing modifiers)"
+                }
+            },
+            j_fmod_fighting_game = {
+                name = "Fighting Game",
+                text = {
+                    "Played {C:clubs}Clubs{} have a",
+                    "{C:green}#1# in #2#{} chance to",
+                    "give {C:attention}+#3# hand size{}",
+                    "until end of round"
+                }
+            },
+            j_fmod_free_shipping = {
+                name = "Free Shipping",
+                text = {
+                    "Consumables created",
+                    "by {C:attention}Raffle Cards{} are",
+                    "{C:dark_edition}Negative"
+                }
+            },
+            j_fmod_comic_book_ad = {
+                name = "Comic Book Ad",
+                text = {
+                    "{C:attention}Raffle Cards{} always",
+                    "generate {V:1}Silly{} cards"
+                }
+            },
+            j_fmod_lottery = {
+                name = "Lottery",
+                text = {
+                    "{C:green}#1# in #2#{} chance to gain",
+                    "between {C:money}$#3#{} and {C:money}$#4# {C:attention}sell",
+                    "{C:attention}value{} at end of round"
+                }
             }
         },
         Tag = {
@@ -402,6 +459,13 @@ return {
                 text = {
                     "All cards are",
                     "drawn face down"
+                }
+            },
+            bl_fmod_thorn = {
+                name = "The Thorn",
+                text = {
+                    "Cards with seals",
+                    "are debuffed"
                 }
             }
         },
@@ -832,7 +896,6 @@ return {
         dictionary = {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
-            k_fmod_upgraded = "Upgraded!",
             k_fmod_neil_deal = "Discounted!",
             k_fmod_sillypack = "Silly Pack",
             r_fmod_mostplayed = "(most played rank)",
@@ -849,7 +912,8 @@ return {
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
-            a_fmod_silly_card = "+#1# Silly"
+            a_fmod_silly_card = "+#1# Silly",
+            a_fmod_money = "+$#1#",
         },
         labels = {
             fmod_ink_mark = "Inked",
