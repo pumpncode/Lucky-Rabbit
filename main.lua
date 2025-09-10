@@ -71,7 +71,12 @@ SMODS.current_mod.config_tab = function()
                                 label = localize("k_fmod_config_enhancements"),
                                 ref_table = LR_CONFIG,
                                 ref_value = "enhancements_enabled"
-                            }
+                            },
+                            create_toggle {
+                                label = localize("k_fmod_config_remix"),
+                                ref_table = LR_CONFIG,
+                                ref_value = "remix_enabled"
+                            },
                         }
                     }
                 }
@@ -115,8 +120,11 @@ local files = {
             "pub_burger",
             "wordle",
             "ghost_trick",
+            "detective",
             "nerdcubed",
+            "strange_dreams",
             "terminal_velocity",
+            "newtons_cradle",
             "claw_machine",
             "orbit",
             "rabbit",
@@ -129,11 +137,19 @@ local files = {
             "rhythm_game",
             "dungeon_crawler",
             "fighting_game",
+            "feline_fleecer",
+            "tem_shop",
             "free_shipping",
             "comic_book_ad",
             "lottery",
+            "debut_album",
+            "zany_to_the_max",
+            "friend_inside_me",
+            "prismatic_joker",
+            "ghostly_joker",
             "steve",
             "pomni",
+            "ransome",
             "loonette",
             "fennex_the_clown",
         },
@@ -152,7 +168,10 @@ local files = {
             "fire_sale",
             "coupon",
             "extreme_couponing",
-            "shopaholic"
+            "shopaholic",
+            "grab_bag",
+            "gachapon",
+            "mystery_box",
         },
         directory = "content/vouchers"
     },
@@ -179,14 +198,17 @@ local files = {
             "unicycle",
             "cannon",
             "barker",
+            "hall_of_mirrors",
             "suspenders",
-            "soully"
+            "soully",
+            "crisis"
         },
         directory = 'content/consumables'
     },
     enhancements = {
         list = {
             "raffle_card",
+            "copycat_card",
         },
         directory = "content/enhancements"
     },
@@ -201,7 +223,7 @@ local files = {
             "elder",
             "dice",
             "flux",
-            "final_horn",
+            -- "final_horn",
             "final_sword",
             "final_shield",
         },
@@ -228,7 +250,8 @@ local files = {
     },
     boosters = {
         list = {
-            "boosters" -- just using one file for ease of use
+            "silly_packs",
+            "remix_packs",
         },
         directory = "content/boosters"
     },
@@ -287,6 +310,8 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_cannon"] = true,
             ["c_fmod_barker"] = true,
             ["c_fmod_suspenders"] = true,
+            ["c_fmod_hall_of_mirrors"] = true,
+            ["c_fmod_crisis"] = true,
         },
         loc_txt = {
             name = "Silly",
@@ -309,7 +334,7 @@ if LR_CONFIG.silly_enabled then
         --overlay_pos = { x = 4, y = 2 }
     }
     LR_UTIL.load_files(files.consumables.list, files.consumables.directory)
-    LR_UTIL.load_files(files.boosters.list, files.boosters.directory)
+    assert(SMODS.load_file("content/boosters/silly_packs.lua"))()
 end
 
 if LR_CONFIG.vouchers_enabled then
@@ -330,6 +355,10 @@ end
 
 if LR_CONFIG.enhancements_enabled then
     LR_UTIL.load_files(files.enhancements.list, files.enhancements.directory)
+end
+
+if LR_CONFIG.remix_enabled then
+    assert(SMODS.load_file("content/boosters/remix_packs.lua"))()
 end
 
 -- define marking objects

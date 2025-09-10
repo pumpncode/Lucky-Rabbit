@@ -204,8 +204,8 @@ return {
                 name = "Pop Idol Cat",
                 text = {
                     "Increase the {C:green}odds{} of {C:attention}Lucky",
-                    "{C:attention}Cards{} by {C:green}#1#{} every time",
-                    "one is triggered, {C:attention}resets{}",
+                    "{C:attention}Cards{} by {C:green}#1#{} every time one",
+                    "{C:green}successfully{} triggers, {C:attention}resets{}",
                     "after hand played"
                 }
             },
@@ -223,6 +223,7 @@ return {
                     "If holding a non-{C:dark_edition}Negative",
                     "{C:planet}Planet{} card at end of round,",
                     "create a random {C:dark_edition}Negative {C:planet}Planet{}",
+                    "with {C:attention}halved{} sell value",
                 }
             },
             j_fmod_calculator = {
@@ -348,6 +349,99 @@ return {
                     "{C:green}#1# in #2#{} chance to gain",
                     "between {C:money}$#3#{} and {C:money}$#4# {C:attention}sell",
                     "{C:attention}value{} at end of round"
+                }
+            },
+            j_fmod_detective = {
+                name = "Detective",
+                text = {
+                    "{C:attention}Cards{} that were previously",
+                    "played this {C:attention}Ante{} give {C:money}$#1#",
+                }
+            },
+            j_fmod_strange_dreams = {
+                name = "Strange Dreams",
+                text = {
+                    "After hand played, turn",
+                    "a random {C:attention}unscored{} card",
+                    "into the {C:attention}rightmost scored",
+                    "card"
+                }
+            },
+            j_fmod_ransome = {
+                name = "Ransome",
+                text = {
+                    "When a card is {C:attention}destroyed{},",
+                    "creates a {C:dark_edition}Polychrome{} copy",
+                    "with a {C:red}Red Seal{}"
+                }
+            },
+            j_fmod_feline_fleecer = {
+                name = "Feline Fleecer",
+                text = {
+                    "Add a free {C:attention}Remix Pack",
+                    "to the {C:attention}Shop{} upon",
+                    "beating a {C:attention}Blind"
+                }
+            },
+            j_fmod_tem_shop = {
+                name = "Tem Shop",
+                text = {
+                    "{C:attention}Sell value{} of all cards",
+                    "starts off at {C:attention}75%{} of",
+                    "their {C:attention}base{} price",
+                }
+            },
+            j_fmod_debut_album = {
+                name = "Debut Album",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult, {C:white,X:mult}-X#2#{} Mult",
+                    "per hand played",
+                    "{C:inactive}(Self destructs at {C:white,X:mult}X1{C:inactive} Mult)",
+                }
+            },
+            j_fmod_zany_to_the_max = {
+                name = "Zany to the Max",
+                text = {
+                    "If played hand is a {C:attention}Three of a Kind,",
+                    "gain {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {C:white,X:mult}+X#3#{} Mult",
+                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips, {C:mult}+#5#{C:inactive} Mult, {C:white,X:mult}X#6#{C:inactive} Mult)",
+                }
+            },
+            j_fmod_ghostly_joker = {
+                name = "Ghostly Joker",
+                text = {
+                    "Creates a {C:attention}Death{} {C:tarot}Tarot{} card for",
+                    "every {C:attention}fourth{} scoring {C:attention}4 {C:inactive}[#1#]",
+                    "{C:inactive}(Must have room)"
+                }
+            },
+            j_fmod_friend_inside_me = {
+                name = "Friend Inside Me",
+                text = {
+                    "If {C:attention}first discard{} of round has",
+                    "only {C:attention}1{} card, {C:attention}destroy{} it and",
+                    "create {C:attention}#1#{} temporary copies",
+                    "{C:inactive}(Destroyed at end of round)",
+                }
+            },
+            j_fmod_prismatic_joker = {
+                name = "Prismatic Joker",
+                text = {
+                    "If played hand contains a",
+                    "{C:attention}Four of a Kind{}, all {C:attention}scored",
+                    "cards become {C:attention}Copycat",
+                    "{C:attention}Cards"
+                }
+            },
+            j_fmod_newtons_cradle = {
+                name = "Newton's Cradle",
+                text = {
+                    "For every non-{C:attention}High Card{} hand",
+                    "played consisting of only {V:1}#1#{},",
+                    "the {C:attention}rightmost{} card gains {C:attention}#3#{}",
+                    "retriggers {C:inactive}(Currently {C:attention}#2#{C:inactive})",
+                    "{C:inactive}(Retriggers reset, suit changes",
+                    "{C:inactive}at end of round)",
                 }
             }
         },
@@ -614,9 +708,9 @@ return {
                 name = "Tightrope",
                 text = {
                     "{C:green}50%{} chance to create",
-                    "{C:attention}1{} copy of {C:attention}1{} selected card",
+                    "{C:attention}#1#{} copy of {C:attention}#2#{} selected card",
                     "{C:green}25%{} chance to create",
-                    "{C:attention}2{} copies",
+                    "{C:attention}#3#{} copies",
                     "{C:green}25%{} chance to {C:red}destroy{}",
                     "selected card",
                     "{C:inactive}(Odds cannot be changed)"
@@ -666,8 +760,8 @@ return {
             c_fmod_greasepaint = {
                 name = "Greasepaint",
                 text = {
-                    "Select up to {C:attention}#1#{} cards to",
-                    "{C:attention}mark{} with {C:attention}Ink{}",
+                    "Select up to {C:attention}#1#{} cards",
+                    "to {C:attention}mark{} with {C:attention}Ink{}",
                 }
             },
             c_fmod_unicycle = {
@@ -698,6 +792,28 @@ return {
                     "Select {C:attention}#1#{} cards, copy the",
                     "{C:attention}Clip{} of the {C:attention}left{} card",
                     "onto the {C:attention}right{} card",
+                }
+            },
+            c_fmod_hall_of_mirrors = {
+                name = "Hall of Mirrors",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards into",
+                    "{C:attention}Copycat Cards{}",
+                }
+            },
+            c_fmod_crisis = {
+                name = "Crisis",
+                text = {
+                    "Set {C:attention}Ante{} to {C:attention}1{}.",
+                    "All cards and stats",
+                    "are {C:attention}preserved."
+                }
+            },
+            c_fmod_crisis_col = {
+                name = "Crisis",
+                text = {
+                    "...?"
                 }
             }
         },
@@ -791,6 +907,30 @@ return {
                     "{C:attention}Booster Pack{}",
                     "to each shop"
                 }
+            },
+            v_fmod_grab_bag = {
+                name = "Grab Bag",
+                text = {
+                    "Open a free {C:attention}Remix{}",
+                    "{C:attention}Pack{} upon clearing",
+                    "a {C:attention}Boss Blind{}"
+                }
+            },
+            v_fmod_gachapon = {
+                name = "Gachapon",
+                text = {
+                    "{C:attention}Remix Packs{}",
+                    "appear in the",
+                    "{C:attention}shop"
+                }
+            },
+            v_fmod_mystery_box = {
+                name = "Mystery Box",
+                text = {
+                    "+1 {C:attention}Booster Pack{}",
+                    "available in the",
+                    "{C:attention}shop"
+                }
             }
         },
         Enhanced = {
@@ -801,6 +941,14 @@ return {
                     "a random {C:attention}Consumable",
                     "when scored",
                     "{C:inactive}(Must have room)"
+                }
+            },
+            m_fmod_copycat_card = {
+                name = "Copycat Card",
+                text = {
+                    "All Copycat cards in deck",
+                    "become the same random",
+                    "{C:attention}rank{} after scoring"
                 }
             }
         },
@@ -869,11 +1017,44 @@ return {
                     "be used immediately"
                 }
             },
+            p_fmod_remix_small_1 = {
+                name = "Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
+            p_fmod_remix_small_2 = {
+                name = "Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
+            p_fmod_remix_jumbo = {
+                name = "Jumbo Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
+            p_fmod_remix_mega = {
+                name = "Mega Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
             fmod_ink_mark = {
                 name = "Inked",
                 text = {
                     "Cannot be",
-                    "{C:attention}flipped"
+                    "{C:attention}debuffed",
+                    "or {C:attention}flipped"
                 }
             },
             fmod_crease_mark = {
@@ -898,6 +1079,7 @@ return {
             k_fmod_drained = "Drained!",
             k_fmod_neil_deal = "Discounted!",
             k_fmod_sillypack = "Silly Pack",
+            k_fmod_remixpack = "Remix Pack",
             r_fmod_mostplayed = "(most played rank)",
             k_fmod_config_restart = "Requires Restart",
             k_fmod_config_jokers = "Enable Jokers",
@@ -908,12 +1090,16 @@ return {
             k_fmod_config_decks = "Enable Decks",
             k_fmod_config_markings = "Enable Markings",
             k_fmod_config_enhancements = "Enable Enhancements",
+            k_fmod_config_remix = "Enable Remix Packs",
             k_fmod_planet_orbit = "+1 Planet",
+            k_fmod_debut_destruct = "Finished!",
+            k_fmod_copycat = "Copycat!"
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
             a_fmod_silly_card = "+#1# Silly",
             a_fmod_money = "+$#1#",
+            a_fmod_booster = "+#1# Booster",
         },
         labels = {
             fmod_ink_mark = "Inked",

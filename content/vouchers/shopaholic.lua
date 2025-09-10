@@ -22,4 +22,11 @@ SMODS.Voucher {
             booster:set_cost()
         return true end}))
     end,
+    calculate = function(self, card, context)
+        if context.starting_shop then
+            local booster = G.shop_booster.cards[#G.shop_booster.cards]
+            if booster then booster.ability.couponed = true end
+            booster:set_cost()
+        end
+    end
 }

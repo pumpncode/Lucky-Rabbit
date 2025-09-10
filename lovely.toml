@@ -49,9 +49,9 @@ times = 1
 [[patches]]
 [patches.regex]
 target = 'functions/common_events.lua'
-pattern = '''and not next\(find_joker\("Showman"\)\)'''
+pattern = '''and not SMODS\.showman\(\s*(v\.key|'[^']+')\s*\)'''
 position = "at"
-payload = '''and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
+payload = '''and not (SMODS.showman($1) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
 times = 4
 
 # -------- fennex deck ---------
@@ -79,27 +79,17 @@ pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*bl
 position = "after"
 match_indent = true
 payload = '''
-if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss and G.GAME.reaper_set then
-    G.GAME.reaper_set = false
-    blind_amt = blind_amt * 2
+if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
+    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*(blind_choice.config.mult*2)*G.GAME.starting_params.ante_scaling
 end
 '''
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''juggler_count = 0,'''
-position = "after"
-payload = '''reaper_set = false,'''
-match_indent = true
-times = 1
 
 # -------- trapeze --------
 
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
-pattern = '''reaper_set = false,'''
+pattern = '''juggler_count = 0,'''
 position = "after"
 payload = '''trapeze_count = 0,'''
 match_indent = true
@@ -108,10 +98,10 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
-pattern = '''local card = Card(area.T.x + area.T.w/2, area.T.y, G.CARD_W, G.CARD_H, front, center,'''
+pattern = '''local card = Card(area.T.x + area.T.w/2, area.T.y, G.CARD_W, G.CARD_H, SMODS.set_create_card_front or front, center,'''
 position = "before"
 payload = '''if center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
-    center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully"}, pseudoseed("trapeze"))]
+    center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))]
     G.GAME.trapeze_count = 0
 end'''
 match_indent = true
@@ -161,37 +151,6 @@ if LR_UTIL and card and card.ability then
 end
 '''
 
-# -------- ink marking --------
-
-[[patches]]
-[patches.pattern]
-target = "blind.lua"
-pattern = '''function Blind:stay_flipped(area, card, from_area)
-    if not self.disabled then'''
-position = "at"
-payload = '''function Blind:stay_flipped(area, card, from_area)
-    if not self.disabled and not (LR_UTIL.has_marking(card) == 'fmod_ink_mark') then'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "cardarea.lua"
-pattern = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then"
-position = "at"
-payload = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards and not (LR_UTIL.has_marking(card) == 'fmod_ink_mark') then"
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then"
-position = "at"
-payload = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards and not (LR_UTIL.has_marking(card) == 'fmod_ink_mark') then"
-match_indent = true
-times = 1
-
 # -------- pinhole marking --------
 
 [[patches]]
@@ -211,8 +170,7 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
-pattern = '''if card then drawn = true end
-local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
+pattern = '''local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
 if G.GAME.modifiers.flipped_cards and to == G.hand then
     if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
         stay_flipped = true
@@ -220,8 +178,7 @@ if G.GAME.modifiers.flipped_cards and to == G.hand then
 end
 to:emplace(card, nil, stay_flipped)'''
 position = "at"
-payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end
-local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
+payload = '''local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
 if G.GAME.modifiers.flipped_cards and to == G.hand then
     if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
         stay_flipped = true
@@ -244,6 +201,15 @@ end'''
 match_indent = true
 times = 1
 
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''if card then drawn = true end'''
+position = "at"
+payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end'''
+match_indent = true
+times = 1
+
 # -------- hyperfixation --------
 
 [[patches]]
@@ -255,28 +221,6 @@ payload = '''hyperfix_card = {
     rank = 'Ace',
     suit = 'Spades',
 },'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''reset_idol_card()'''
-position = "after"
-payload = '''
-G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
-LR_UTIL.reset_hyperfix_rank()
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = '''reset_idol_card()'''
-position = "after"
-payload = '''LR_UTIL.reset_hyperfix_rank()
-'''
 match_indent = true
 times = 1
 
@@ -351,40 +295,6 @@ payload = '''
 times = 1
 match_indent = false
 
-# -------- pop idol cat --------
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''if pseudorandom('lucky_money') < G.GAME.probabilities.normal/15 then'''
-position = "at"
-payload = '''if pseudorandom('lucky_money') < (G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))/15 then'''
-times = 1
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''if pseudorandom('lucky_mult') < G.GAME.probabilities.normal/5 then'''
-position = "at"
-payload = '''if pseudorandom('lucky_mult') < (G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))/5 then'''
-times = 1
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''hyperfix_card = {
-    rank = 'Ace',
-    suit = 'Spades',
-},'''
-position = "after"
-payload = '''
-pop_idol_plus = 0,
-'''
-match_indent = true
-times = 1
-
 # ------bepis' implementation of ferromancy
 [[patches]]
 [patches.pattern]
@@ -414,5 +324,34 @@ payload = '''
         end
     end
 '''
+times = 1
+match_indent = true
+
+# -------- tem shop --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'''
+position = "at"
+payload = '''if next(SMODS.find_card("j_fmod_tem_shop")) then
+    self.sell_cost = math.max(1, math.floor((self.cost/4) * 3)) + (self.ability.extra_value or 0)
+else
+    self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)
+end'''
+times = 1
+match_indent = true
+
+# -------- orbit fix --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'
+position = "before"
+payload = '''
+if self.ability.fmod_halve then
+    self.cost = math.max(1, math.floor(self.cost - (self.cost * 0.5)))
+end'''
 times = 1
 match_indent = true
