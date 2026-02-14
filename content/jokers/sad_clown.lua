@@ -5,6 +5,7 @@ if LR_CONFIG.silly_enabled then
             extra = {
                 discards = 15,
                 discards_remaining = 15,
+                minus = 1,
                 card_amt = 1
             }
         },
@@ -14,7 +15,7 @@ if LR_CONFIG.silly_enabled then
         rarity = 1,
         atlas = "Jokers",
         unlocked = true,
-        discovered = true,
+        discovered = false,
         pos = { x = 0, y = 4 },
         blueprint_compat = true,
         cost = 4,
@@ -46,10 +47,28 @@ if LR_CONFIG.silly_enabled then
                         }))
                     end
                 elseif not context.blueprint then
-                    card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'discards_remaining',
+                        scalar_value = 'minus',
+                        operation = '-',
+                        no_message = true
+                    })
                     return nil, true
                 end
             end
+        end,
+        joker_display_def = function(JokerDisplay)
+            ---@type JDJokerDefinition
+            return {
+                reminder_text = {
+                    { text = "(" },
+                    { ref_table = "card.ability.extra", ref_value = "discards_remaining" },
+                    { text = "/" },
+                    { ref_table = "card.ability.extra", ref_value = "discards" },
+                    { text = ")" },
+                },
+            }
         end,
     }
 end

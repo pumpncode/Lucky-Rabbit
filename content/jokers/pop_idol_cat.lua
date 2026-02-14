@@ -13,18 +13,22 @@ SMODS.Joker {
         return { vars = { card.ability.extra.plus_chance } }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 2, y = 1 },
     blueprint_compat = false,
     cost = 5,
+    enhancement_gate = "m_lucky",
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card.lucky_trigger and not context.blueprint then
-            card.ability.extra.plus_amt = card.ability.extra.plus_amt + 1
-            return {
-                message = "+"..card.ability.extra.plus_chance,
-                colour = G.C.GREEN,
-                message_card = card
-            }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = 'plus_amt',
+                scalar_value = 'plus_chance',
+                scaling_message = {
+                    message = "+"..card.ability.extra.plus_chance,
+                    colour = G.C.GREEN,
+                }
+            })
         end
         if context.mod_probability and not context.blueprint and (context.identifier == "lucky_mult" or context.identifier == "lucky_money") then
             return {
@@ -38,5 +42,5 @@ SMODS.Joker {
                 card = card
             }
         end
-    end,
+    end
 }

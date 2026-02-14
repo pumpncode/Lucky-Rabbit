@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 4,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
     eternal_compat = false,
     pixel_size = { w = 71, h = 70 },
@@ -18,23 +18,7 @@ SMODS.Joker {
             if card.ability.extra.xmult - card.ability.extra.mult_loss <= 1 then
                 G.E_MANAGER:add_event(Event({
                     func = function()
-                        -- This replicates the food destruction effect
-                        -- If you want a simpler way to destroy Jokers, you can do card:start_dissolve() for a dissolving animation
-                        -- or just card:remove() for no animation
-                        play_sound('tarot1')
-                        card.T.r = -0.2
-                        card:juice_up(0.3, 0.4)
-                        card.states.drag.is = true
-                        card.children.center.pinch.x = true
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.3,
-                            blockable = false,
-                            func = function()
-                                card:remove()
-                                return true
-                            end
-                        }))
+                        SMODS.destroy_cards(card, nil, nil, true)
                         return true
                     end
                 }))
@@ -43,11 +27,20 @@ SMODS.Joker {
                     colour = G.C.RED
                 }
             else
-                card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.mult_loss
-                return {
-                    message = localize{type = 'variable', key = 'a_xmult_minus', vars = { card.ability.extra.mult_loss }},
-                    colour = G.C.MULT
-                }
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    func = function()
+                        SMODS.scale_card(card, {
+                            operation = '-',
+                            ref_table = card.ability.extra,
+                            ref_value = 'xmult',
+                            scalar_value = 'mult_loss',
+                            message_key = 'a_xmult_minus',
+                            message_colour = G.C.MULT
+                        })
+                        return true
+                    end
+                }))
             end
         end
         if context.joker_main then
@@ -55,5 +48,18 @@ SMODS.Joker {
                 xmult = card.ability.extra.xmult
             }
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            }
+        }
     end
 }

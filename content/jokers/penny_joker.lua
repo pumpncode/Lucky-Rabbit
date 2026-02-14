@@ -12,22 +12,32 @@ SMODS.Joker {
     rarity = 1,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 4, y = 0 },
     blueprint_compat = true,
     cost = 4,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and not context.blueprint then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-            return {
-                message_card = card,
-                message = localize('k_upgrade_ex')
-            }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = 'chips',
+                scalar_value = 'chip_gain',
+            })
         end
         if context.joker_main then
             return {
                 chips = card.ability.extra.chips,
             }
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+            },
+            text_config = { colour = G.C.CHIPS },
+        }
+    end,
 }

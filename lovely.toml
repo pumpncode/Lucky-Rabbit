@@ -8,11 +8,11 @@ priority = 0
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'
-pattern = "if G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then"
-position = "at"
-payload = '''if G.GAME.used_vouchers.v_fmod_circus and pseudorandom("circus") > 0.8 then
-    _card = {set = "Silly", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sil1"}
-elseif G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then'''
+pattern = '''if G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then
+    _card = {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "ar2"}'''
+position = "after"
+payload = '''elseif G.GAME.used_vouchers.v_fmod_circus and pseudorandom("circus") > 0.8 then
+    _card = {set = "Silly", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sil1"}'''
 match_indent = true
 times = 1
 
@@ -21,40 +21,14 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
-pattern = '''G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
-    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end'''
-position = "at"
-payload = '''if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_scores.times_rerolled.amt % 2 == 0 then
-    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
-else
-    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
-    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end
-end'''
-match_indent = true
-times = 1
-
-# -------- juggler --------
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''used_vouchers = {},'''
+pattern = "G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0"
 position = "after"
-payload = '''juggler_count = 0,'''
+payload = "if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_scores.times_rerolled.amt % 2 == 0 then skip_increment = true end"
 match_indent = true
 times = 1
-
-# -------- recursive deck --------
-
-[[patches]]
-[patches.regex]
-target = 'functions/common_events.lua'
-pattern = '''and not SMODS\.showman\(\s*(v\.key|'[^']+')\s*\)'''
-position = "at"
-payload = '''and not (SMODS.showman($1) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
-times = 4
 
 # -------- fennex deck ---------
+
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -62,7 +36,13 @@ pattern = "if add and not G.GAME.banned_keys[v.key] then "
 position = "after"
 match_indent = true
 payload = '''
-    if (G.GAME.selected_back_key or {}).key == 'b_fmod_fennex' and v.key:find('j_fmod_') then
+    if ((G.GAME.selected_back_key or {}).key == 'b_fmod_fennex' or G.GAME.selected_sleeve == 'sleeve_fmod_fennex') and v.key:find('j_fmod_') then
+      if (G.GAME.selected_back_key or {}).key == 'b_fmod_fennex' and G.GAME.selected_sleeve == 'sleeve_fmod_fennex' then
+        for i = 1, 6 do
+          _pool[#_pool + 1] = v.key
+          _pool_size = _pool_size + 1
+        end
+      end
       for i = 1, 2 do
         _pool[#_pool + 1] = v.key
         _pool_size = _pool_size + 1
@@ -79,22 +59,12 @@ pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*bl
 position = "after"
 match_indent = true
 payload = '''
-if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
-    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*(blind_choice.config.mult*2)*G.GAME.starting_params.ante_scaling
+if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
+    blind_amt = blind_amt * 2
 end
 '''
 
 # -------- trapeze --------
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''juggler_count = 0,'''
-position = "after"
-payload = '''trapeze_count = 0,'''
-match_indent = true
-times = 1
-
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -104,33 +74,6 @@ payload = '''if center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 the
     center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))]
     G.GAME.trapeze_count = 0
 end'''
-match_indent = true
-times = 1
-
-# -------- saffron shield blind --------
-
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = "most_played_poker_hand = 'High Card',"
-position = "after"
-payload = "most_played_rank = 'Ace',"
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = "G.GAME.current_round.most_played_poker_hand = _handname"
-position = "after"
-payload = '''local _rankname, played = 'Ace', -1
-            for k, v in pairs(G.GAME.cards_played) do
-                if G.GAME.cards_played[k].total > played then
-                    played = G.GAME.cards_played[k].total
-                    _rankname = k
-                end
-            end
-        G.GAME.current_round.most_played_rank = _rankname'''
 match_indent = true
 times = 1
 
@@ -205,32 +148,8 @@ times = 1
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = '''if card then drawn = true end'''
-position = "at"
-payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end'''
-match_indent = true
-times = 1
-
-# -------- hyperfixation --------
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''trapeze_count = 0,'''
 position = "after"
-payload = '''hyperfix_card = {
-    rank = 'Ace',
-    suit = 'Spades',
-},'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''idol_card = {suit = 'Spades', rank = 'Ace'},'''
-position = "after"
-payload = '''hyperfix_card = {rank = '2'},
-'''
+payload = '''if card and (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = false end'''
 match_indent = true
 times = 1
 
@@ -333,11 +252,9 @@ match_indent = true
 [patches.pattern]
 target = "card.lua"
 pattern = '''self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'''
-position = "at"
+position = "after"
 payload = '''if next(SMODS.find_card("j_fmod_tem_shop")) then
     self.sell_cost = math.max(1, math.floor((self.cost/4) * 3)) + (self.ability.extra_value or 0)
-else
-    self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)
 end'''
 times = 1
 match_indent = true
@@ -355,3 +272,89 @@ if self.ability.fmod_halve then
 end'''
 times = 1
 match_indent = true
+
+
+# -------- double down seal patch --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local seals = card:calculate_seal(context)"
+position = "after"
+payload = '''
+for i=1, #SMODS.find_card("j_fmod_double_down") do
+    local seal2 = card:calculate_seal(context)
+    seals = SMODS.merge_effects({seals, {message = localize('k_again_ex'), message_card = SMODS.find_card("j_fmod_double_down")[i]}, seal2})
+end'''
+times = 2
+match_indent = true
+
+
+# -------- prevent a card from having multiple markings when copied --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = 'new_card:set_base(other.config.card)'
+position = "after"
+match_indent = true
+payload = "LR_UTIL.remove_marking(new_card)"
+
+
+# -------- trapeze properly becomes soully when copied --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "new_card:set_ability(other.config.center)"
+position = "after"
+match_indent = true
+payload = '''
+if other.config.center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
+    new_card:set_ability(G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))])
+    G.GAME.trapeze_count = 0
+end
+'''
+
+
+# -------- premium currency booster reroll patch --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+for i = 1, G.GAME.shop.joker_max - #G.shop_jokers.cards do
+  local new_shop_card = create_card_for_shop(G.shop_jokers)
+  G.shop_jokers:emplace(new_shop_card)
+  new_shop_card:juice_up()
+end
+'''
+position = "after"
+match_indent = true
+payload = '''
+if next(SMODS.find_card("j_fmod_premium_currency")) then
+    for i = #G.shop_booster.cards, 1, -1 do
+        local c = G.shop_booster:remove_card(G.shop_booster.cards[i])
+        c:remove()
+        c = nil
+    end
+
+    for i = 1, G.GAME.starting_params.boosters_in_shop + (G.GAME.modifiers.extra_boosters or 0) - G.GAME.current_round.boosters_opened do
+        local key = get_pack('shop_pack').key
+        local card = Card(G.shop_booster.T.x + G.shop_booster.T.w/2,
+        G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+        create_shop_card_ui(card, 'Booster', G.shop_booster)
+        card.ability.booster_pos = i
+        card:start_materialize()
+        G.shop_booster:emplace(card)
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.opening = true"
+position = "after"
+match_indent = true
+payload = "G.GAME.current_round.boosters_opened = (G.GAME.current_round.boosters_opened or 0) + 1"

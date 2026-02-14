@@ -12,10 +12,11 @@ SMODS.Joker{
     rarity = 1,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 9, y = 1 },
     cost = 4,
     blueprint_compat = true,
+    perishable_compat = false,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
@@ -28,14 +29,26 @@ SMODS.Joker{
                 if not SMODS.has_no_rank(playingcard) and not playingcard.debuff and playingcard:get_id() == 3
                 or playingcard:get_id() == 7 or playingcard:get_id() == 8
                 or playingcard:get_id() == 12 then
-                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-                    return {
-                        message = localize("k_upgrade_ex"),
-                        colour = G.C.CHIPS,
-                        card = card
-                    }
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'chips',
+                        scalar_value = 'chip_gain',
+                    })
                 end
             end
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.ability.extra", ref_value = "chips" }
+            },
+            reminder_text = {
+                { text = "(Q,3,7,8)" }
+            },
+            text_config = { colour = G.C.CHIPS }
+        }
+    end,
 }

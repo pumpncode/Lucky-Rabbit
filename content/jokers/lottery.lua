@@ -6,13 +6,14 @@ SMODS.Joker {
         extra = {
             odds = 2,
             min = 1,
-            max = 9
+            max = 9,
+            money = nil
         }
     },
 	rarity = 1,
 	cost = 4,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_lottery')
@@ -20,15 +21,42 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.main_eval and context.game_over == false and SMODS.pseudorandom_probability(card, 'lottery', 1, card.ability.extra.odds, 'fmod_lottery') and not context.blueprint then
-            local money = math.floor(pseudorandom(pseudoseed("lottery2")) * card.ability.extra.max) + 1
-            card.ability.extra_value = (card.ability.extra_value or 0) + money
+            card.ability.extra.money = math.floor(pseudorandom(pseudoseed("lottery2")) * card.ability.extra.max) + 1
+            SMODS.scale_card(card, {
+                ref_table = card.ability,
+                ref_value = "extra_value",
+                scalar_table = card.ability.extra,
+                scalar_value = "money",
+                message_key = 'a_fmod_money',
+                message_colour = G.C.MONEY
+            })
             card:set_cost()
-            return {
-                message = localize{type="variable", key="a_fmod_money", vars={money}},
-                colour = G.C.MONEY,
-                sound = "coin" .. pseudorandom("lottery3", 1, 7)
-            }
+            play_sound("coin" .. pseudorandom("lottery3", 1, 7))
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { text = "$",         colour = G.C.GOLD },
+                { ref_table = "card", ref_value = "sell_cost", colour = G.C.GOLD },
+                { text = ")" },
+            },
+            reminder_text_config = { scale = 0.35 },
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")" },
+                }
+            },
+            extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'bloodstone')
+                card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+            end
+        }
+    end,
 }
 

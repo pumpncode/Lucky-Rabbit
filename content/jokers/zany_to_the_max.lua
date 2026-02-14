@@ -5,8 +5,9 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
+    perishable_compat = false,
 	config = {
         extra = {
             chip_gain = 10,
@@ -25,18 +26,32 @@ SMODS.Joker {
             local pseudo = pseudorandom(pseudoseed('zany_to_the_max'))
             -- 33% chance #1
             if pseudo <= 0.33 then
-                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'chips',
+                    scalar_value = 'chip_gain',
+                    message_key = 'a_chips',
+                    message_colour = G.C.CHIPS
+                })
                 -- 33% chance #2
             elseif pseudo <= 0.66 then
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'mult',
+                    scalar_value = 'mult_gain',
+                    message_key = 'a_mult',
+                    message_colour = G.C.MULT
+                })
                 -- 33% chance #3
             else
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'xmult_gain',
+                    message_key = 'a_xmult',
+                    message_colour = G.C.MULT
+                })
             end
-            return {
-                message = localize("k_upgrade_ex"),
-                colour = G.C.CHIPS
-            }
         end
         if context.joker_main then
             local ret = {}
@@ -51,5 +66,28 @@ SMODS.Joker {
             end
             return ret
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+",                              colour = G.C.MULT },
+                { ref_table = "card.ability.extra", ref_value = "mult", colour = G.C.MULT, retrigger_type = "mult" },
+                { text = " +",                             colour = G.C.CHIPS },
+                { ref_table = "card.ability.extra", ref_value = "chips",  colour = G.C.CHIPS,  retrigger_type = "mult" },
+                { text = " " },
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            },
+            reminder_text = {
+                { text = "(" },
+                { text = localize("Three of a Kind", "poker_hands"), colour = G.C.ORANGE },
+                { text = ")" }
+            },
+        }
+    end,
 }

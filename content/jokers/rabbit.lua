@@ -17,16 +17,17 @@ SMODS.Joker {
         }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 8, y = 2 },
     blueprint_compat = true,
     cost = 8,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands["Five of a Kind"]) and card.ability.extra.base < card.ability.extra.max_times then
+            local _card = nil
             G.E_MANAGER:add_event(Event({
                 func =  function()
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                local _card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+                _card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
                 _card:add_to_deck()
                 G.deck.config.card_limit = G.deck.config.card_limit + 1
                 table.insert(G.playing_cards, _card)
@@ -43,11 +44,42 @@ SMODS.Joker {
                 message = localize('k_copied_ex'),
                 colour = G.C.CHIPS,
                 card = card,
-                playing_cards_created = { true }
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_context({ playing_card_added = true, cards = { _card } })
+                            return true
+                        end
+                    }))
+                end
             }
         end
-        if context.end_of_round and not context.blueprint then
+        if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.base = 0
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "times_left" },
+                    { text = "/" },
+                    { ref_table = "card.joker_display_values", ref_value = "max_times" },
+                    { text = ")" },
+                },
+            },
+            reminder_text = {
+                { text = "(" },
+                { text = localize("Five of a Kind", "poker_hands"),  colour = G.C.ORANGE },
+                { text = ")" }
+            },
+            extra_config = { colour = G.C.UI.TEXT_INACTIVE, scale = 0.3 },
+            calc_function = function(card)
+                card.joker_display_values.times_left = card.ability.extra.max_times - card.ability.extra.base
+                card.joker_display_values.max_times = card.ability.extra.max_times
+            end
+        }
     end,
 }

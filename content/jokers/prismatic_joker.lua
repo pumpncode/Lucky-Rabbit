@@ -6,7 +6,7 @@ if LR_CONFIG.enhancements_enabled then
         rarity = 2,
         cost = 8,
         unlocked = true,
-        discovered = true,
+        discovered = false,
         blueprint_compat = false,
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS.m_fmod_copycat_card
@@ -47,6 +47,16 @@ if LR_CONFIG.enhancements_enabled then
                     colour = G.C.PURPLE
                 }
             end
-        end
+        end,
+        joker_display_def = function(JokerDisplay)
+            ---@type JDJokerDefinition
+            return {
+                reminder_text = {
+                    { text = "(" },
+                    { text = localize("Four of a Kind", "poker_hands") , colour = G.C.ORANGE },
+                    { text = ")" }
+                },
+            }
+        end,
     }
 end

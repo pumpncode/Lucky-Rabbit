@@ -15,7 +15,7 @@ SMODS.Joker {
     rarity = 2,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 5, y = 2 },
     blueprint_compat = true,
     cost = 6,
@@ -28,15 +28,12 @@ SMODS.Joker {
                 context.other_card.ability.ncradle_set = true
             end
             -- if it's the last card in the scoring hand and the entire hand consists of that suit, increment retriggers
-            -- also, juice up to signify the increasing
             if context.other_card == context.scoring_hand[#context.scoring_hand] and card.ability.extra.suit_count >= #context.scoring_hand and not card.ability.extra.increased then
-                card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.retrigger_gain
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        card:juice_up()
-                        return true
-                    end
-                }))
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'retriggers',
+                    scalar_value = 'retrigger_gain',
+                })
                 -- keep increasing from happening again this hand
                 card.ability.extra.increased = true
             end
@@ -67,7 +64,21 @@ SMODS.Joker {
                 message = localize('k_reset'),
             }
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS[(G.GAME.current_round.ncradle_card or {}).suit or 'Spades'], 0.35) },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                local suit = (G.GAME.current_round.ncradle_card or {}).suit or 'Spades'
+                card.joker_display_values.localized_text = localize(suit, 'suits_plural')
+            end
+        }
+    end,
 }
 
 function LR_UTIL.reset_ncradle_card()

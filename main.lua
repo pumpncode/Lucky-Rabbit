@@ -90,7 +90,8 @@ end
 SMODS.optional_features = {
     cardareas = {
         unscored = true,
-    }
+    },
+    post_trigger = true
 }
 
 
@@ -131,6 +132,7 @@ local files = {
             "jazzercise",
             "trans_joker",
             "litterbug",
+            "gumball_machine",
             "sad_clown",
             "tax_return",
             "dating_sim",
@@ -143,10 +145,43 @@ local files = {
             "comic_book_ad",
             "lottery",
             "debut_album",
+            "actually_useful_gun_mode",
             "zany_to_the_max",
             "friend_inside_me",
             "prismatic_joker",
             "ghostly_joker",
+            "working_joker",
+            "hypeman",
+            "and_thats_not_all",
+            "skee_ball",
+            "unorthodox_doctor",
+            "double_down",
+            "edibles",
+            "assassin",
+            "speedrun",
+            "bouncer",
+            "falling_up",
+            "pet_rock",
+            "elimination_game",
+            "girl_next_door",
+            "prodigy_child",
+            "nightmare_eyes",
+            "backpack_hero",
+            "life_star",
+            "true_gluttony",
+            "barbershop_joker",
+            "ufo_sighting",
+            "sleazy_joker",
+            "drummer_joker",
+            "555_hotline",
+            "commission",
+            "premium_currency",
+            "defenestration",
+            "wedding_ring",
+            "balancing_act",
+            "gas_pump",
+            "master_of_disguise",
+            "metal_face_villain",
             "steve",
             "pomni",
             "ransome",
@@ -197,9 +232,11 @@ local files = {
             "greasepaint",
             "unicycle",
             "cannon",
+            "showgirl",
             "barker",
             "hall_of_mirrors",
             "suspenders",
+            "laughter",
             "soully",
             "crisis"
         },
@@ -218,6 +255,7 @@ local files = {
             "tool",
             "baby",
             "priest",
+            "rhythm",
             "light",
             "thorn",
             "elder",
@@ -236,8 +274,17 @@ local files = {
             "harmony",
             "reaper",
             "recursive",
+            "tricky",
+            "remix"
         },
         directory = "content/decks"
+    },
+    sleeves = {
+        list = {
+            "clown",
+            "fennex"
+        },
+        directory = "content/decks/cardsleeves"
     },
     tags = {
         list = {
@@ -245,6 +292,7 @@ local files = {
             "lunchbreak",
             "boost",
             "appraisal",
+            "vinyl"
         },
         directory = "content/tags"
     },
@@ -259,7 +307,8 @@ local files = {
         list = {
             "crease_mark",
             "pinhole_mark",
-            "ink_mark"
+            "ink_mark",
+            "gilded_mark"
         },
         directory = "content/markings"
     }
@@ -308,9 +357,11 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_greasepaint"] = true,
             ["c_fmod_unicycle"] = true,
             ["c_fmod_cannon"] = true,
+            ["c_fmod_showgirl"] = true,
             ["c_fmod_barker"] = true,
             ["c_fmod_suspenders"] = true,
             ["c_fmod_hall_of_mirrors"] = true,
+            ["c_fmod_laughter"] = true,
             ["c_fmod_crisis"] = true,
         },
         loc_txt = {
@@ -332,6 +383,16 @@ if LR_CONFIG.silly_enabled then
         atlas = 'Consumables',
         pos = { x = 3, y = 2 },
         --overlay_pos = { x = 4, y = 2 }
+    }
+    SMODS.Sound { -- silly theme by Potatert0t
+        key = "fmod_silly_music",
+        path = "music_silly.ogg",
+        volume = 0.7,
+        select_music_track = function(self)
+            if G.booster_pack and not G.booster_pack.REMOVED and SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == "Silly" then
+                return 1e10
+            end
+        end
     }
     LR_UTIL.load_files(files.consumables.list, files.consumables.directory)
     assert(SMODS.load_file("content/boosters/silly_packs.lua"))()
@@ -359,6 +420,10 @@ end
 
 if LR_CONFIG.remix_enabled then
     assert(SMODS.load_file("content/boosters/remix_packs.lua"))()
+end
+
+if CardSleeves then
+    LR_UTIL.load_files(files.sleeves.list, files.sleeves.directory)
 end
 
 -- define marking objects
@@ -458,7 +523,8 @@ if LR_CONFIG.markings_enabled then
     LR_UTIL.ENABLED_MARKINGS = {
         "crease_mark",
         "pinhole_mark",
-        "ink_mark"
+        "ink_mark",
+        "gilded_mark"
     }
     LR_UTIL.load_files(files.markings.list, files.markings.directory)
 end

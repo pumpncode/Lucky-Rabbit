@@ -12,7 +12,7 @@ SMODS.Joker{
     rarity = 1,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 0, y = 0 },
     cost = 4,
     blueprint_compat = false,
@@ -34,5 +34,17 @@ SMODS.Joker{
             end
             card.ability.extra.rerolls = 10
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.ability.extra",              ref_value = "rerolls" },
+                { text = "/" },
+                { ref_table = "card.ability.extra", ref_value = "total_rerolls" },
+                { text = ")" },
+            },
+        }
     end
 }

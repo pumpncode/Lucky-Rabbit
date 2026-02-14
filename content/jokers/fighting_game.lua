@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
 	config = { extra = { odds = 3, h_size = 1, total_size = 0 } },
 	loc_vars = function(self, info_queue, card)
@@ -33,9 +33,33 @@ SMODS.Joker {
                 }
             end
 		end
-        if context.end_of_round and card.ability.extra.total_size > 0 then
+        if context.end_of_round and context.cardarea == G.jokers
+        and card.ability.extra.total_size > 0 then
             G.hand:change_size(-card.ability.extra.total_size)
             card.ability.extra.total_size = 0
         end
-	end
+	end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS["Clubs"], 0.35) },
+                { text = ")" }
+            },
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")" },
+                }
+            },
+            extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_fight')
+                card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+                card.joker_display_values.localized_text = localize("Clubs", 'suits_plural')
+            end
+        }
+    end
 }

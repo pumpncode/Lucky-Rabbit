@@ -5,8 +5,9 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = false,
+    eternal_compat = false,
 	config = { extra = { life = 3, uses = 0 } },
 	loc_vars = function(self, info_queue, card)
 		return {
@@ -31,7 +32,7 @@ SMODS.Joker {
                         G.hand_text_area.blind_chips:juice_up()
                         G.hand_text_area.game_chips:juice_up()
                         play_sound('tarot1')
-                        card:start_dissolve()
+                        SMODS.destroy_cards(card)
                         return true
                     end
                 }))

@@ -16,7 +16,7 @@ end
 
 function LR_UTIL.reset_hyperfix_rank()
     -- If this function somehow isn't working, fail fast
-    G.GAME.current_round.hyperfix_card.rank = "This is a bug"
+    G.GAME.current_round.hyperfix_card = {rank = "This is a bug"}
     local valid_hyperfix_cards = {}
     for k, v in ipairs(G.playing_cards) do
         if not SMODS.has_no_rank(v) and v.base.value ~= G.GAME.hyperfix_card.rank then
@@ -61,23 +61,35 @@ function LR_UTIL.reset_hyperfix_full_card()
 end
 
 function LR_UTIL.get_food_jokers(seed)
-    local possible_jokers = {
-        'j_gros_michel',
-        'j_egg',
-        'j_ice_cream',
-        'j_cavendish',
-        'j_turtle_bean',
-        'j_diet_cola',
-        'j_popcorn',
-        'j_ramen',
-        'j_selzer',
-        'j_fmod_pub_burger'
-    }
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Food then
-            possible_jokers[#possible_jokers+1] = v.key
+    local food_jokers
+    if G.P_CENTER_POOLS.Food then
+        -- If another mod makes the Food joker pool exist, use that.
+        -- It might contain jokers that aren't normally considered a Food
+        food_jokers = {}
+        for _, v in ipairs(G.P_CENTER_POOLS.Food) do
+            food_jokers[v.key] = true
         end
+    else
+        -- List of vanilla food jokers.
+        food_jokers = {
+            j_gros_michel = true,
+            j_egg = true,
+            j_ice_cream = true,
+            j_cavendish = true,
+            j_turtle_bean = true,
+            j_diet_cola = true,
+            j_popcorn = true,
+            j_ramen = true,
+            j_selzer = true,
+        }
+        -- For modded food jokers, check if .pools.Food is true instead
     end
+    local possible_jokers = {}
+    for _, v in ipairs(get_current_pool('Joker', nil, nil, seed)) do
+        if v ~= 'UNAVAILABLE'
+        and (food_jokers[v] or (G.P_CENTERS[v].pools and G.P_CENTERS[v].pools.Food)) then
+            table.insert(possible_jokers, v)
+        end
     end
     local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_gros_michel'
     return key
@@ -85,13 +97,15 @@ end
 
 function LR_UTIL.get_fmod_legendaries(seed)
     local possible_jokers = {}
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Fmod_Legendary then
-            possible_jokers[#possible_jokers+1] = v.key
+    for _, v in ipairs(get_current_pool('Joker', nil, true, seed)) do
+        local joker = G.P_CENTERS[v]
+        if v ~= 'UNAVAILABLE'
+        and G.P_CENTERS[v].pools and G.P_CENTERS[v].pools.Fmod_Legendary then
+            table.insert(possible_jokers, v)
         end
     end
-    end
-    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_fmod_steve'
+    -- like The Soul, if all legendaries are exhausted, return j_joker
+    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_joker'
     return key
 end
 
@@ -146,18 +160,20 @@ function LR_UTIL.marking_tooltip(mark)
     }
 end
 
-function LR_UTIL.num_vouchers()
-    if not G.GAME.used_vouchers then return 0 end
-	local count = 0
-	for k, v in pairs(G.GAME.used_vouchers) do
-		if v then
-			count = count + 1
-		end
-	end
-	return count
+function LR_UTIL.remove_marking(card)
+    for k, _ in pairs(card and card.ability or {}) do
+        if LR_UTIL.is_marking(k) then
+            card.ability[k] = nil
+        end
+    end
 end
 
 ------ hooks ------
+
+-- (starts crying) talisman compatibility
+to_big = to_big or function(x) return x end
+to_number = to_number or function(x) return x end
+
 
 local shuffle_ref = CardArea.shuffle
 function CardArea:shuffle(_seed)
@@ -181,31 +197,9 @@ function CardArea:shuffle(_seed)
     return g
 end
 
-local set_base_ref = Card.set_base
-function Card:set_base(card, initial)
-    set_base_ref(self, card, initial)
-    if self.playing_card and not initial and next(SMODS.find_card("j_fmod_trans_joker")) then
-        for k, v in ipairs(G.jokers.cards) do
-            if v.ability.name == 'j_fmod_trans_joker' then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        v:juice_up()
-                        card_eval_status_text(self, 'extra', nil, nil, nil, {
-                            message = localize { type = 'variable', key = 'a_mult', vars = {v.ability.extra.mult} },
-                            colour = G.C.RED,
-                        })
-                        self.ability.perma_mult = self.ability.perma_mult + v.ability.extra.mult
-                        return true
-                    end
-                }))
-            end
-        end
-    end
-end
-
 local gnb = get_new_boss
 function get_new_boss()
-    if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
 		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
@@ -220,7 +214,7 @@ end
 
 local reroll_ref = G.FUNCS.reroll_boss
 G.FUNCS.reroll_boss = function(e)
-	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+	if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
 		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
@@ -250,9 +244,6 @@ function end_round()
             end
         end
     end
-    if #remove_temp > 0 then
-        SMODS.calculate_context({ remove_playing_cards = true, removed = remove_temp })
-    end
 end
 
 local flip = Card.flip
@@ -263,16 +254,84 @@ function Card:flip()
     flip(self)
 end
 
+-- for The Tool blind
+local cardarea_emplace_ref = CardArea.emplace
+function CardArea:emplace(card, ...)
+    cardarea_emplace_ref(self, card, ...)
+    if self == G.consumeables then
+        SMODS.recalc_debuff(card)
+    end
+end
+
+-- for The Tool blind
+local set_blind_ref = Blind.set_blind
+function Blind:set_blind(blind, reset, ...)
+    set_blind_ref(self, blind, reset, ...)
+    for _, v in ipairs(G.consumeables.cards) do
+        if not reset then self:debuff_card(v, true) end
+    end
+end
+
+-- recusive deck showman hook
+local show = SMODS.showman
+function SMODS.showman(card_key)
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_recursive" then
+        return true
+    end
+    return show(card_key)
+end
+
+local issuit = Card.is_suit
+function Card:is_suit(suit, bypass_debuff, flush_calc)
+    local ret = issuit(self, suit, bypass_debuff, flush_calc)
+    if next(SMODS.find_card('j_fmod_true_gluttony')) and not flush_calc then
+        ret = self.base.suit == 'Clubs'
+    end
+    return ret
+end
+
 ------ misc ------
 
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start then
+        G.GAME.hyperfix_card = {
+            rank = 'Ace',
+            suit = 'Spades'
+        }
+        G.GAME.juggler_count = 0
+        G.GAME.trapeze_count = 0
         G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
+        G.GAME.fmod_last_silly = nil
     end
+    G.GAME.current_round.most_played_rank = 'Ace'
+    local _rankname, played = 'Ace', -1
+    for k, v in pairs(G.GAME.cards_played) do
+        if G.GAME.cards_played[k].total > played then
+            played = G.GAME.cards_played[k].total
+            _rankname = k
+        end
+    end
+    G.GAME.current_round.most_played_rank = _rankname
     LR_UTIL.reset_hyperfix_rank()
     LR_UTIL.reset_ncradle_card()
+    G.GAME.current_round.boosters_opened = 0
 end
 
 SMODS.current_mod.set_debuff = function(card)
     if LR_UTIL.has_marking(card) == 'fmod_ink_mark' then return "prevent_debuff" end
+end
+
+function SMODS.current_mod.calculate(self, context)
+    if context.using_consumeable then
+        if context.consumeable.ability.set == "Silly" then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.GAME.fmod_last_silly = context.consumeable.config.center_key
+                    return true
+                end
+            }))
+        end
+    end
 end

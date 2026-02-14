@@ -16,7 +16,7 @@ SMODS.Joker {
         Food = true
     },
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 6, y = 1 },
     blueprint_compat = false,
     eternal_compat = false,
@@ -38,34 +38,22 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.before and G.GAME.current_round.hands_played > 0 then
             if card.ability.extra.discards - card.ability.extra.discard_mod <= 0 then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        play_sound('tarot1')
-                        card.T.r = -0.2
-                        card:juice_up(0.3, 0.4)
-                        card.states.drag.is = true
-                        card.children.center.pinch.x = true
-                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-                            func = function()
-                                    G.jokers:remove_card(card)
-                                    card:remove()
-                                    card = nil
-                                return true; end}))
-                        return true
-                    end
-                }))
+                SMODS.destroy_cards(card, nil, nil, true)
                 return {
                     message = localize('k_eaten_ex'),
                     colour = G.C.RED
                 }
             else
-                card.ability.extra.discards = card.ability.extra.discards - card.ability.extra.discard_mod
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'discards',
+                    scalar_value = 'discard_mod',
+                    operation = '-',
+                    message_key = 'a_chips_minus',
+                    message_colour = G.C.RED,
+                })
                 G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discard_mod
                 ease_discard(-(card.ability.extra.discard_mod), nil, false)
-                return {
-                    message = localize{type='variable',key='a_chips_minus',vars={card.ability.extra.discard_mod}},
-                    colour = G.C.RED
-                }
             end
         end
     end

@@ -12,7 +12,7 @@ SMODS.Joker {
     rarity = 2,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 4, y = 2 },
     soul_pos = { x = 1, y = 4 },
     blueprint_compat = true,
@@ -23,7 +23,8 @@ SMODS.Joker {
                 context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
                 context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + card.ability.extra.perma_xmult
                 return {
-                    extra = { message = localize('k_upgrade_ex'), colour = G.C.CHIPS },
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS,
                     card = card
                 }
             end
